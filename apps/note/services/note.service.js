@@ -70,10 +70,10 @@ export const noteService = {
 function query() {
   //TODO : Change Filter options
   return storageService.query(NOTES_KEY).then((notes) => {
-    if (gFilterBy.title) {
-      const regex = new RegExp(gFilterBy.title, 'i')
-      notes = notes.filter((note) => regex.test(note.title))
-    }
+    // if (gFilterBy.title) {
+    //   const regex = new RegExp(gFilterBy.title, 'i')
+    //   notes = notes.filter((note) => regex.test(note.title))
+    // }
     return notes
   })
 }
