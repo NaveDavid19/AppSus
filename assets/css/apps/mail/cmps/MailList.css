@@ -1,8 +1,18 @@
  /* mail list */
 
- .mail-list li {
+ .mail-preview li {
      display: flex;
      justify-content: space-between;
      align-items: center;
-     background-color: #202124;
+     background-color: #f6f8fc;
+     color: #202124;
+ }
+
+ .mail-preview li:hover {
+     background-color: #c2dbff;
+ }
+
+ .mail-text {
+     display: flex;
+     align-items: center;
  }
