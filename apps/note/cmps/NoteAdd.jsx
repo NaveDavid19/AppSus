@@ -22,6 +22,12 @@ export function NoteAdd({ addNote }) {
         }}>
         Todos
       </button>
+      <button
+        onClick={() => {
+          onTypeChange('noteImg')
+        }}>
+        Img
+      </button>
       {type && <NoteAddType addNote={addNote} type={type} />}
     </article>
   )
