@@ -1,18 +1,22 @@
 const { Link } = ReactRouterDOM
 
-
-
 export function MailPreview({ mails, onSetReadMail }) {
+
+    function isRead(mail) {
+        return mail.isRead ? "" : "unread"
+    }
+
     return (
+
         <ul className="mail-preview">
             {mails.map(mail => (
                 <Link onClick={() => onSetReadMail(mail)} key={mail.id} to={`/mail/${mail.id}`}>
                     <li>
-                        <h2>{mail.from.userName}</h2>
-                        <div className="mail-text">
-                            <h2>{mail.subject} - </h2>
+                        <p className={isRead(mail)}>{mail.from.userName}</p>
+                        <article className="mail-text">
+                            <p className={isRead(mail)}>{mail.subject} - </p>
                             <p>{mail.body}</p>
-                        </div>
+                        </article>
                         <time>{mail.sentAt}</time>
                     </li>
                 </Link>
