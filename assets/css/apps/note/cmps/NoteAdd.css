@@ -1,0 +1,13 @@
+.note-add {
+  margin-block-end: 1rem;
+}
+.note-add form{
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+#txt {
+  resize: inherit;
+}

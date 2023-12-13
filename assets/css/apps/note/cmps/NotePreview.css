@@ -1,0 +1,8 @@
+.note-preview {
+  margin-block-start: .5em;
+  list-style: none;
+  break-inside: avoid;
+  border: 1px solid black;
+  border-radius: 7px;
+  padding: 1rem;
+}
