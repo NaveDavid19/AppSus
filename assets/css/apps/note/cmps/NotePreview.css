@@ -5,3 +5,11 @@
   border-radius: 7px;
   padding: 1rem;
 }
+
+.note-preview span.todo{
+  font-weight: 600;
+}
+
+.note-preview span.done{
+  text-decoration: line-through;
+}

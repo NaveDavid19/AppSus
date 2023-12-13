@@ -25,7 +25,7 @@ export function NoteTxt({ note, deleteNote, editNote, saveNote, from }) {
   }
 
   switch (from) {
-    // ---------------------------------------------------------------- //
+    //* ---------------------------------------------------------------- //
     case 'noteList':
       return (
         <article className="note-preview">
@@ -47,7 +47,7 @@ export function NoteTxt({ note, deleteNote, editNote, saveNote, from }) {
           <h3>{note.info.txt}</h3>
         </article>
       )
-    // ---------------------------------------------------------------- //
+    //* ---------------------------------------------------------------- //
     case 'noteEdit':
       return (
         <article className="note-preview-edit">

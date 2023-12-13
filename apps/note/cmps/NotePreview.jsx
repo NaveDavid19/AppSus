@@ -3,7 +3,14 @@ import { NoteTodos } from './NoteTodos.jsx'
 import { NoteTxt } from './NoteTxt.jsx'
 import { NoteVideo } from './NoteVideo.jsx'
 
-export function NotePreview({ note, deleteNote, editNote, saveNote, from }) {
+export function NotePreview({
+  note,
+  deleteNote,
+  editNote,
+  saveNote,
+  todoToggle,
+  from,
+}) {
   switch (note.type) {
     case 'noteTxt':
       return (
@@ -45,6 +52,7 @@ export function NotePreview({ note, deleteNote, editNote, saveNote, from }) {
           deleteNote={deleteNote}
           editNote={editNote}
           saveNote={saveNote}
+          todoToggle={todoToggle}
           from={from}
         />
       )

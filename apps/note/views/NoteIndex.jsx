@@ -31,6 +31,8 @@ export function NoteIndex() {
     })
   }
 
+  // *  --------------------------//CRUD HANDLE //---------------------------  * //
+
   function deleteNote(note) {
     const noteId = note.id
     noteService.remove(noteId).then((note) => {
@@ -57,11 +59,37 @@ export function NoteIndex() {
     })
   }
 
+  //* -------------------------------------------------------------------------- //
+
+  function todoToggle(note, todo) {
+    const noteId = note.id
+    const todoId = todo.id
+
+    setNotes((prevNotes) => {
+      const noteIndex = prevNotes.findIndex((note) => note.id === noteId)
+      const todoIndex = prevNotes[noteIndex].info.todos.findIndex(
+        (todo) => todo.id === todoId
+      )
+      const newNotes = [...prevNotes]
+      
+      newNotes[noteIndex].info.todos[todoIndex].isDone =
+      !newNotes[noteIndex].info.todos[todoIndex].isDone
+      
+      noteService.save(newNotes[noteIndex])
+      return newNotes
+    })
+  }
+
   if (!notes) return <div>Loading... </div>
   return (
     <section className="note-index">
       <NoteAdd addNote={addNote} />
-      <NoteList notes={notes} deleteNote={deleteNote} editNote={editNote} />
+      <NoteList
+        notes={notes}
+        deleteNote={deleteNote}
+        editNote={editNote}
+        todoToggle={todoToggle}
+      />
       {selectedNote && (
         <NoteEdit
           selectedNote={selectedNote}

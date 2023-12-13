@@ -1,4 +1,12 @@
-export function NoteTodos({ note, deleteNote, editNote, from }) {
+export function NoteTodos({ note, deleteNote, editNote, from, todoToggle }) {
+  function isDoneClass(todo) {
+    return todo.isDone ? 'todo' : 'done'
+  }
+
+  function onTodo(note, todo) {
+    todoToggle(note, todo)
+  }
+
   switch (from) {
     case 'noteList':
       return (
@@ -20,7 +28,17 @@ export function NoteTodos({ note, deleteNote, editNote, from }) {
           <h2>{note.info.title}</h2>
           {note.info.todos &&
             note.info.todos.map((todo) => {
-              return <li key={todo.id}>{todo.txt}</li>
+              return (
+                <li key={todo.id}>
+                  <span
+                    onClick={() => {
+                      onTodo(note, todo)
+                    }}
+                    className={isDoneClass(todo)}>
+                    {todo.txt}
+                  </span>
+                </li>
+              )
             })}
         </article>
       )
