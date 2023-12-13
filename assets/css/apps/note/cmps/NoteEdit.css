@@ -1,0 +1,12 @@
+.note-edit{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+
+  box-shadow: 1px 1px 1px 10000px rgba(0, 0, 0, .5);
+}
+
+.note-edit-prev-wrapper {
+  background-color: grey;
+}

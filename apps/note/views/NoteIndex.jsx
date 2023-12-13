@@ -1,11 +1,13 @@
 const { useState, useEffect } = React
 
 import { NoteAdd } from '../cmps/NoteAdd.jsx'
+import { NoteEdit } from '../cmps/NoteEdit.jsx'
 import { NoteList } from '../cmps/NoteList.jsx'
 import { noteService } from '../services/note.service.js'
 
 export function NoteIndex() {
   const [notes, setNotes] = useState(null)
+  const [selectedNote, setSelectedNote] = useState(null)
 
   useEffect(() => {
     loadNotes()
@@ -59,7 +61,14 @@ export function NoteIndex() {
   return (
     <section className="note-index">
       <NoteAdd addNote={addNote} />
-      <NoteList notes={notes} deleteNote={deleteNote} />
+      <NoteList notes={notes} deleteNote={deleteNote} editNote={editNote} />
+      {selectedNote && (
+        <NoteEdit
+          selectedNote={selectedNote}
+          setSelectedNote={setSelectedNote}
+          saveNote={saveNote}
+        />
+      )}
     </section>
   )
 }
