@@ -1,10 +1,26 @@
-export function NoteImg({ note , deleteNote}) {
+export function NoteImg({ note, deleteNote, editNote, from }) {
+  switch (from) {
+    case 'noteList':
+      return (
+        <article className="note-preview">
+          <button
+            onClick={() => {
+              deleteNote(note)
+            }}>
+            x
+          </button>
 
-  return (
-    <article className="note-preview">
-      <button onClick={()=>{deleteNote(note)}}>x</button>
-      <h2>{note.info.title}</h2>
-      <img src={note.info.imgUrl} alt="{note.info.title}"/>
-    </article>
-  )
+          <button
+            onClick={() => {
+              editNote(note)
+            }}>
+            edit
+          </button>
+
+          <h2>{note.info.title}</h2>
+          <img src={note.info.imgUrl} alt="{note.info.title}" />
+        </article>
+      )
+    case 'noteEdit':
+  }
 }
