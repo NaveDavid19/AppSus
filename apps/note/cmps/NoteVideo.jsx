@@ -31,7 +31,6 @@ export function NoteVideo({ note, deleteNote, editNote, from }) {
         </article>
       )
     case 'noteEdit':
-
     default:
       return null
   }
