@@ -63,10 +63,6 @@ export const noteService = {
   getNextNoteId,
   getFilterBy,
   setFilterBy,
-  addReview,
-  removeReview,
-  queryGoogleBooks,
-  addGoogleBook,
 }
 
 // Book DB functions
