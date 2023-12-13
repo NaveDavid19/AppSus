@@ -31,6 +31,7 @@ export function NoteAddTxt({ addNote, type }) {
       <input
         required
         onChange={onChangeHandle}
+        value={newNoteInfo.title}
         type="text"
         placeholder="Title"
         name="title"
@@ -39,6 +40,7 @@ export function NoteAddTxt({ addNote, type }) {
 
       <textarea
         onChange={onChangeHandle}
+        value={newNoteInfo.txt}
         rows="4"
         cols="50"
         placeholder="Take a note..."

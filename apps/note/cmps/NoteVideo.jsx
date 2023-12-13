@@ -23,6 +23,8 @@ export function NoteVideo({ note, deleteNote, editNote, from }) {
           </button>
           <h2>{note.info.title}</h2>
           <iframe
+            width='200'
+            height='150'
             src={`https://www.youtube.com/embed/${getYouTubeVideoId(
               note.info.youtubeUrl
             )}`}
