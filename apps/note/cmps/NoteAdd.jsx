@@ -1,45 +1,40 @@
 const { useState } = React
-import { noteService } from '../services/note.service.js'
+import { NoteAddType } from './NoteAddType.jsx'
 
 export function NoteAdd({ addNote }) {
-  const [newNoteInfo, setNewNoteInfo] = useState({})
+  const [type, setType] = useState('noteTxt')
 
-  function onSubmitHandle(ev) {
-    ev.preventDefault()
-    let emptyNote = noteService.getEmptyNote()
-    emptyNote.info = { ...emptyNote.info, ...newNoteInfo }
-    addNote(emptyNote)
-  }
-
-  function onChangeHandle(ev) {
-    const target = ev.target
-    const field = target.name
-    const value = target.value
-
-    setNewNoteInfo({ ...newNoteInfo, [field]: value })
+  function onTypeChange(type) {
+    setType(type)
   }
 
   return (
     <article className="note-add">
-      <form onSubmit={onSubmitHandle}>
-        <input
-          onChange={onChangeHandle}
-          type="text"
-          placeholder="Title"
-          name="title"
-          id="title"
-        />
-
-        <textarea
-          onChange={onChangeHandle}
-          rows="4" 
-          cols="50"
-          placeholder="Take a note..."
-          name="txt"
-          id="txt"
-        />
-        <button>Close</button>
-      </form>
+      <button
+        onClick={() => {
+          onTypeChange('noteTxt')
+        }}>
+        Text
+      </button>
+      <button
+        onClick={() => {
+          onTypeChange('noteTodos')
+        }}>
+        Todos
+      </button>
+      <button
+        onClick={() => {
+          onTypeChange('noteImg')
+        }}>
+        Img
+      </button>
+      <button
+        onClick={() => {
+          onTypeChange('noteVideo')
+        }}>
+        Video
+      </button>
+      {type && <NoteAddType addNote={addNote} type={type} />}
     </article>
   )
 }

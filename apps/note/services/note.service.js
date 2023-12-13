@@ -50,6 +50,19 @@ const tempNotes = [
       ],
     },
   },
+  {
+    id: 'n104',
+    createdAt: 1701810000000,
+    type: 'noteVideo',
+    isPinned: false,
+    style: {
+      backgroundColor: '#ff0000',
+    },
+    info: {
+      title: 'Title - 4',
+      youtubeUrl: 'https://www.youtube.com/watch?v=hTWKbfoikeg',
+    },
+  },
 ]
 
 _createNotes()
