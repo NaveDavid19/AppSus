@@ -12,7 +12,7 @@ export function NoteTxt({ note, deleteNote, editNote, saveNote, from }) {
     ev.preventDefault()
     let emptyNote = noteService.getEmptyNote()
     emptyNote.info = { ...emptyNote.info, ...newNoteInfo }
-    let newNote = {...emptyNote, id}
+    let newNote = { ...emptyNote, id }
     saveNote(newNote)
   }
 
@@ -24,8 +24,17 @@ export function NoteTxt({ note, deleteNote, editNote, saveNote, from }) {
     setNewNoteInfo({ ...newNoteInfo, [field]: value })
   }
 
+  function renderTextWithLineBreaks(text) {
+    // Replace newline characters (\n) with <br> HTML element
+    return text.split('\n').map((line, index) => (
+      <React.Fragment key={index}>
+        {line}
+        <br />
+      </React.Fragment>
+    ))
+  }
+
   switch (from) {
-    //* ---------------------------------------------------------------- //
     case 'noteList':
       return (
         <article className="note-preview">
@@ -44,10 +53,10 @@ export function NoteTxt({ note, deleteNote, editNote, saveNote, from }) {
           </button>
 
           <h2>{note.info.title}</h2>
-          <h3>{note.info.txt}</h3>
+          <h4>{renderTextWithLineBreaks(note.info.txt)}</h4>
         </article>
       )
-    //* ---------------------------------------------------------------- //
+
     case 'noteEdit':
       return (
         <article className="note-preview-edit">
@@ -74,5 +83,7 @@ export function NoteTxt({ note, deleteNote, editNote, saveNote, from }) {
           </form>
         </article>
       )
+    default:
+      return null
   }
 }

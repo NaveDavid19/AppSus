@@ -22,7 +22,7 @@ export function NoteAddTxt({ addNote, type }) {
     const target = ev.target
     const field = target.name
     const value = target.value
-
+    
     setNewNoteInfo({ ...newNoteInfo, [field]: value })
   }
 
