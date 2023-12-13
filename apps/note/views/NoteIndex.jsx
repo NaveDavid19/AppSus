@@ -30,7 +30,29 @@ export function NoteIndex() {
   }
 
   function deleteNote(note) {
-    
+    const noteId = note.id
+    noteService.remove(noteId).then((note) => {
+      setNotes((prevNotes) => {
+        return prevNotes.filter((prevNote) => prevNote.id !== noteId)
+      })
+    })
+  }
+
+  function editNote(note) {
+    setSelectedNote(note)
+  }
+
+  function saveNote(note) {
+    const noteId = note.id
+    noteService.save(note).then((updatedNote) => {
+      console.log(updatedNote)
+      setNotes((prevNotes) => {
+        const idx = prevNotes.findIndex((prevNote) => prevNote.id === noteId)
+        prevNotes.splice(idx, 1, updatedNote)
+        setSelectedNote(null)
+        return prevNotes
+      })
+    })
   }
 
   if (!notes) return <div>Loading... </div>
