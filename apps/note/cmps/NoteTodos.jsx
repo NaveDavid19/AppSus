@@ -1,6 +1,7 @@
 export function NoteTodos({ note, deleteNote, editNote, from, todoToggle }) {
+  
   function isDoneClass(todo) {
-    return todo.isDone ? 'todo' : 'done'
+    return todo.isDone ? 'done' : 'todo'
   }
 
   function onTodo(note, todo) {
