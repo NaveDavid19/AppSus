@@ -29,11 +29,15 @@ export function NoteIndex() {
     })
   }
 
+  function deleteNote(note) {
+    
+  }
+
   if (!notes) return <div>Loading... </div>
   return (
     <section className="note-index">
       <NoteAdd addNote={addNote} />
-      <NoteList notes={notes} />
+      <NoteList notes={notes} deleteNote={deleteNote} />
     </section>
   )
 }
