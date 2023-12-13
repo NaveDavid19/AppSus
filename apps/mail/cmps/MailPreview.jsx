@@ -6,10 +6,10 @@ export function MailPreview({ mail, onUpdateMail, onRemoveMail }) {
     const readClassName = mail.isRead ? "" : "unread";
     const displayedUserName = (mail.from === loggedinUser.email) ? mail.to : mail.from.userName;
 
-    function handleReadMail(mail) {
+    function handleReadMail(mail, isRead) {
         const readMail = {
             ...mail,
-            isRead: true
+            isRead: isRead
         }
         mailService.save(readMail).then(onUpdateMail)
     }
@@ -20,7 +20,7 @@ export function MailPreview({ mail, onUpdateMail, onRemoveMail }) {
     return (
         <ul className="mail-preview">
             <li>
-                <Link onClick={() => handleReadMail(mail)} to={`/mail/${mail.id}`}>
+                <Link onClick={() => handleReadMail(mail, true)} to={`/mail/${mail.id}`}>
                     <p className={readClassName}>{displayedUserName}</p>
                     <article className="mail-text">
                         <p className={readClassName}>{mail.subject} - </p>
@@ -29,6 +29,7 @@ export function MailPreview({ mail, onUpdateMail, onRemoveMail }) {
                     <time>{mail.sentAt}</time>
                 </Link>
                 <button onClick={() => handleRemoveMail(mail)}>delete</button>
+                <input checked={mail.isRead} type="checkbox" onChange={() => handleReadMail(mail, !mail.isRead)} />
             </li>
         </ul>
     );
