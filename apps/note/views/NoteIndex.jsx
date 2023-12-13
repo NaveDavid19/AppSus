@@ -13,6 +13,8 @@ export function NoteIndex() {
     loadNotes()
   }, [])
 
+  // *  --------------------------//CRUD HANDLE //---------------------------  * //
+
   function loadNotes() {
     noteService
       .query()
@@ -30,8 +32,6 @@ export function NoteIndex() {
       setNotes((prevNotes) => [...prevNotes, note])
     })
   }
-
-  // *  --------------------------//CRUD HANDLE //---------------------------  * //
 
   function deleteNote(note) {
     const noteId = note.id
@@ -71,10 +71,10 @@ export function NoteIndex() {
         (todo) => todo.id === todoId
       )
       const newNotes = [...prevNotes]
-      
+
       newNotes[noteIndex].info.todos[todoIndex].isDone =
-      !newNotes[noteIndex].info.todos[todoIndex].isDone
-      
+        !newNotes[noteIndex].info.todos[todoIndex].isDone
+
       noteService.save(newNotes[noteIndex])
       return newNotes
     })
