@@ -6,10 +6,22 @@ export function NoteIndex() {
   const [notes, setNotes] = useState(null)
 
   useEffect(() => {
-    setNotes(noteService.query()).then((notes) => {
-      console.log(notes)
-    })
+    setNotes(
+      noteService
+        .query()
+        .then((notes) => {
+          setNotes(notes)
+        })
+        .catch((err) => {
+          console.error(err)
+        })
+    )
   }, [])
 
-  return <div>test</div>
+  if (!notes) return <div>Loading... </div>
+  return (
+    <section>
+      test
+    </section>
+  )
 }
