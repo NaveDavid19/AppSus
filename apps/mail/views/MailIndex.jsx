@@ -17,15 +17,21 @@ export function MailIndex() {
             .catch(err => console.log('err', err))
     }
 
-    function onUpdateMail() {
-
+    function unreadCount() {
+        let count = 0
+        mails.forEach(mail => {
+            if (!mail.isRead) count++
+        })
+        return count
     }
+
+
 
     if (!mails) return <div>Loading...</div>
     return (
         <section className="mail-index">
-            <h2>Inbox</h2>
-            <MailList mails={mails} onUpdateMail={onUpdateMail} />
+            <h2>Inbox ({unreadCount()})</h2>
+            <MailList mails={mails} />
         </section>
     )
 }
