@@ -8,8 +8,6 @@ import { MailIndex } from "./apps/mail/views/MailIndex.jsx"
 import { NoteIndex } from "./apps/note/views/NoteIndex.jsx"
 import { MailDeatils } from "./apps/mail/cmps/MailDeatils.jsx"
 
-
-
 export function App() {
     return <Router>
         <section className="app">

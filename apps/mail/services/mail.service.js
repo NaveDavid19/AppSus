@@ -1,6 +1,16 @@
 import { utilService } from '../../../services/util.service.js'
 import { storageService } from '../../../services/async-storage.service.js'
 
+export const Tabs = {
+    INBOX: "inbox",
+    SENT: "sent"
+}
+
+export const loggedinUser = {
+    email: 'user@appsus.com',
+    fullname: 'Mahatma Appsus'
+}
+
 const MAIL_KEY = 'mailDB'
 _createMails()
 
@@ -18,10 +28,17 @@ export const mailService = {
 
 }
 
-function query() {
+function query(filterBy) {
     return storageService.query(MAIL_KEY)
         .then(mails => {
-            return mails
+            switch (filterBy) {
+                case Tabs.INBOX:
+                    return mails.filter(mail => mail.to === loggedinUser.email)
+                case Tabs.SENT:
+                    return mails.filter(mail => mail.from === loggedinUser.email)
+                default:
+                    return mails
+            }
         })
 }
 // function query(filterBy = getDefaultFilter()) {
@@ -58,15 +75,19 @@ function save(mail) {
     }
 }
 
-
-function getEmptyMail(title = '', amount = '') {
+function getEmptyMail(subject = '', body = '', to = '') {
     return {
-        title,
-        listPrice: {
-            amount,
-        }
+        subject,
+        body,
+        to,
+        isRead: true,
+        sentAt: Date.now(),
+        removedAt: null,
+        from: loggedinUser.email,
     }
 }
+
+
 
 
 // function getFilterBy() {

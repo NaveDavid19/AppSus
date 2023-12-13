@@ -1,18 +1,13 @@
-import { mailService } from "../services/mail.service.js";
 import { MailPreview } from "./MailPreview.jsx";
 
 
-export function MailList({ mails }) {
-
-
-    function onSetReadMail(mail) {
-        mail.isRead = true
-        mailService.save(mail)
-    }
+export function MailList({ mails, selectedTab, onUpdateMail, onRemoveMail }) {
 
     return (
         <section>
-            <MailPreview mails={mails} onSetReadMail={onSetReadMail} />
+            {mails.map(mail => (
+                <MailPreview key={mail.id} {... { mail, selectedTab, onUpdateMail, onRemoveMail }} />
+            ))}
         </section>
     );
 }
