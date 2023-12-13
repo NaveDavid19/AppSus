@@ -1,3 +1,4 @@
+import { Compose } from "../cmps/Compose.jsx"
 import { MailList } from "../cmps/MailList.jsx"
 import { mailService } from "../services/mail.service.js"
 
@@ -5,6 +6,7 @@ const { useState, useEffect } = React
 
 export function MailIndex() {
     const [mails, setMails] = useState(null)
+    const [compose, setCompose] = useState(false)
 
 
     useEffect(() => {
@@ -20,7 +22,7 @@ export function MailIndex() {
     function unreadCount() {
         let count = 0
         mails.forEach(mail => {
-            if (!mail.isRead) count++
+            !mail.isRead ? count++ : count
         })
         return count
     }
@@ -30,6 +32,8 @@ export function MailIndex() {
     if (!mails) return <div>Loading...</div>
     return (
         <section className="mail-index">
+            <button onClick={() => setCompose(!compose)}>Compose</button>
+            {compose && <Compose />}
             <h2>Inbox ({unreadCount()})</h2>
             <MailList mails={mails} />
         </section>

@@ -1,0 +1,17 @@
+.compose {
+    position: relative;
+    border: 1px solid black;
+    width: 300px;
+    padding: 10px;
+}
+
+.compose header {
+    background-color: #c2dbff;
+
+}
+
+
+.compose-content {
+    height: 300px;
+    width: 300px;
+}
