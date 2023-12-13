@@ -5,7 +5,6 @@ const { useState, useEffect } = React
 
 export function MailIndex() {
     const [mails, setMails] = useState(null)
-    // const [filterBy, setFilterBy] = useState()
 
 
     useEffect(() => {
@@ -18,11 +17,15 @@ export function MailIndex() {
             .catch(err => console.log('err', err))
     }
 
+    function onUpdateMail() {
+
+    }
+
     if (!mails) return <div>Loading...</div>
     return (
         <section className="mail-index">
             <h2>Inbox</h2>
-            <MailList mails={mails} />
+            <MailList mails={mails} onUpdateMail={onUpdateMail} />
         </section>
     )
 }

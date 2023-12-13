@@ -1,8 +1,24 @@
  /* mail list */
 
- .mail-list li {
-     display: flex;
-     justify-content: space-between;
+ .mail-preview li {
+     display: grid;
+     grid-template-columns: 200px 1fr 120px;
      align-items: center;
-     background-color: #202124;
+     justify-content: center;
+     background-color: #f6f8fc;
+     color: #202124;
+ }
+
+ .mail-preview li:hover {
+     background-color: #c2dbff;
+ }
+
+ .mail-text {
+     display: flex;
+     align-items: center;
+ }
+
+ .unread {
+     font-size: 18px;
+     font-weight: bold;
  }
