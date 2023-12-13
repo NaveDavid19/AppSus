@@ -3,7 +3,9 @@ import { storageService } from '../../../services/async-storage.service.js'
 
 export const Tabs = {
     INBOX: "inbox",
-    SENT: "sent"
+    SENT: "sent",
+    STAR: "star",
+    TRASH: "trash"
 }
 
 export const loggedinUser = {
@@ -28,35 +30,56 @@ export const mailService = {
 
 }
 
-function query(filterBy) {
+function query(selectedTab) {
     return storageService.query(MAIL_KEY)
         .then(mails => {
-            switch (filterBy) {
+            switch (selectedTab) {
                 case Tabs.INBOX:
                     return mails.filter(mail => mail.to === loggedinUser.email)
                 case Tabs.SENT:
                     return mails.filter(mail => mail.from === loggedinUser.email)
+                case Tabs.STAR:
+                    return mails.filter(mail => mail.isStar === true)
                 default:
                     return mails
             }
         })
 }
-// function query(filterBy = getDefaultFilter()) {
+// function query(selectedTab, filterBy = getDefaultFilter()) {
 //     return storageService.query(MAIL_KEY)
 //         .then(mails => {
-//             if (filterBy.txt) {
-//                 const regex = new RegExp(filterBy.txt, 'i')
-//                 mails = mails.filter(mail => regex.test(mail.title))
+//             let filteredMails
+//             switch (selectedTab) {
+//                 case Tabs.INBOX:
+//                     filteredMails = mails.filter(mail => mail.to === loggedinUser.email)
+//                     filteredMails = filter(mails, filterBy, 'from')
+//                     return filteredMails
+//                 case Tabs.SENT:
+//                     filteredMails = mails.filter(mail => mail.from === loggedinUser.email)
+//                     filteredMails = filter(mails, filterBy, 'to')
+//                     return filteredMails
+//                 default:
+//                     return mails
 //             }
-//             if (filterBy.price) {
-//                 mails = mails.filter(mail => mail.listPrice.amount >= filterBy.price)
-//             }
-//             if (filterBy.publishedDate) {
-//                 mails = mails.filter(mail => mail.publishedDate >= filterBy.publishedDate)
-//             }
-
-//             return mails
 //         })
+// }
+
+
+// function filter(mails, filterBy, prop) {
+//     if (filterBy[prop]) {
+//         const regex = new RegExp(filterBy[prop], 'i')
+//         mails = mails.filter(mail => regex.test(mail.title))
+//     }
+//     if (filterBy.subject) {
+//         const regex = new RegExp(filterBy.subject, 'i')
+//         mails = mails.filter(mail => regex.test(mail.subject))
+//     }
+//     if (filterBy.body) {
+//         const regex = new RegExp(filterBy.body, 'i')
+//         mails = mails.filter(mail => regex.test(mail.body))
+//     }
+
+//     return mails
 // }
 
 function get(mailId) {
@@ -83,6 +106,7 @@ function getEmptyMail(subject = '', body = '', to = '') {
         isRead: true,
         sentAt: Date.now(),
         removedAt: null,
+        isStar: false,
         from: loggedinUser.email,
     }
 }
@@ -133,6 +157,7 @@ function _createMails() {
                 isRead: false,
                 sentAt: 1551133930594,
                 removedAt: null,
+                isStar: false,
                 from: {
                     userName: 'Momo',
                     mail: 'momo@momo.com'
@@ -146,6 +171,7 @@ function _createMails() {
                 isRead: false,
                 sentAt: 1551133930595,
                 removedAt: null,
+                isStar: false,
                 from: {
                     userName: 'Lior',
                     mail: 'lior@lior.com'
@@ -159,6 +185,7 @@ function _createMails() {
                 isRead: false,
                 sentAt: 1551133930596,
                 removedAt: null,
+                isStar: false,
                 from: {
                     userName: 'Dima',
                     mail: 'dima@dima.com'

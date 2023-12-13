@@ -19,6 +19,7 @@ export function App() {
                 <Route path="/mail" element={<MailIndex />} >
                     <Route path={`/mail/${Tabs.INBOX}`} element={<MailIndex />} />
                     <Route path={`/mail/${Tabs.SENT}`} element={<MailIndex />} />
+                    <Route path={`/mail/${Tabs.STAR}`} element={<MailIndex />} />
                 </Route>
                 <Route path="/mail/:mailId" element={<MailDeatils />} />
                 <Route path="/note" element={<NoteIndex />} />

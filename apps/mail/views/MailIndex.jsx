@@ -48,6 +48,7 @@ export function MailIndex() {
     if (loadingMails) return <div>Loading...</div>
     return (
         <section className="mail-index">
+            <Link to={`/mail/${Tabs.STAR}`} onClick={() => setSelectedTab(Tabs.STAR)}><h2>Starred</h2></Link>
             <Link to={`/mail/${Tabs.SENT}`} onClick={() => setSelectedTab(Tabs.SENT)}><h2>Sent</h2></Link>
             <Link to={`/mail/${Tabs.INBOX}`} onClick={() => setSelectedTab(Tabs.INBOX)}><h2>Inbox ({unreadCount})</h2></Link>
             <MailList {...{ mails, selectedTab, onUpdateMail, onRemoveMail }} />

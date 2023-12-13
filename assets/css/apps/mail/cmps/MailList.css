@@ -1,17 +1,21 @@
  /* mail list */
 
- .mail-preview li {
+
+ .mail:hover {
+     box-shadow: 2px 2px 2px black;
+     background-color: #c2dbff;
+ }
+
+ .mail {
      display: grid;
-     grid-template-columns: 200px 1fr 120px;
+     grid-template-columns: 30px 200px 1fr 120px;
      align-items: center;
      justify-content: center;
-     background-color: #f6f8fc;
+     align-content: center;
+     background-color: #f2f6fc;
      color: #202124;
  }
 
- .mail-preview li:hover {
-     background-color: #c2dbff;
- }
 
  .mail-text {
      display: flex;
@@ -21,4 +25,22 @@
  .unread {
      font-size: 18px;
      font-weight: bold;
+ }
+
+ .star {
+     visibility: hidden;
+     font-size: 20px;
+     cursor: pointer;
+     color: #FFBF00;
+ }
+
+ .star:before {
+     content: "\2606";
+     position: absolute;
+     visibility: visible;
+ }
+
+ .star:checked:before {
+     content: "\2605";
+     position: absolute;
  }
