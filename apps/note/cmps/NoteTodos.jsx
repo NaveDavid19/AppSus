@@ -5,7 +5,7 @@ export function NoteTodos({ note }) {
       <h2>{note.info.title}</h2>
       {note.info.todos && note.info.todos.map(todo => {
         return (
-          <li>{todo.txt}</li>
+          <li key={todo.id}>{todo.txt}</li>
         )
       })}
     </article>

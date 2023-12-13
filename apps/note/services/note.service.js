@@ -44,9 +44,9 @@ const tempNotes = [
     info: {
       title: 'Title - 3',
       todos: [
-        { txt: 'todo1', isDone: false },
-        { txt: 'todo2', isDone: true },
-        { txt: 'todo3', isDone: false },
+        { txt: 'todo1', isDone: false, id: 't101'},
+        { txt: 'todo2', isDone: true, id: 't102' },
+        { txt: 'todo3', isDone: false, id: 't103' },
       ],
     },
   },
@@ -108,7 +108,7 @@ function setFilterBy(filterBy = {}) {
 // Book utils
 
 function getEmptyNote(
-  createdAt = new Date.now(),
+  createdAt = Date.now(),
   type = 'noteTxt',
   isPinned = false,
   title = 'New Note'
