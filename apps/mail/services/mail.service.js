@@ -33,16 +33,27 @@ export const mailService = {
 function query(filterBy = {}) {
     return storageService.query(MAIL_KEY)
         .then(mails => {
-            switch (filterBy.tab) {
-                case Tabs.INBOX:
-                    return mails.filter(mail => mail.to === loggedinUser.email)
-                case Tabs.SENT:
-                    return mails.filter(mail => mail.from === loggedinUser.email)
-                case Tabs.STAR:
-                    return mails.filter(mail => mail.isStar)
-                default:
-                    return mails
+            if (filterBy.txt) {
+                const regex = new RegExp(filterBy.txt, 'i')
+                mails = mails.filter((mail) => regex.test(mail.from.userName) || regex.test(mail.subject) || regex.test(mail.body))
             }
+            if (filterBy.tab) {
+                switch (filterBy.tab) {
+                    case Tabs.INBOX:
+                        mails = mails.filter(mail => mail.to === loggedinUser.email)
+                        break
+                    case Tabs.SENT:
+                        mails = mails.filter(mail => mail.from === loggedinUser.email)
+                        break
+                    case Tabs.STAR:
+                        mails = mails.filter(mail => mail.isStar)
+                        break
+                    default:
+                        mails = mails
+                        break
+                }
+            }
+            return mails
         })
 }
 // function query(selectedTab, filterBy = getDefaultFilter()) {
