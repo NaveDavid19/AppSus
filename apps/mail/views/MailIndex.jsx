@@ -10,7 +10,7 @@ export function MailIndex() {
     const [openCompose, setOpenCompose] = useState(false)
     const [selectedTab, setSelectedTab] = useState(Tabs.INBOX)
     const [loadingMails, setLoadingMails] = useState(mails.length === 0)
-    const [filterBy, setFilterBy] = useState({ tab: 'inbox' })
+    const [filterBy, setFilterBy] = useState({ tab: 'inbox', txt: '' })
     const params = useParams()
 
     useEffect(() => {
@@ -49,6 +49,10 @@ export function MailIndex() {
         }
     }
 
+    function onSetFilter(filterBy) {
+        setFilterBy(filterBy)
+    }
+
 
     function onRemoveMail(mailToRemove) {
         setMails(mails.filter(mail => mail.id !== mailToRemove.id))
@@ -58,7 +62,7 @@ export function MailIndex() {
     return (
         <section className="mail-index">
             <SideBar{...{ setOpenCompose, openCompose, setSelectedTab, unreadCount, onSendMail }} />
-            {!params.mailId && <MailList {...{ mails, onUpdateMail, onRemoveMail }} />}
+            {!params.mailId && <MailList {...{ mails, onUpdateMail, onRemoveMail, filterBy, setFilterBy, onSetFilter }} />}
             {params.mailId && <Outlet />}
         </section>
     )
