@@ -21,7 +21,7 @@ export function NoteIndex() {
   }
 
   function addNote(note) {
-    noteUtilsService.addNote(note,setNotes)
+    noteUtilsService.addNote(note, setNotes)
   }
 
   function deleteNote(note) {
@@ -49,9 +49,12 @@ export function NoteIndex() {
   if (!notes) return <div>Loading... </div>
   return (
     <section className="note-index">
-      <Link to={'search'}>
-        <input type="text"></input>
-      </Link>
+      <div className="search-title">
+        <Link to={'search'}>
+          <input type="text" placeholder="Search note" />
+        </Link>
+        <button>X</button>
+      </div>
       <NoteAdd addNote={addNote} />
       <NoteList
         notes={notes}

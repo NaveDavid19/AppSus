@@ -2,7 +2,7 @@ import { FilterSearchParams } from '../cmps/FilterSearchParams.jsx'
 import { NoteList } from '../cmps/NoteList.jsx'
 import { noteUtilsService } from '../services/note.utils.service.js'
 const { useRef, useEffect, useState } = React
-const { Link } = ReactRouterDOM
+
 
 export function NoteSearch() {
   const searchInputRef = useRef()
@@ -66,7 +66,7 @@ export function NoteSearch() {
           todoToggle={todoToggle}
         />
       )}
-      <Link to="/note">Back</Link>
+      
     </section>
   )
 }
