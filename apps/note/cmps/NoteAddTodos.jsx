@@ -46,7 +46,7 @@ export function NoteAddTodos({ addNote, type }) {
     ev.preventDefault()
     let emptyNote = noteService.getEmptyNote()
     emptyNote.info = { ...emptyNote.info, title, todos }
-    emptyNote.style = {backgroundColor: '#ff0000'}
+    emptyNote.style = { backgroundColor: '#ff0000' }
     addNote({ ...emptyNote, type })
     setTodos([
       {
@@ -67,26 +67,29 @@ export function NoteAddTodos({ addNote, type }) {
       <form style={{ backgroundColor }} onSubmit={onSubmitHandle}>
         <input
           required
-          className='title-input'
+          className="title-input"
           type="text"
           placeholder="Title"
           name="title"
-          id='title'
+          id="title"
           value={title}
           onChange={onChangeTitleHandle}
         />
         {todos.map((todo) => (
-          <div key={todo.id} className='todo-wrapper'>
+          <div key={todo.id} className="todo-wrapper">
             <input
               type="text"
               placeholder="txt"
-              className='todo-input'
+              className="todo-input"
               name="txt"
               value={todo.txt}
               onChange={(ev) => onChangeTodoHandle(ev, todo.id)}
             />
-            <button type="button" className='todo-remove-btn' onClick={() => removeTodo(todo.id)}>
-              Remove
+            <button
+              type="button"
+              className="todo-remove-btn"
+              onClick={() => removeTodo(todo.id)}>
+              <i class="fa-solid fa-x"></i>
             </button>
           </div>
         ))}

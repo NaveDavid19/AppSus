@@ -36,9 +36,12 @@ export function NoteAddTxt({ addNote, type }) {
 
   return (
     <React.Fragment>
-      <form className='add-txt-form' style={{ backgroundColor }} onSubmit={onSubmitHandle}>
+      <form
+        className="add-txt-form"
+        style={{ backgroundColor }}
+        onSubmit={onSubmitHandle}>
         <input
-          className='title-input'
+          className="title-input"
           required
           onChange={onChangeHandle}
           value={newNoteInfo.title}
@@ -49,7 +52,7 @@ export function NoteAddTxt({ addNote, type }) {
         />
 
         <textarea
-          className='txt-input'
+          className="txt-input"
           onChange={onChangeHandle}
           value={newNoteInfo.txt}
           rows="4"
@@ -59,9 +62,13 @@ export function NoteAddTxt({ addNote, type }) {
           id="txt"
         />
 
-        <button>Add Note</button>
+        <div className="test">
+          <section className="add-buttons">
+            <button type='submit'>Add Note</button>
+            <ColorButtonsAdd changeBackgroundColor={changeBackgroundColor} />
+          </section>
+        </div>
       </form>
-      <ColorButtonsAdd changeBackgroundColor={changeBackgroundColor} />
     </React.Fragment>
   )
 }
