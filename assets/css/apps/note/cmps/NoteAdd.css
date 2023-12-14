@@ -1,11 +1,16 @@
 .note-add {
   margin-block-end: 1rem;
+  height: 140px;
 }
-.note-add form{
+.note-add form {
   display: flex;
   flex-direction: column;
 
   align-items: center;
+}
+
+.note-add .type-btn.active {
+  background-color: green;
 }
 
 #txt {
