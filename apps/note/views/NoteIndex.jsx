@@ -98,7 +98,7 @@ export function NoteIndex() {
   if (!notes) return <div>Loading... </div>
   return (
     <section className="note-index">
-      <Link to={'search'}>Search</Link>
+      <Link to={'search'}><input type='text'></input></Link>
       <NoteAdd addNote={addNote} />
       <NoteList
         notes={notes}
