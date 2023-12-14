@@ -2,8 +2,8 @@
 
 
  .mail:hover {
-     box-shadow: 2px 2px 2px black;
-     background-color: #c2dbff;
+     box-shadow: inset 2px -2px 5px rgba(100, 121, 143, 0.12);
+
  }
 
  .mail {
@@ -14,6 +14,8 @@
      align-content: center;
      background-color: #f2f6fc;
      color: #202124;
+     height: 50px;
+     box-shadow: rgba(100, 121, 143, 0.12) 0px -1px 0px 0px inset;
  }
 
 
@@ -32,6 +34,7 @@
      font-size: 20px;
      cursor: pointer;
      color: #FFBF00;
+     translate: 0 -67%;
  }
 
  .star:before {
@@ -43,4 +46,26 @@
  .star:checked:before {
      content: "\2605";
      position: absolute;
+ }
+
+
+
+
+ .side-bar {
+     font-size: 13px;
+     display: grid;
+     justify-content: center;
+     align-items: center;
+     grid-auto-flow: row;
+     border-right: 1px solid #202124;
+ }
+
+ .mail-preview {
+     padding: 0;
+     margin: 0;
+ }
+
+
+ .mail p {
+     margin: 0px;
  }

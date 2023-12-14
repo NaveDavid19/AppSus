@@ -1,13 +1,11 @@
 import { mailService } from "../services/mail.service.js"
 import { showSuccessMsg } from "../../../services/event-bus.service.js"
-
 const { useState } = React
 
 
 export function Compose({ onSendMail }) {
     const [newMail, setNewMail] = useState(mailService.getEmptyMail())
 
-    const disableSend = !(newMail.to && newMail.subject && newMail.body)
 
 
     function handleChange({ target }) {
@@ -18,6 +16,11 @@ export function Compose({ onSendMail }) {
 
     function handleSendMail(ev) {
         ev.preventDefault()
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailRegex.test(newMail.to)) {
+            alert('Invalid Email Adress')
+            return
+        }
         mailService.save(newMail).then(onSendMail)
         showSuccessMsg('Mail successfully Sent!')
     }
@@ -27,15 +30,15 @@ export function Compose({ onSendMail }) {
         <header>New Message</header>
         <form onSubmit={handleSendMail}>
             <label htmlFor="to">To : </label>
-            <input onChange={handleChange} type="text" id="to" name="to" />
+            <input required onChange={handleChange} type="text" id="to" name="to" />
 
             <label htmlFor="subject">Subject : </label>
-            <input onChange={handleChange} type="text" id="subject" name="subject" />
+            <input required onChange={handleChange} type="text" id="subject" name="subject" />
 
             <label htmlFor="body"></label>
-            <input onChange={handleChange} className="compose-content" type="text" id="body" name="body" />
+            <input required onChange={handleChange} className="compose-content" type="text" id="body" name="body" />
 
-            <button disabled={disableSend}>Send</button>
+            <button >Send</button>
         </form>
     </section>
 }
