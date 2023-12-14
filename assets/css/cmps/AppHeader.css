@@ -10,6 +10,21 @@ header {
     padding: 20px 0;
 }
 
+
+.app-header img {
+    position: absolute;
+    top: .3rem;
+    left: 1.5rem;
+    background-color: #00000022;
+    box-shadow: 
+    inset 5px 1px 10px 5px rgba(0, 0, 0, .7),
+    0 0 5px 2px rgba(0, 0, 0, .2);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    padding: .2rem;
+}
+
 nav a {
     margin: .5em;
 }
