@@ -165,6 +165,48 @@ function _createMails() {
                 to: 'user@appsus.com'
             },
             {
+                id: 'e105',
+                subject: 'Hey !',
+                body: 'Would love to catch up sometimes',
+                isRead: false,
+                sentAt: 1551133930594,
+                removedAt: null,
+                isStar: false,
+                from: {
+                    userName: 'Nave',
+                    mail: 'momo@momo.com'
+                },
+                to: 'user@appsus.com'
+            },
+            {
+                id: 'e106',
+                subject: 'Last week updates in your shared folders ',
+                body: `Activity in Shared Folders Here's what happent in your shared folders last week`,
+                isRead: false,
+                sentAt: 1551133930594,
+                removedAt: null,
+                isStar: false,
+                from: {
+                    userName: 'Dropbox',
+                    mail: 'momo@momo.com'
+                },
+                to: 'user@appsus.com'
+            },
+            {
+                id: 'e107',
+                subject: 'Your Access to the new Bing ',
+                body: `We're excited for you to preview the future of search. Your Access to the new Bing `,
+                isRead: false,
+                sentAt: 1551133930594,
+                removedAt: null,
+                isStar: false,
+                from: {
+                    userName: 'Microsof Bing',
+                    mail: 'momo@momo.com'
+                },
+                to: 'user@appsus.com'
+            },
+            {
                 id: 'e102',
                 subject: 'Hey!',
                 body: 'Test Test Test Test Test',
