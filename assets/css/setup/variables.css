@@ -1,5 +1,18 @@
 :root {
-    --main-bg-color: #202124;
-    --gray10: #333333;
-}
+  --main-bg-color: #202124;
+  --gray10: #333333;
 
+  /* CardColors */
+
+  --coral: #faafa8;
+  --peach: #f39f76;
+  --sand: #fff8b8;
+  --mint: #e2f6d3;
+  --sage: #b4ddd3;
+  --fog: #d4e4ed;
+  --strom: #aeccdc;
+  --dusk: #d3bfdb;
+  --blossom: #f6e2dd;
+  --clay: #e9e3d4;
+  --chalk: #efeff1;
+}
