@@ -1,18 +1,93 @@
 .note-add {
+  position: relative;
   margin-block-end: 1rem;
-  height: 180px;
-}
-.note-add form {
+  height: 200px;
   display: flex;
   flex-direction: column;
-
   align-items: center;
+  overflow: hidden;
+}
+.note-add form {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 15px;
+
+  width: 350px;
+  padding: 0.7rem;
+}
+
+.note-add form:hover {
+  background-color: red;
+}
+
+.note-add .add-type-btns {
+  position: absolute;
+  translate: -150% -50%;
+  right: calc(50% - 410px);
+  top: 35px;
+  display: flex;
+  gap: 0.3em;
+}
+
+.note-add .add-type-btns button {
+  font-size: 1.2em;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 0.4em;
+  border-radius: 45%;
 }
 
 .note-add .type-btn.active {
   background-color: green;
 }
 
-#txt {
+.note-add .type-btn:hover {
+  background-color: blue;
+}
+.note-add .title-input:focus,
+.note-add .txt-input:focus-visible {
+  border: none;
+  outline: none;
+}
+
+.note-add .title-input {
+  padding: 1rem;
+  width: 90%;
+  justify-self: start;
+  background-color: transparent;
+  margin-inline-end: auto;
+  border: none;
+}
+
+.note-add .txt-input {
+  border: none;
   resize: inherit;
+  width: 98.5%;
+  background-color: transparent;
+  border-radius: 7px;
+}
+
+.note-add .todo-wrapper {
+  position: relative;
+  width: 92%;
+}
+
+.note-add .todo-wrapper .todo-input {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+}
+
+.note-add .todo-wrapper .todo-input:focus {
+  border: none;
+  outline: none;
+}
+
+.note-add .todo-wrapper .todo-remove-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
 }

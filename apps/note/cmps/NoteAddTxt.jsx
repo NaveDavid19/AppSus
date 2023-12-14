@@ -36,8 +36,9 @@ export function NoteAddTxt({ addNote, type }) {
 
   return (
     <React.Fragment>
-      <form style={{ backgroundColor }} onSubmit={onSubmitHandle}>
+      <form className='add-txt-form' style={{ backgroundColor }} onSubmit={onSubmitHandle}>
         <input
+          className='title-input'
           required
           onChange={onChangeHandle}
           value={newNoteInfo.title}
@@ -48,6 +49,7 @@ export function NoteAddTxt({ addNote, type }) {
         />
 
         <textarea
+          className='txt-input'
           onChange={onChangeHandle}
           value={newNoteInfo.txt}
           rows="4"

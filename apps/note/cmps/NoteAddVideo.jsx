@@ -50,6 +50,7 @@ export function NoteAddVideo({ addNote, type }) {
       <form style={{ backgroundColor }} onSubmit={onSubmitHandle}>
         <input
           required
+          className='title-input'
           onChange={onChangeHandle}
           type="text"
           placeholder="Title"
@@ -59,6 +60,7 @@ export function NoteAddVideo({ addNote, type }) {
         />
         <input
           onChange={onChangeHandle}
+          className='videoUrl-input'
           type="text"
           placeholder="YouTube Video URL"
           name="youtubeUrl"

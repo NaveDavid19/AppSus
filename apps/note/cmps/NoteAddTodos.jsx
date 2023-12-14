@@ -67,22 +67,25 @@ export function NoteAddTodos({ addNote, type }) {
       <form style={{ backgroundColor }} onSubmit={onSubmitHandle}>
         <input
           required
+          className='title-input'
           type="text"
-          placeholder="title"
+          placeholder="Title"
           name="title"
+          id='title'
           value={title}
           onChange={onChangeTitleHandle}
         />
         {todos.map((todo) => (
-          <div key={todo.id}>
+          <div key={todo.id} className='todo-wrapper'>
             <input
               type="text"
               placeholder="txt"
+              className='todo-input'
               name="txt"
               value={todo.txt}
               onChange={(ev) => onChangeTodoHandle(ev, todo.id)}
             />
-            <button type="button" onClick={() => removeTodo(todo.id)}>
+            <button type="button" className='todo-remove-btn' onClick={() => removeTodo(todo.id)}>
               Remove
             </button>
           </div>
