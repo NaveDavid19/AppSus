@@ -7,7 +7,7 @@ export function NoteVideo({ note, deleteNote, editNote, from }) {
   switch (from) {
     case 'noteList':
       return (
-        <article className="note-preview">
+        <article className="note-preview" style={note.style}>
           <button
             onClick={() => {
               deleteNote(note)

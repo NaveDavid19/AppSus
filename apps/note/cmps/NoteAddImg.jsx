@@ -24,6 +24,7 @@ export function NoteAddImg({ addNote, type }) {
 
     let emptyNote = noteService.getEmptyNote();
     emptyNote.info = { ...emptyNote.info, ...newNoteInfo };
+    emptyNote.style = {backgroundColor: '#ff0000'}
 
     // Convert the uploaded file to a data URL
     if (newNoteInfo.imgUrl instanceof File) {

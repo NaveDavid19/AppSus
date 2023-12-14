@@ -11,7 +11,7 @@ export function NoteTodos({ note, deleteNote, editNote, from, todoToggle }) {
   switch (from) {
     case 'noteList':
       return (
-        <article className="note-preview">
+        <article className="note-preview" style={note.style}>
           <button
             onClick={() => {
               deleteNote(note)

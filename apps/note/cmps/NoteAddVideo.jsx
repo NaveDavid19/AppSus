@@ -21,6 +21,7 @@ export function NoteAddVideo({ addNote, type }) {
 
     let emptyNote = noteService.getEmptyNote();
     emptyNote.info = { ...emptyNote.info, ...newNoteInfo };
+    emptyNote.style = {backgroundColor: '#ff0000'}
     addNote({ ...emptyNote, type });
 
     setNewNoteInfo({

@@ -37,7 +37,7 @@ export function NoteTxt({ note, deleteNote, editNote, saveNote, from }) {
   switch (from) {
     case 'noteList':
       return (
-        <article className="note-preview">
+        <article className="note-preview" style={note.style}>
           <button
             onClick={() => {
               deleteNote(note)

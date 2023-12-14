@@ -11,6 +11,7 @@ export function NoteAddTxt({ addNote, type }) {
     ev.preventDefault()
     let emptyNote = noteService.getEmptyNote()
     emptyNote.info = { ...emptyNote.info, ...newNoteInfo }
+    emptyNote.style = {backgroundColor: '#ff0000'}
     addNote({ ...emptyNote, type })
     setNewNoteInfo({
       title: '',
