@@ -1,0 +1,43 @@
+.filter-search-params {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  align-items: center;
+  text-align: center;
+}
+
+.search-title {
+  position: relative;
+}
+
+.search-title input{
+  padding: 1em;
+  border-radius: 7px;
+  width: 400px;
+}
+
+.search-title button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  translate: -50% 90%;
+  background-color: transparent !important;
+  border: none;
+}
+
+.search-color,
+.search-type {
+  display: flex;
+  gap: 0.5em;
+}
+.search-color button,
+.search-type button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.search-color button.active,
+.search-type button.active {
+  box-shadow: 0 0 7px 5px rgba(0, 0, 0, 0.5);
+}

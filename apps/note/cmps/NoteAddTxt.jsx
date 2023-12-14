@@ -1,4 +1,4 @@
-import { ColorButtonsAdd } from './ColorButtonsAdd.jsx'
+import { ColorButtonsAdd } from './ColorButtons.jsx'
 const { useState } = React
 
 import { noteService } from '../services/note.service.js'

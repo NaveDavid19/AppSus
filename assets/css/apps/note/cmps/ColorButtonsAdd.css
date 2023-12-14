@@ -5,6 +5,7 @@
 
 
 .color-palette {
+  z-index: 10;
   position: absolute;
   display: grid;
   grid-template-columns: repeat(4, 1fr);

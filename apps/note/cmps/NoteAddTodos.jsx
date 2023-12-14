@@ -2,7 +2,7 @@ const { useState } = React
 
 import { utilService } from '../../../services/util.service.js'
 import { noteService } from '../services/note.service.js'
-import { ColorButtonsAdd } from './ColorButtonsAdd.jsx'
+import { ColorButtonsAdd } from './ColorButtons.jsx'
 
 export function NoteAddTodos({ addNote, type }) {
   const [todos, setTodos] = useState([
