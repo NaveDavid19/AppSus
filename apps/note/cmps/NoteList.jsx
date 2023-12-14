@@ -1,6 +1,7 @@
 import { NotePreview } from "./NotePreview.jsx";
 
 export function NoteList({ notes , deleteNote, editNote, todoToggle,changeBackgroundColor}) {
+
   return (
     <section className="note-list-section">
       <ul className="note-list">

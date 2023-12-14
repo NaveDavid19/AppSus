@@ -83,10 +83,14 @@ export const noteService = {
 function query() {
   //TODO : Change Filter options
   return storageService.query(NOTES_KEY).then((notes) => {
-    // if (gFilterBy.title) {
-    //   const regex = new RegExp(gFilterBy.title, 'i')
-    //   notes = notes.filter((note) => regex.test(note.title))
-    // }
+    if (gFilterBy.title) {
+      console.log(notes)
+      const regex = new RegExp(gFilterBy.title, 'i')
+      notes = notes.filter((note) => regex.test(note.info.title))
+      console.log(notes, regex)
+    }
+    if(gFilterBy.type) notes = notes.filter((note) => note.type === gFilterBy.type)
+    if(gFilterBy.color) notes = notes.filter((note) => note.style.backgroundColor === gFilterBy.color)
     return notes
   })
 }
@@ -114,7 +118,9 @@ function getFilterBy() {
 function setFilterBy(filterBy = {}) {
   //TODO Change filter setter
   if (filterBy.title !== undefined) gFilterBy.title = filterBy.title
-  if (filterBy.listPrice !== undefined) gFilterBy.listPrice = filterBy.listPrice
+  if (filterBy.type !== undefined) gFilterBy.type = filterBy.type
+  if (filterBy.color !== undefined) gFilterBy.color = filterBy.color
+  console.log(gFilterBy);
   return gFilterBy
 }
 
