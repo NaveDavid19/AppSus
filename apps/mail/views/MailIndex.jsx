@@ -1,4 +1,5 @@
 import { Compose } from "../cmps/Compose.jsx"
+import { MailHeader } from "../cmps/MailHeader.jsx"
 import { MailList } from "../cmps/MailList.jsx"
 import { mailService, Tabs } from "../services/mail.service.js"
 const { Link } = ReactRouterDOM
@@ -48,9 +49,12 @@ export function MailIndex() {
     if (loadingMails) return <div>Loading...</div>
     return (
         <section className="mail-index">
-            <Link to={`/mail/${Tabs.STAR}`} onClick={() => setSelectedTab(Tabs.STAR)}><h2>Starred</h2></Link>
-            <Link to={`/mail/${Tabs.SENT}`} onClick={() => setSelectedTab(Tabs.SENT)}><h2>Sent</h2></Link>
-            <Link to={`/mail/${Tabs.INBOX}`} onClick={() => setSelectedTab(Tabs.INBOX)}><h2>Inbox ({unreadCount})</h2></Link>
+            <MailHeader />
+            <nav className="side-bar">
+                <Link to={`/mail/${Tabs.STAR}`} onClick={() => setSelectedTab(Tabs.STAR)}><h2>Starred</h2></Link>
+                <Link to={`/mail/${Tabs.SENT}`} onClick={() => setSelectedTab(Tabs.SENT)}><h2>Sent</h2></Link>
+                <Link to={`/mail/${Tabs.INBOX}`} onClick={() => setSelectedTab(Tabs.INBOX)}><h2>Inbox ({unreadCount})</h2></Link>
+            </nav>
             <MailList {...{ mails, selectedTab, onUpdateMail, onRemoveMail }} />
             <button onClick={() => setOpenCompose(!openCompose)}>Compose</button>
             {openCompose && <Compose {...{ onSendMail }} />}

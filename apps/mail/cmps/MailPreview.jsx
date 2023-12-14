@@ -36,7 +36,7 @@ export function MailPreview({ mail, onUpdateMail, onRemoveMail }) {
                 </article>
             </Link>
             <div className="mail-btn">
-                <time>{mail.sentAt}</time>
+                <p>{mail.sentAt}</p>
                 <button className="delete" onClick={() => handleRemoveMail(mail)}>delete</button>
                 <input checked={mail.isRead} type="checkbox" onChange={() => handleReadMail(mail, !mail.isRead)} />
             </div>
