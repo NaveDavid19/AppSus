@@ -6,8 +6,8 @@ import { About } from "./views/About.jsx"
 import { Home } from "./views/Home.jsx"
 import { MailIndex } from "./apps/mail/views/MailIndex.jsx"
 import { NoteIndex } from "./apps/note/views/NoteIndex.jsx"
-import { MailDeatils } from "./apps/mail/cmps/MailDeatils.jsx"
 import { Tabs } from "./apps/mail/services/mail.service.js"
+import { MailDetails } from "./apps/mail/cmps/MailDetails.jsx"
 
 export function App() {
     return <Router>
@@ -21,7 +21,7 @@ export function App() {
                     <Route path={`/mail/${Tabs.SENT}`} element={<MailIndex />} />
                     <Route path={`/mail/${Tabs.STAR}`} element={<MailIndex />} />
                 </Route>
-                <Route path="/mail/:mailId" element={<MailDeatils />} />
+                <Route path="mail/:mailId" element={<MailDetails />} />
                 <Route path="/note" element={<NoteIndex />} />
             </Routes>
         </section>

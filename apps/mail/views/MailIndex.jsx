@@ -1,7 +1,6 @@
-import { Compose } from "../cmps/Compose.jsx"
+import { SideBar } from '../cmps/SideBar.jsx'
 import { MailList } from "../cmps/MailList.jsx"
 import { mailService, Tabs } from "../services/mail.service.js"
-const { Link } = ReactRouterDOM
 
 const { useState, useEffect } = React
 
@@ -30,7 +29,10 @@ export function MailIndex() {
     }
 
     function onUpdateMail(updatedMail) {
-        setMails(mails.map(mail => (mail.id === updatedMail.id ? updatedMail : mail)));
+        const updatedMails = mails.map(mail => (mail.id === updatedMail.id ? updatedMail : mail))
+        setMails(updatedMails);
+        setUnreadCount(updatedMails.filter(mail => !mail.isRead).length);
+
     }
 
     function onSendMail(mailToSend) {
@@ -48,15 +50,8 @@ export function MailIndex() {
     if (loadingMails) return <div>Loading...</div>
     return (
         <section className="mail-index">
-            <nav className="side-bar">
-                <div className="side-bar-list"></div>
-                <button title="Compose" onClick={() => setOpenCompose(!openCompose)}><i className="fa-solid fa-pen"></i></button>
-                {openCompose && <Compose {...{ onSendMail }} />}
-                <Link title="Inbox" className="inbox" to={`/mail/${Tabs.INBOX}`} onClick={() => setSelectedTab(Tabs.INBOX)}><h2><i className="fa-solid fa-inbox"></i> ({unreadCount})</h2></Link>
-                <Link title="Starred" className="starred" to={`/mail/${Tabs.STAR}`} onClick={() => setSelectedTab(Tabs.STAR)}><h2><i className="fa-regular fa-star"></i></h2></Link>
-                <Link title="Sent" className="sent" to={`/mail/${Tabs.SENT}`} onClick={() => setSelectedTab(Tabs.SENT)}><h2><i className="fa-regular fa-paper-plane"></i></h2></Link>
-            </nav>
-            <MailList {...{ mails, selectedTab, onUpdateMail, onRemoveMail }} />
+            <SideBar setOpenCompose={setOpenCompose} openCompose={openCompose} setSelectedTab={setSelectedTab} unreadCount={unreadCount} />
+            <MailList {...{ mails, onUpdateMail, onRemoveMail }} />
         </section>
     )
 }

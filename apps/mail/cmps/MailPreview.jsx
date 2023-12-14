@@ -36,7 +36,6 @@ export function MailPreview({ mail, onUpdateMail, onRemoveMail }) {
                 </article>
             </Link>
             <div >
-                {/* <p>{setDate(mail.sentAt)}</p> */}
                 <p>{mail.sentAt}</p>
                 <section className="mail-btn">
                     <button className="delete" title="Delete" onClick={() => handleRemoveMail(mail)}><i className="fa-solid fa-trash"></i></button>
