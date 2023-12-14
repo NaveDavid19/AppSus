@@ -1,4 +1,5 @@
 const { useState, useEffect } = React
+const { Link } = ReactRouterDOM
 
 import { NoteAdd } from '../cmps/NoteAdd.jsx'
 import { NoteEdit } from '../cmps/NoteEdit.jsx'
@@ -97,6 +98,7 @@ export function NoteIndex() {
   if (!notes) return <div>Loading... </div>
   return (
     <section className="note-index">
+      <Link to={'search'}><input type='text'></input></Link>
       <NoteAdd addNote={addNote} />
       <NoteList
         notes={notes}
