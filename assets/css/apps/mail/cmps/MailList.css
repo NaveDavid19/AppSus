@@ -51,14 +51,12 @@
 
 
 
- .side-bar {
-     font-size: 13px;
-     display: grid;
-     justify-content: center;
-     align-items: center;
-     grid-auto-flow: row;
-     border-right: 1px solid #202124;
- }
+
+
+
+
+
+
 
  .mail-preview {
      padding: 0;
@@ -68,4 +66,62 @@
 
  .mail p {
      margin: 0px;
+ }
+
+
+ .mail-btn {
+     position: absolute;
+     display: none;
+     translate: -10% -80%;
+     background-color: #f2f6fc;
+     padding: 10px;
+     padding-left: 60px;
+ }
+
+ .mail:hover .mail-btn {
+     display: block;
+ }
+
+
+ .mail-index {
+     display: grid;
+     grid-template-columns: 100px 1fr;
+     grid-auto-flow: column;
+     background-color: #f2f6fc;
+ }
+
+ .side-bar {
+     font-size: 13px;
+     display: grid;
+     justify-content: center;
+     align-items: center;
+     grid-auto-flow: row;
+     border-right: 1px solid #202124;
+     background-color: #f2f6fc;
+
+ }
+
+ .side-bar {
+     left: 0;
+     width: 90px;
+     height: 100%;
+     overflow: hidden;
+     transition: width 0.5s;
+     z-index: 10;
+ }
+
+ .side-bar:hover {
+     width: 200px;
+
+     .inbox::after {
+         content: 'Inbox';
+     }
+
+     .starred::after {
+         content: 'Starred';
+     }
+
+     .sent::after {
+         content: 'Sent';
+     }
  }
