@@ -44,15 +44,15 @@ export function NoteTxt({
     case 'noteList':
       return (
         <article className="note-preview" style={note.style}>
+          <h2>{note.info.title}</h2>
+          <h4>{renderTextWithLineBreaks(note.info.txt)}</h4>
+          
           <PreviewButtons
             note={note}
             deleteNote={deleteNote}
             editNote={editNote}
             changeBackgroundColor={changeBackgroundColor}
           />
-
-          <h2>{note.info.title}</h2>
-          <h4>{renderTextWithLineBreaks(note.info.txt)}</h4>
         </article>
       )
 

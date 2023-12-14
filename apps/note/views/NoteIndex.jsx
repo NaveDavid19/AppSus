@@ -105,6 +105,7 @@ export function NoteIndex() {
         editNote={editNote}
         todoToggle={todoToggle}
       />
+      
       {selectedNote && (
         <NoteEdit
           selectedNote={selectedNote}

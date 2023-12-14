@@ -1,4 +1,4 @@
-import { PreviewButtons } from "./PreviewButtons.jsx"
+import { PreviewButtons } from './PreviewButtons.jsx'
 
 export function NoteTodos({
   note,
@@ -20,13 +20,6 @@ export function NoteTodos({
     case 'noteList':
       return (
         <article className="note-preview" style={note.style}>
-          <PreviewButtons
-            note={note}
-            deleteNote={deleteNote}
-            editNote={editNote}
-            changeBackgroundColor={changeBackgroundColor}
-          />
-
           <h2>{note.info.title}</h2>
           {note.info.todos &&
             note.info.todos.map((todo) => {
@@ -42,6 +35,13 @@ export function NoteTodos({
                 </li>
               )
             })}
+
+          <PreviewButtons
+            note={note}
+            deleteNote={deleteNote}
+            editNote={editNote}
+            changeBackgroundColor={changeBackgroundColor}
+          />
         </article>
       )
     case 'noteEdit':

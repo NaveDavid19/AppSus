@@ -2,6 +2,7 @@ const { useState } = React
 
 import { utilService } from '../../../services/util.service.js'
 import { noteService } from '../services/note.service.js'
+import { ColorButtonsAdd } from './ColorButtonsAdd.jsx'
 
 export function NoteAddTodos({ addNote, type }) {
   const [todos, setTodos] = useState([
@@ -12,6 +13,7 @@ export function NoteAddTodos({ addNote, type }) {
     },
   ])
   const [title, setTitle] = useState('')
+  const [backgroundColor, setBackgroundColor] = useState('#e9e3d4')
 
   function onChangeTitleHandle(ev) {
     const value = ev.target.value
@@ -56,34 +58,41 @@ export function NoteAddTodos({ addNote, type }) {
     setTitle('')
   }
 
+  function changeBackgroundColor(colorHex) {
+    setBackgroundColor(colorHex)
+  }
+
   return (
-    <form onSubmit={onSubmitHandle}>
-      <input
-        required
-        type="text"
-        placeholder="title"
-        name="title"
-        value={title}
-        onChange={onChangeTitleHandle}
-      />
-      {todos.map((todo) => (
-        <div key={todo.id}>
-          <input
-            type="text"
-            placeholder="txt"
-            name="txt"
-            value={todo.txt}
-            onChange={(ev) => onChangeTodoHandle(ev, todo.id)}
-          />
-          <button type="button" onClick={() => removeTodo(todo.id)}>
-            Remove
-          </button>
-        </div>
-      ))}
-      <button type="button" onClick={addTodo}>
-        Add Todo
-      </button>
-      <button type="submit">Add Note</button>
-    </form>
+    <React.Fragment>
+      <form style={{ backgroundColor }} onSubmit={onSubmitHandle}>
+        <input
+          required
+          type="text"
+          placeholder="title"
+          name="title"
+          value={title}
+          onChange={onChangeTitleHandle}
+        />
+        {todos.map((todo) => (
+          <div key={todo.id}>
+            <input
+              type="text"
+              placeholder="txt"
+              name="txt"
+              value={todo.txt}
+              onChange={(ev) => onChangeTodoHandle(ev, todo.id)}
+            />
+            <button type="button" onClick={() => removeTodo(todo.id)}>
+              Remove
+            </button>
+          </div>
+        ))}
+        <button type="button" onClick={addTodo}>
+          Add Todo
+        </button>
+        <button type="submit">Add Note</button>
+      </form>
+      <ColorButtonsAdd changeBackgroundColor={changeBackgroundColor} />
+    </React.Fragment>
   )
 }

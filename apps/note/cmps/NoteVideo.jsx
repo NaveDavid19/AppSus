@@ -16,12 +16,6 @@ export function NoteVideo({
     case 'noteList':
       return (
         <article className="note-preview" style={note.style}>
-          <PreviewButtons
-            note={note}
-            deleteNote={deleteNote}
-            editNote={editNote}
-            changeBackgroundColor={changeBackgroundColor}
-          />
           <h2>{note.info.title}</h2>
           <iframe
             width="200"
@@ -31,6 +25,13 @@ export function NoteVideo({
             )}`}
             title={note.info.title}
             allowFullScreen></iframe>
+
+          <PreviewButtons
+            note={note}
+            deleteNote={deleteNote}
+            editNote={editNote}
+            changeBackgroundColor={changeBackgroundColor}
+          />
         </article>
       )
     case 'noteEdit':

@@ -1,3 +1,4 @@
+import { ColorButtonsAdd } from './ColorButtonsAdd.jsx'
 const { useState } = React
 
 import { noteService } from '../services/note.service.js'
@@ -7,11 +8,13 @@ export function NoteAddTxt({ addNote, type }) {
     title: '',
     txt: '',
   })
+  const [backgroundColor, setBackgroundColor] = useState('#e9e3d4')
+
   function onSubmitHandle(ev) {
     ev.preventDefault()
     let emptyNote = noteService.getEmptyNote()
     emptyNote.info = { ...emptyNote.info, ...newNoteInfo }
-    emptyNote.style = {backgroundColor: '#ff0000'}
+    emptyNote.style = { backgroundColor }
     addNote({ ...emptyNote, type })
     setNewNoteInfo({
       title: '',
@@ -23,32 +26,40 @@ export function NoteAddTxt({ addNote, type }) {
     const target = ev.target
     const field = target.name
     const value = target.value
-    
+
     setNewNoteInfo({ ...newNoteInfo, [field]: value })
   }
 
-  return (
-    <form onSubmit={onSubmitHandle}>
-      <input
-        required
-        onChange={onChangeHandle}
-        value={newNoteInfo.title}
-        type="text"
-        placeholder="Title"
-        name="title"
-        id="title"
-      />
+  function changeBackgroundColor(colorHex) {
+    setBackgroundColor(colorHex)
+  }
 
-      <textarea
-        onChange={onChangeHandle}
-        value={newNoteInfo.txt}
-        rows="4"
-        cols="50"
-        placeholder="Take a note..."
-        name="txt"
-        id="txt"
-      />
-      <button>Add Note</button>
-    </form>
+  return (
+    <React.Fragment>
+      <form style={{ backgroundColor }} onSubmit={onSubmitHandle}>
+        <input
+          required
+          onChange={onChangeHandle}
+          value={newNoteInfo.title}
+          type="text"
+          placeholder="Title"
+          name="title"
+          id="title"
+        />
+
+        <textarea
+          onChange={onChangeHandle}
+          value={newNoteInfo.txt}
+          rows="4"
+          cols="50"
+          placeholder="Take a note..."
+          name="txt"
+          id="txt"
+        />
+
+        <button>Add Note</button>
+      </form>
+      <ColorButtonsAdd changeBackgroundColor={changeBackgroundColor} />
+    </React.Fragment>
   )
 }
