@@ -18,7 +18,7 @@ export function AppHeader() {
     <header className="app-header">
       <Link to="/">
         <img src={getImageSrc()} alt="" />
-      </Link>Lin
+      </Link>
       <nav>
         <NavLink to="/">Home</NavLink>
         <NavLink to="/about">About</NavLink>

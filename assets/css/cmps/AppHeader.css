@@ -11,6 +11,7 @@ header {
 }
 
 
+
 .app-header img {
     position: absolute;
     top: .3rem;
@@ -23,6 +24,10 @@ header {
     width: 40px;
     height: 40px;
     padding: .2rem;
+}
+
+nav a:last-of-type{
+    margin-inline-end: 1.5rem;
 }
 
 nav a {
