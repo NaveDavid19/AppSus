@@ -30,16 +30,16 @@ export const mailService = {
 
 }
 
-function query(selectedTab) {
+function query(filterBy = {}) {
     return storageService.query(MAIL_KEY)
         .then(mails => {
-            switch (selectedTab) {
+            switch (filterBy.tab) {
                 case Tabs.INBOX:
                     return mails.filter(mail => mail.to === loggedinUser.email)
                 case Tabs.SENT:
                     return mails.filter(mail => mail.from === loggedinUser.email)
                 case Tabs.STAR:
-                    return mails.filter(mail => mail.isStar === true)
+                    return mails.filter(mail => mail.isStar)
                 default:
                     return mails
             }
@@ -155,7 +155,7 @@ function _createMails() {
                 subject: 'Miss you!',
                 body: 'Would love to catch up sometimes',
                 isRead: false,
-                sentAt: 1551133930594,
+                sentAt: 1702245600000,
                 removedAt: null,
                 isStar: false,
                 from: {
@@ -169,7 +169,7 @@ function _createMails() {
                 subject: 'Hey !',
                 body: 'Would love to catch up sometimes',
                 isRead: false,
-                sentAt: 1551133930594,
+                sentAt: 1701381600000,
                 removedAt: null,
                 isStar: false,
                 from: {
@@ -183,7 +183,7 @@ function _createMails() {
                 subject: 'Last week updates in your shared folders ',
                 body: `Activity in Shared Folders Here's what happent in your shared folders last week`,
                 isRead: false,
-                sentAt: 1551133930594,
+                sentAt: 1700690400000,
                 removedAt: null,
                 isStar: false,
                 from: {
@@ -197,7 +197,7 @@ function _createMails() {
                 subject: 'Your Access to the new Bing ',
                 body: `We're excited for you to preview the future of search. Your Access to the new Bing `,
                 isRead: false,
-                sentAt: 1551133930594,
+                sentAt: 1699740000000,
                 removedAt: null,
                 isStar: false,
                 from: {
@@ -211,7 +211,7 @@ function _createMails() {
                 subject: 'Hey!',
                 body: 'Test Test Test Test Test',
                 isRead: false,
-                sentAt: 1551133930595,
+                sentAt: 1699730000000,
                 removedAt: null,
                 isStar: false,
                 from: {
@@ -225,7 +225,7 @@ function _createMails() {
                 subject: 'Testing!',
                 body: 'rgegergergegeg',
                 isRead: false,
-                sentAt: 1551133930596,
+                sentAt: 1676757600000,
                 removedAt: null,
                 isStar: false,
                 from: {

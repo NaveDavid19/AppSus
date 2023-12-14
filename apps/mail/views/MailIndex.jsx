@@ -1,7 +1,7 @@
 import { SideBar } from '../cmps/SideBar.jsx'
 import { MailList } from "../cmps/MailList.jsx"
 import { mailService, Tabs } from "../services/mail.service.js"
-
+const { useParams, Outlet } = ReactRouterDOM
 const { useState, useEffect } = React
 
 export function MailIndex() {
@@ -10,14 +10,21 @@ export function MailIndex() {
     const [openCompose, setOpenCompose] = useState(false)
     const [selectedTab, setSelectedTab] = useState(Tabs.INBOX)
     const [loadingMails, setLoadingMails] = useState(mails.length === 0)
+    const [filterBy, setFilterBy] = useState({ tab: 'inbox' })
+    const params = useParams()
 
     useEffect(() => {
-        initMails()
-    }, [selectedTab])
+        loadMails()
+    }, [filterBy])
 
-    function initMails() {
+    useEffect(() => {
+        const { tab } = params
+        setFilterBy(filterBy => ({ ...filterBy, tab: tab }))
+    }, [params])
+
+    function loadMails() {
         setLoadingMails(true)
-        mailService.query(selectedTab)
+        mailService.query(filterBy)
             .then(mails => {
                 if (selectedTab === Tabs.INBOX) {
                     setUnreadCount(mails.filter(mail => !mail.isRead).length);
@@ -51,7 +58,8 @@ export function MailIndex() {
     return (
         <section className="mail-index">
             <SideBar setOpenCompose={setOpenCompose} openCompose={openCompose} setSelectedTab={setSelectedTab} unreadCount={unreadCount} />
-            <MailList {...{ mails, onUpdateMail, onRemoveMail }} />
+            {!params.mailId && <MailList {...{ mails, onUpdateMail, onRemoveMail }} />}
+            {params.mailId && <Outlet />}
         </section>
     )
 }
