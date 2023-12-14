@@ -28,16 +28,13 @@ export function MailPreview({ mail, onUpdateMail, onRemoveMail }) {
         mailService.remove(mailToRemove.id).then(() => onRemoveMail(mailToRemove))
     }
 
-
-
-
-
     return (
-        <li className="mail">
-            <input className="star" checked={mail.isStar} type="checkbox" onChange={() => handleStarMail(mail, !mail.isStar)} />
-            <Link onClick={() => handleReadMail(mail, true)} to={`/mail/details/${mail.id}`}>
+        <li className={mail.isRead ? "mail" : "unread-section mail"}>
+            < input className="star" checked={mail.isStar} type="checkbox" onChange={() => handleStarMail(mail, !mail.isStar)
+            } />
+            < Link onClick={() => handleReadMail(mail, true)} to={`/mail/details/${mail.id}`}>
                 <p className={readClassName}>{displayedUserName}</p>
-            </Link>
+            </Link >
             <Link onClick={() => handleReadMail(mail, true)} to={`/mail/details/${mail.id}`}>
                 <article className="mail-text">
                     <p className={readClassName}>{mail.subject} - </p>
@@ -46,12 +43,12 @@ export function MailPreview({ mail, onUpdateMail, onRemoveMail }) {
             </Link>
             <div >
                 <p>{utilService.getDate(mail.sentAt)}</p>
-                <section className="mail-btn">
+                <section className={mail.isRead ? "mail-btn" : "mail-btn unread-section"}>
                     <button className="delete" title="Delete" onClick={() => handleRemoveMail(mail)}><i className="fa-solid fa-trash"></i></button>
                     <button title={`Mark as ${mail.isRead ? 'unread' : 'read'}`} onClick={() => handleReadMail(mail, !mail.isRead)}><i className={mail.isRead ? "fa-regular fa-envelope" : "fa-regular fa-envelope-open"} ></i></button>
                 </section>
             </div>
-        </li>
+        </li >
     );
 }
 

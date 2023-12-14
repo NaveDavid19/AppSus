@@ -57,7 +57,7 @@ export function MailIndex() {
     if (loadingMails) return <div>Loading...</div>
     return (
         <section className="mail-index">
-            <SideBar setOpenCompose={setOpenCompose} openCompose={openCompose} setSelectedTab={setSelectedTab} unreadCount={unreadCount} />
+            <SideBar{...{ setOpenCompose, openCompose, setSelectedTab, unreadCount, onSendMail }} />
             {!params.mailId && <MailList {...{ mails, onUpdateMail, onRemoveMail }} />}
             {params.mailId && <Outlet />}
         </section>

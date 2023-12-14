@@ -1,16 +1,15 @@
 .compose-btn {
-    text-align: left;
+    text-align: center;
     height: 50px;
     border-radius: 15px;
     background-color: #c2e7ff;
-    border: 1px solid transparent;
     border: 0;
     width: 50px;
+    margin: 5px;
 }
 
 .compose-btn:hover {
     box-shadow: inset 2px -2px 5px rgba(100, 121, 143, 0.12);
-
 }
 
 .compose header {

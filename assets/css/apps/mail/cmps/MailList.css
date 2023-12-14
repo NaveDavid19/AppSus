@@ -33,6 +33,8 @@
      font-weight: bold;
  }
 
+
+
  .star {
      visibility: hidden;
      font-size: 23px;
@@ -73,6 +75,14 @@
      padding-left: 60px;
  }
 
+ .unread-section {
+     background-color: white;
+
+     .mail-btn button {
+         background-color: white;
+     }
+ }
+
  .mail-btn button {
      border: 1px solid transparent;
      border: 0;
@@ -93,18 +103,31 @@
      grid-template-columns: 100px 1fr;
      grid-auto-flow: column;
      background-color: #f2f6fc;
+     min-height: calc(100dvh - 21.6px - 40px - 1.6px);
  }
 
  .side-bar {
      font-size: 13px;
      display: grid;
      justify-content: left;
-     align-items: center;
+     align-items: start;
      grid-auto-flow: row;
      background-color: #f2f6fc;
      width: 90px;
      transition: width 0.5s 0.1s;
      z-index: 10;
+ }
+
+
+ .side-bar-list {
+     display: flex;
+     flex-direction: column;
+     padding: 1em;
+ }
+
+ .side-bar-list a {
+     padding: 10px;
+     margin: 0;
 
  }
 
@@ -118,6 +141,7 @@
 
      .compose-btn {
          width: 150px;
+         text-align: left;
      }
 
      .side-btn {

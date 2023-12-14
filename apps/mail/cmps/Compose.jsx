@@ -3,7 +3,7 @@ import { showSuccessMsg } from "../../../services/event-bus.service.js"
 const { useState } = React
 
 
-export function Compose({ onSendMail }) {
+export function Compose({ onSendMail, setOpenCompose, openCompose }) {
     const [newMail, setNewMail] = useState(mailService.getEmptyMail())
 
 
@@ -22,6 +22,7 @@ export function Compose({ onSendMail }) {
             return
         }
         mailService.save(newMail).then(onSendMail)
+        setOpenCompose(!openCompose)
         showSuccessMsg('Mail successfully Sent!')
     }
 
