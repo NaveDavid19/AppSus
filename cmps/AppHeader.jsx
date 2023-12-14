@@ -1,23 +1,41 @@
+const { useState, useEffect, useRef } = React
 const { Link, NavLink, useLocation } = ReactRouterDOM
+
+import { utilService } from '../services/util.service.js'
 
 export function AppHeader() {
   const location = useLocation()
+  const [animationClass, setAnimationClass] = useState('')
 
-  const getImageSrc = () => {
+  const imgRef = useRef()
+  useEffect(() => {
     switch (location.pathname) {
       case '/mail':
-        return 'assets/img/logos/SusMail.png'
+        utilService.animateCSS(imgRef.current, 'backInLeft').then(() => {
+          utilService.animateCSS(imgRef.current, 'rubberBand')
+        })
+        break
       case '/note':
-        return 'assets/img/logos/SusNote.png'
+        utilService.animateCSS(imgRef.current, 'rollIn').then(() => {
+          utilService.animateCSS(imgRef.current, 'swing')
+        })
+        break
       default:
-        return 'assets/img/logos/SusApp.png'
+        utilService.animateCSS(imgRef.current, 'wobble').then(() => {
+          utilService.animateCSS(imgRef.current, 'tada')
+        })
     }
-  }
+  }, [location.pathname])
 
   return (
     <header className="app-header">
       <Link to="/">
-        <img src={getImageSrc()} alt="" />
+        <img
+          className={animationClass}
+          src={`assets/img/logos/${getImageName(location.pathname)}.png`}
+          alt=""
+          ref={imgRef}
+        />
       </Link>
       <nav>
         <NavLink to="/">Home</NavLink>
@@ -27,4 +45,16 @@ export function AppHeader() {
       </nav>
     </header>
   )
+}
+
+// Helper function to get the image name based on the path
+function getImageName(pathname) {
+  switch (pathname) {
+    case '/mail':
+      return 'SusMail'
+    case '/note':
+      return 'SusNote'
+    default:
+      return 'SusApp'
+  }
 }
