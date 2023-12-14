@@ -19,6 +19,7 @@
 
   width: 350px;
   padding: 0.7rem;
+  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, .3);
 }
 
 .note-add form:hover {
@@ -27,7 +28,7 @@
 
 .note-add .add-type-btns {
   position: absolute;
-  translate: -150% -50%;
+  translate: -170% -50%;
   right: calc(50% - 410px);
   top: 35px;
   display: flex;
