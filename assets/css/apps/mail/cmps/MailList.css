@@ -18,6 +18,11 @@
      box-shadow: rgba(100, 121, 143, 0.12) 0px -1px 0px 0px inset;
  }
 
+ body:not(header) {
+     font-family: robertfo-medium;
+     font-size: 14px;
+ }
+
 
  .mail-text {
      display: flex;
@@ -25,13 +30,12 @@
  }
 
  .unread {
-     font-size: 18px;
      font-weight: bold;
  }
 
  .star {
      visibility: hidden;
-     font-size: 20px;
+     font-size: 23px;
      cursor: pointer;
      color: #FFBF00;
      translate: 0 -67%;
@@ -49,15 +53,6 @@
  }
 
 
-
-
-
-
-
-
-
-
-
  .mail-preview {
      padding: 0;
      margin: 0;
@@ -72,14 +67,24 @@
  .mail-btn {
      position: absolute;
      display: none;
-     translate: -10% -80%;
+     translate: -45% -80%;
      background-color: #f2f6fc;
      padding: 10px;
      padding-left: 60px;
  }
 
+ .mail-btn button {
+     border: 1px solid transparent;
+     border: 0;
+     background-color: #f2f6fc;
+
+ }
+
  .mail:hover .mail-btn {
-     display: block;
+     display: grid;
+     grid-auto-flow: column;
+     gap: 10px;
+
  }
 
 
@@ -93,29 +98,68 @@
  .side-bar {
      font-size: 13px;
      display: grid;
-     justify-content: center;
+     justify-content: left;
      align-items: center;
      grid-auto-flow: row;
-     border-right: 1px solid #202124;
      background-color: #f2f6fc;
      width: 90px;
-     transition: width 0.5s;
+     transition: width 0.5s 0.1s;
      z-index: 10;
 
+ }
+
+ .side-btn {
+     display: none;
+     opacity: 0;
  }
 
  .side-bar:hover {
      width: 200px;
 
-     .inbox::after {
-         content: 'Inbox';
+     .compose-btn {
+         width: 150px;
      }
 
-     .starred::after {
-         content: 'Starred';
+     .side-btn {
+         display: inline;
+         opacity: 1;
+         animation: fadeIn 0.4s ease;
      }
 
-     .sent::after {
-         content: 'Sent';
+ }
+
+ .side-bar a:hover {
+     background-color: #dadce0;
+     width: 170px;
+     border-radius: 15px;
+ }
+
+
+
+ .main {
+     display: grid;
+     grid-template-rows: 50px 1fr;
+ }
+
+
+ @keyframes fadeIn {
+     0% {
+         opacity: 0;
+     }
+
+     50% {
+         opacity: 0.4;
+     }
+
+     75% {
+         opacity: 0.6
+     }
+
+     90% {
+         opacity: 0.8;
+     }
+
+     100% {
+         opacity: 1;
      }
  }

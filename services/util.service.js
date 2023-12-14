@@ -8,6 +8,7 @@ export const utilService = {
     getMonthName,
     saveToStorage,
     loadFromStorage,
+    getDate
 }
 
 function makeId(length = 6) {
@@ -70,4 +71,17 @@ function saveToStorage(key, val) {
 function loadFromStorage(key) {
     var val = localStorage.getItem(key)
     return JSON.parse(val)
+}
+
+
+function getDate(timestamp) {
+    const date = new Date(timestamp);
+
+    let day = date.getDate();
+    const month = date.toLocaleString('default', { month: 'short' });
+    day = (day < 10) ? `0${day}` : day
+
+    const formattedDate = `${month} ${day}`;
+
+    return formattedDate;
 }
