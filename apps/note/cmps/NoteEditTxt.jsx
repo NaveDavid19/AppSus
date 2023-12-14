@@ -3,23 +3,22 @@ const { useState } = React
 import { ColorButtonsAdd } from './ColorButtons.jsx'
 import { noteService } from '../services/note.service.js'
 
-export function NoteAddTxt({ addNote, type }) {
+export function NoteEditTxt({ selectedNote, setSelectedNote, saveNote }) {
+  const [currNote, setCurrNote] = useState(selectedNote)
   const [newNoteInfo, setNewNoteInfo] = useState({
-    title: '',
-    txt: '',
+    title: currNote.info.title,
+    txt: currNote.info.txt,
   })
-  const [backgroundColor, setBackgroundColor] = useState('#e9e3d4')
-
+  const [backgroundColor, setBackgroundColor] = useState(
+    currNote.style.backgroundColor
+  )
+  console.log(currNote)
   function onSubmitHandle(ev) {
     ev.preventDefault()
-    let emptyNote = noteService.getEmptyNote()
+    let emptyNote = currNote
     emptyNote.info = { ...emptyNote.info, ...newNoteInfo }
     emptyNote.style = { backgroundColor }
-    addNote({ ...emptyNote, type })
-    setNewNoteInfo({
-      title: '',
-      txt: '',
-    })
+    saveNote( emptyNote )
   }
 
   function onChangeHandle(ev) {
@@ -35,9 +34,9 @@ export function NoteAddTxt({ addNote, type }) {
   }
 
   return (
-    <React.Fragment>
+    <section className="note-edit-prev-wrapper">
       <form
-        className="add-txt-form"
+        className="note-edit"
         style={{ backgroundColor }}
         onSubmit={onSubmitHandle}>
         <input
@@ -50,7 +49,6 @@ export function NoteAddTxt({ addNote, type }) {
           name="title"
           id="title"
         />
-
         <textarea
           className="txt-input"
           onChange={onChangeHandle}
@@ -61,14 +59,15 @@ export function NoteAddTxt({ addNote, type }) {
           name="txt"
           id="txt"
         />
-
         <div className="add-buttons-section">
           <section className="add-buttons">
-            <button type='submit'><i class="fa-solid fa-plus"></i></button>
+            <button type="submit">
+              <i class="fa-solid fa-plus"></i>
+            </button>
             <ColorButtonsAdd changeBackgroundColor={changeBackgroundColor} />
           </section>
         </div>
       </form>
-    </React.Fragment>
+    </section>
   )
 }

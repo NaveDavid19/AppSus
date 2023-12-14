@@ -41,11 +41,11 @@ function deleteNote(note, setNotes) {
   })
 }
 
-function editNote(note, setNotes) {
+function editNote(note, setSelectedNote) {
   setSelectedNote(note)
 }
 
-function saveNote(note, setNotes) {
+function saveNote(note, setNotes, setSelectedNote) {
   const noteId = note.id
   noteService.save(note).then((updatedNote) => {
     console.log(updatedNote)

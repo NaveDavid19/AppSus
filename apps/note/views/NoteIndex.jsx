@@ -29,11 +29,11 @@ export function NoteIndex() {
   }
 
   function editNote(note) {
-    noteUtilsService.editNote(note, setNotes)
+    noteUtilsService.editNote(note, setSelectedNote)
   }
 
   function saveNote(note) {
-    noteUtilsService.saveNote(note, setNotes)
+    noteUtilsService.saveNote(note, setNotes, setSelectedNote)
   }
 
   //* -------------------------------------------------------------------------- //
