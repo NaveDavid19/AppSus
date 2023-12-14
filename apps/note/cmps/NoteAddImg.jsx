@@ -68,7 +68,7 @@ export function NoteAddImg({ addNote, type }) {
       <form style={{ backgroundColor }} onSubmit={onSubmitHandle}>
         <input
           required
-          className='title-input'
+          className="title-input"
           onChange={onChangeHandle}
           type="text"
           placeholder="Title"
@@ -80,7 +80,7 @@ export function NoteAddImg({ addNote, type }) {
         {fileUploaded ? (
           <input
             type="text"
-            className='imgUrl-input'
+            className="imgUrl-input"
             placeholder="Image URL"
             name="imgUrl"
             id="imgUrl"
@@ -92,7 +92,7 @@ export function NoteAddImg({ addNote, type }) {
             <input
               onChange={onChangeHandle}
               type="text"
-              className='imgUrl-input'
+              className="imgUrl-input"
               placeholder="Image URL"
               name="imgUrl"
               id="imgUrl"
@@ -101,7 +101,7 @@ export function NoteAddImg({ addNote, type }) {
             <input
               onChange={onChangeHandle}
               type="file"
-              className='imgUrl-upload'
+              className="imgUrl-upload"
               accept="image/*"
               name="imgUrl"
               id="imgUrl"
@@ -109,9 +109,15 @@ export function NoteAddImg({ addNote, type }) {
           </React.Fragment>
         )}
 
-        <button>Add Note</button>
+        <div className="add-buttons-section">
+          <section className="add-buttons">
+            <button type="submit">
+              <i class="fa-solid fa-plus"></i>
+            </button>
+            <ColorButtonsAdd changeBackgroundColor={changeBackgroundColor} />
+          </section>
+        </div>
       </form>
-      <ColorButtonsAdd changeBackgroundColor={changeBackgroundColor} />
     </React.Fragment>
   )
 }

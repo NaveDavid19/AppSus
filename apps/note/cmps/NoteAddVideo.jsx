@@ -67,9 +67,13 @@ export function NoteAddVideo({ addNote, type }) {
           id="youtubeUrl"
           value={newNoteInfo.youtubeUrl}
         />
-        <button>Add Note</button>
+        <div className="add-buttons-section">
+          <section className="add-buttons">
+            <button type='submit'><i class="fa-solid fa-plus"></i></button>
+            <ColorButtonsAdd changeBackgroundColor={changeBackgroundColor} />
+          </section>
+        </div>
       </form>
-      <ColorButtonsAdd changeBackgroundColor={changeBackgroundColor} />
     </React.Fragment>
   )
 }

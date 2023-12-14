@@ -1,3 +1,4 @@
+import { AddButtonsBtm } from './AddButtonsBtm';
 import { ColorButtonsAdd } from './ColorButtons.jsx'
 const { useState } = React
 
@@ -62,9 +63,9 @@ export function NoteAddTxt({ addNote, type }) {
           id="txt"
         />
 
-        <div className="test">
+        <div className="add-buttons-section">
           <section className="add-buttons">
-            <button type='submit'>Add Note</button>
+            <button type='submit'><i class="fa-solid fa-plus"></i></button>
             <ColorButtonsAdd changeBackgroundColor={changeBackgroundColor} />
           </section>
         </div>

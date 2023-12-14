@@ -93,12 +93,18 @@ export function NoteAddTodos({ addNote, type }) {
             </button>
           </div>
         ))}
-        <button type="button" onClick={addTodo}>
-          Add Todo
-        </button>
-        <button type="submit">Add Note</button>
+        <div className="add-buttons-section">
+          <button type="button" onClick={addTodo}>
+            Add Todo
+          </button>
+          <section className="add-buttons">
+            <button type="submit">
+              <i class="fa-solid fa-plus"></i>
+            </button>
+            <ColorButtonsAdd changeBackgroundColor={changeBackgroundColor} />
+          </section>
+        </div>
       </form>
-      <ColorButtonsAdd changeBackgroundColor={changeBackgroundColor} />
     </React.Fragment>
   )
 }

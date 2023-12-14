@@ -3,7 +3,6 @@ import { NoteList } from '../cmps/NoteList.jsx'
 import { noteUtilsService } from '../services/note.utils.service.js'
 const { useRef, useEffect, useState } = React
 
-
 export function NoteSearch() {
   const searchInputRef = useRef()
   const [activeType, setActiveType] = useState(null)
@@ -46,7 +45,6 @@ export function NoteSearch() {
   function todoToggle(note, todo) {
     noteUtilsService.todoToggle(note, todo, setFilteredNotes)
   }
-
   return (
     <section className="note-search">
       <FilterSearchParams
@@ -57,7 +55,7 @@ export function NoteSearch() {
         activeColor={activeColor}
         handleColorClick={handleColorClick}
       />
-      {filteredNotes && (
+      {filteredNotes.length !== 0 ? (
         <NoteList
           notes={filteredNotes}
           changeBackgroundColor={changeBackgroundColor}
@@ -65,8 +63,9 @@ export function NoteSearch() {
           editNote={editNote}
           todoToggle={todoToggle}
         />
+      ) : (
+        <h2>No notes found</h2>
       )}
-      
     </section>
   )
 }
