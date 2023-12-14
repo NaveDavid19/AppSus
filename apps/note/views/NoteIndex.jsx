@@ -80,16 +80,32 @@ export function NoteIndex() {
     })
   }
 
+  function changeBackgroundColor(colorHex, note) {
+    const noteId = note.id
+    const style = { backgroundColor: colorHex }
+    note = { ...note, style }
+    console.log(note)
+    setNotes((prevNotes) => {
+      const noteIndex = prevNotes.findIndex((note) => note.id === noteId)
+      prevNotes[noteIndex] = { ...prevNotes[noteIndex], ...note }
+      const newNotes = [...prevNotes]
+      noteService.save(newNotes[noteIndex])
+      return newNotes
+    })
+  }
+
   if (!notes) return <div>Loading... </div>
   return (
     <section className="note-index">
       <NoteAdd addNote={addNote} />
       <NoteList
         notes={notes}
+        changeBackgroundColor={changeBackgroundColor}
         deleteNote={deleteNote}
         editNote={editNote}
         todoToggle={todoToggle}
       />
+      
       {selectedNote && (
         <NoteEdit
           selectedNote={selectedNote}

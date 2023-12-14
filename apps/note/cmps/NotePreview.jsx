@@ -8,6 +8,7 @@ export function NotePreview({
   deleteNote,
   editNote,
   saveNote,
+  changeBackgroundColor,
   todoToggle,
   from,
 }) {
@@ -16,6 +17,7 @@ export function NotePreview({
       return (
         <NoteTxt
           note={note}
+          changeBackgroundColor={changeBackgroundColor}
           deleteNote={deleteNote}
           editNote={editNote}
           saveNote={saveNote}
@@ -27,6 +29,7 @@ export function NotePreview({
       return (
         <NoteImg
           note={note}
+          changeBackgroundColor={changeBackgroundColor}
           deleteNote={deleteNote}
           editNote={editNote}
           saveNote={saveNote}
@@ -38,6 +41,7 @@ export function NotePreview({
       return (
         <NoteVideo
           note={note}
+          changeBackgroundColor={changeBackgroundColor}
           deleteNote={deleteNote}
           editNote={editNote}
           saveNote={saveNote}
@@ -49,6 +53,7 @@ export function NotePreview({
       return (
         <NoteTodos
           note={note}
+          changeBackgroundColor={changeBackgroundColor}
           deleteNote={deleteNote}
           editNote={editNote}
           saveNote={saveNote}

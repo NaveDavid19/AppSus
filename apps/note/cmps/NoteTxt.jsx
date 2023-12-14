@@ -1,8 +1,15 @@
 const { useState } = React
-import { noteService } from '../services/note.service.js'
 
-export function NoteTxt({ note, deleteNote, editNote, saveNote, from }) {
-  const [id, setId] = useState(note.id)
+import { PreviewButtons } from './PreviewButtons.jsx'
+
+export function NoteTxt({
+  note,
+  deleteNote,
+  editNote,
+  saveNote,
+  from,
+  changeBackgroundColor,
+}) {
   const [newNoteInfo, setNewNoteInfo] = useState({
     title: note.info.title,
     txt: note.info.txt,
@@ -10,10 +17,9 @@ export function NoteTxt({ note, deleteNote, editNote, saveNote, from }) {
 
   function onSubmitHandle(ev) {
     ev.preventDefault()
-    let emptyNote = noteService.getEmptyNote()
-    emptyNote.info = { ...emptyNote.info, ...newNoteInfo }
-    let newNote = { ...emptyNote, id }
-    saveNote(newNote)
+    let currNote = { ...note }
+    currNote.info = { ...note.info, ...newNoteInfo }
+    saveNote(currNote)
   }
 
   function onChangeHandle(ev) {
@@ -37,23 +43,16 @@ export function NoteTxt({ note, deleteNote, editNote, saveNote, from }) {
   switch (from) {
     case 'noteList':
       return (
-        <article className="note-preview">
-          <button
-            onClick={() => {
-              deleteNote(note)
-            }}>
-            x
-          </button>
-
-          <button
-            onClick={() => {
-              editNote(note)
-            }}>
-            edit
-          </button>
-
+        <article className="note-preview" style={note.style}>
           <h2>{note.info.title}</h2>
           <h4>{renderTextWithLineBreaks(note.info.txt)}</h4>
+          
+          <PreviewButtons
+            note={note}
+            deleteNote={deleteNote}
+            editNote={editNote}
+            changeBackgroundColor={changeBackgroundColor}
+          />
         </article>
       )
 

@@ -1,4 +1,12 @@
-export function NoteVideo({ note, deleteNote, editNote, from }) {
+import { PreviewButtons } from './PreviewButtons.jsx'
+
+export function NoteVideo({
+  note,
+  changeBackgroundColor,
+  deleteNote,
+  editNote,
+  from,
+}) {
   function getYouTubeVideoId(url) {
     const match = url.match(/[?&]v=([^?&]+)/)
     return match ? match[1] : null
@@ -7,29 +15,23 @@ export function NoteVideo({ note, deleteNote, editNote, from }) {
   switch (from) {
     case 'noteList':
       return (
-        <article className="note-preview">
-          <button
-            onClick={() => {
-              deleteNote(note)
-            }}>
-            x
-          </button>
-
-          <button
-            onClick={() => {
-              editNote(note)
-            }}>
-            edit
-          </button>
+        <article className="note-preview" style={note.style}>
           <h2>{note.info.title}</h2>
           <iframe
-            width='200'
-            height='150'
+            width="200"
+            height="150"
             src={`https://www.youtube.com/embed/${getYouTubeVideoId(
               note.info.youtubeUrl
             )}`}
             title={note.info.title}
             allowFullScreen></iframe>
+
+          <PreviewButtons
+            note={note}
+            deleteNote={deleteNote}
+            editNote={editNote}
+            changeBackgroundColor={changeBackgroundColor}
+          />
         </article>
       )
     case 'noteEdit':

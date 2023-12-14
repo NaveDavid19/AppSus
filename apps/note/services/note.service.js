@@ -13,7 +13,7 @@ const tempNotes = [
     type: 'noteTxt',
     isPinned: true,
     style: {
-      backgroundColor: `#0000ff`,
+      backgroundColor: `#aeccdc`,
     },
     info: {
       title: 'Title - 1',
@@ -26,7 +26,7 @@ const tempNotes = [
     type: 'noteImg',
     isPinned: false,
     style: {
-      backgroundColor: '#00ff00',
+      backgroundColor: '#faafa8',
     },
     info: {
       title: 'Title - 2',
@@ -39,7 +39,7 @@ const tempNotes = [
     type: 'noteTodos',
     isPinned: false,
     style: {
-      backgroundColor: '#ff0000',
+      backgroundColor: '#fff8b8',
     },
     info: {
       title: 'Title - 3',
@@ -56,7 +56,7 @@ const tempNotes = [
     type: 'noteVideo',
     isPinned: false,
     style: {
-      backgroundColor: '#ff0000',
+      backgroundColor: '#e9e3d4',
     },
     info: {
       title: 'Title - 4',

@@ -1,24 +1,25 @@
-export function NoteImg({ note, deleteNote, editNote, from }) {
+import { PreviewButtons } from './PreviewButtons.jsx'
+
+export function NoteImg({
+  note,
+  changeBackgroundColor,
+  deleteNote,
+  editNote,
+  from,
+}) {
   switch (from) {
     case 'noteList':
       return (
-        <article className="note-preview">
-          <button
-            onClick={() => {
-              deleteNote(note)
-            }}>
-            x
-          </button>
-
-          <button
-            onClick={() => {
-              editNote(note)
-            }}>
-            edit
-          </button>
-
+        <article className="note-preview" style={note.style}>
           <h2>{note.info.title}</h2>
-          <img src={note.info.imgUrl} alt="{note.info.title}" />
+          <img src={note.info.imgUrl} alt={note.info.title} />
+
+          <PreviewButtons
+            note={note}
+            deleteNote={deleteNote}
+            editNote={editNote}
+            changeBackgroundColor={changeBackgroundColor}
+          />
         </article>
       )
     case 'noteEdit':

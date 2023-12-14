@@ -1,5 +1,13 @@
-export function NoteTodos({ note, deleteNote, editNote, from, todoToggle }) {
-  
+import { PreviewButtons } from './PreviewButtons.jsx'
+
+export function NoteTodos({
+  note,
+  changeBackgroundColor,
+  deleteNote,
+  editNote,
+  from,
+  todoToggle,
+}) {
   function isDoneClass(todo) {
     return todo.isDone ? 'done' : 'todo'
   }
@@ -11,21 +19,7 @@ export function NoteTodos({ note, deleteNote, editNote, from, todoToggle }) {
   switch (from) {
     case 'noteList':
       return (
-        <article className="note-preview">
-          <button
-            onClick={() => {
-              deleteNote(note)
-            }}>
-            x
-          </button>
-
-          <button
-            onClick={() => {
-              editNote(note)
-            }}>
-            edit
-          </button>
-
+        <article className="note-preview" style={note.style}>
           <h2>{note.info.title}</h2>
           {note.info.todos &&
             note.info.todos.map((todo) => {
@@ -41,6 +35,13 @@ export function NoteTodos({ note, deleteNote, editNote, from, todoToggle }) {
                 </li>
               )
             })}
+
+          <PreviewButtons
+            note={note}
+            deleteNote={deleteNote}
+            editNote={editNote}
+            changeBackgroundColor={changeBackgroundColor}
+          />
         </article>
       )
     case 'noteEdit':
