@@ -1,37 +1,46 @@
-const { useState, useEffect, useRef } = React
-const { Link, NavLink, useLocation } = ReactRouterDOM
-
-import { utilService } from '../services/util.service.js'
+const { useState, useEffect, useRef } = React;
+const { Link, NavLink, useLocation } = ReactRouterDOM;
+import { utilService } from '../services/util.service.js';
 
 export function AppHeader() {
-  const location = useLocation()
-  const [animationClass, setAnimationClass] = useState('')
+  const location = useLocation();
+  const [prevImageName, setPrevImageName] = useState(getImageName(location.pathname));
+  const imgRef = useRef();
 
-  const imgRef = useRef()
   useEffect(() => {
-    switch (location.pathname) {
-      case '/mail':
-        utilService.animateCSS(imgRef.current, 'backInLeft').then(() => {
-          utilService.animateCSS(imgRef.current, 'rubberBand')
-        })
-        break
-      case '/note':
-        utilService.animateCSS(imgRef.current, 'rollIn').then(() => {
-          utilService.animateCSS(imgRef.current, 'swing')
-        })
-        break
-      default:
-        utilService.animateCSS(imgRef.current, 'wobble').then(() => {
-          utilService.animateCSS(imgRef.current, 'tada')
-        })
+    const currentImageName = getImageName(location.pathname);
+
+    if (currentImageName !== prevImageName) {
+      switch (location.pathname) {
+        case '/mail':
+        case '/mail/inbox':
+        case '/mail/star':
+        case '/mail/sent':
+          utilService.animateCSS(imgRef.current, 'backInLeft').then(() => {
+            utilService.animateCSS(imgRef.current, 'rubberBand');
+          });
+          break;
+        case '/note':
+        case '/note/search':
+          utilService.animateCSS(imgRef.current, 'rollIn').then(() => {
+            utilService.animateCSS(imgRef.current, 'swing');
+          });
+          break;
+        default:
+          utilService.animateCSS(imgRef.current, 'wobble').then(() => {
+            utilService.animateCSS(imgRef.current, 'tada');
+          });
+      }
     }
-  }, [location.pathname])
+
+    setPrevImageName(currentImageName);
+  }, [location.pathname, prevImageName]);
 
   return (
     <header className="app-header">
       <Link to="/">
         <img
-          className={animationClass}
+          className="animated" 
           src={`assets/img/logos/${getImageName(location.pathname)}.png`}
           alt=""
           ref={imgRef}
@@ -44,17 +53,20 @@ export function AppHeader() {
         <NavLink to="/note">Note</NavLink>
       </nav>
     </header>
-  )
+  );
 }
 
-// Helper function to get the image name based on the path
 function getImageName(pathname) {
   switch (pathname) {
     case '/mail':
-      return 'SusMail'
+    case '/mail/inbox':
+    case '/mail/star':
+    case '/mail/sent':
+      return 'SusMail';
     case '/note':
-      return 'SusNote'
+    case '/note/search':
+      return 'SusNote';
     default:
-      return 'SusApp'
+      return 'SusApp';
   }
 }
