@@ -1,10 +1,13 @@
-import { ColorButtons } from './ColorButtons.jsx'
+import { ColorButtonsAdd } from './ColorButtons.jsx'
 export function PreviewButtons({
   note,
   deleteNote,
   editNote,
   changeBackgroundColor,
 }) {
+  function onChangeBackgroundColor(colorHex) {
+    changeBackgroundColor(colorHex, note)
+  }
   return (
     <section className="preview-btns">
       <button
@@ -21,7 +24,7 @@ export function PreviewButtons({
         edit
       </button>
 
-      <ColorButtons changeBackgroundColor={changeBackgroundColor} note={note} />
+      <ColorButtonsAdd changeBackgroundColor={onChangeBackgroundColor} />
     </section>
   )
 }

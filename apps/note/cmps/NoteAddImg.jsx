@@ -1,7 +1,7 @@
 const { useState } = React
 
 import { noteService } from '../services/note.service.js'
-import { ColorButtonsAdd } from './ColorButtonsAdd.jsx'
+import { ColorButtonsAdd } from './ColorButtons.jsx'
 
 export function NoteAddImg({ addNote, type }) {
   const [newNoteInfo, setNewNoteInfo] = useState({

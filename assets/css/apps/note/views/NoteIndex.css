@@ -2,4 +2,14 @@
 .note-index {
   display: flex;
   flex-direction: column;
+  background: #efeff1(0,0,0,.2);
+  min-height: calc(100dvh - 21.6px - 40px - 1.6px);
+}
+
+.note-index {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  align-items: center;
+  text-align: center;
 }
