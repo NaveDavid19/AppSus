@@ -1,6 +1,6 @@
 .note-preview {
   position: relative;
-  list-style: none;
+  list-style: circle;
   break-inside: avoid;
 
   border-radius: 7px;
@@ -23,6 +23,11 @@
   left: .3rem;
 
   animation: fadeIn .3s ease;
+}
+
+.note-preview li, .note-preview h4{
+  margin-inline-start: 1rem;
+  text-align: start;
 }
 
 .note-preview .preview-btns{
@@ -68,8 +73,15 @@
   animation: fadeIn .3s ease;
 }
 
-.note-preview span.todo{
-  font-weight: 600;
+.note-preview span.done{
+  font-weight: 500;
+}
+
+.note-preview lis:has(span.todo){
+  list-style: circle;
+}
+.note-preview li:has(span.done){
+  list-style: square;
 }
 
 .note-preview span.done{

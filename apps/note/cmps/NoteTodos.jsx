@@ -19,12 +19,17 @@ export function NoteTodos({
   switch (from) {
     case 'noteList':
       return (
-        <article className="note-preview" style={note.style}>
+        <article
+          onClick={() => {
+            editNote(note)
+          }}
+          className="note-preview"
+          style={note.style}>
           <h2>{note.info.title}</h2>
           {note.info.todos &&
             note.info.todos.map((todo) => {
               return (
-                <li key={todo.id}>
+                <li key={todo.id} onClick={(ev)=>{ev.stopPropagation()}}>
                   <span
                     onClick={() => {
                       onTodo(note, todo)
