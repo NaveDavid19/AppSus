@@ -5,6 +5,7 @@
     background-color: #c2e7ff;
     border: 0;
     width: 50px;
+    transition: width 0.5s;
     margin: 5px;
 }
 

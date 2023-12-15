@@ -26,19 +26,19 @@ header {
     padding: .2rem;
 }
 
-nav a:last-of-type {
+.app-header nav a:last-of-type {
     margin-inline-end: 1.5rem;
 }
 
-nav a {
+.app-header nav a {
     margin: .5em;
 }
 
-nav a:active {
+.app-header nav a:active {
     color: purple;
 }
 
-nav a.active {
+.app-header nav a.active {
     color: darkblue;
     font-weight: bold;
     text-decoration: overline;
