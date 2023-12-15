@@ -29,6 +29,13 @@ export function NoteAddTodos({ addNote, type }) {
     )
   }
 
+  function onKeyDownHandle(ev, id) {
+    if (ev.key === 'Enter') {
+      ev.preventDefault()
+      addTodo()
+    }
+  }
+
   function addTodo() {
     const newTodo = {
       id: utilService.makeId(),
@@ -46,7 +53,7 @@ export function NoteAddTodos({ addNote, type }) {
     ev.preventDefault()
     let emptyNote = noteService.getEmptyNote()
     emptyNote.info = { ...emptyNote.info, title, todos }
-    emptyNote.style = { backgroundColor: '#ff0000' }
+    emptyNote.style = { backgroundColor }
     addNote({ ...emptyNote, type })
     setTodos([
       {
@@ -84,6 +91,7 @@ export function NoteAddTodos({ addNote, type }) {
               name="txt"
               value={todo.txt}
               onChange={(ev) => onChangeTodoHandle(ev, todo.id)}
+              onKeyDown={(ev) => onKeyDownHandle(ev, todo.id)} // Add this line
             />
             <button
               type="button"

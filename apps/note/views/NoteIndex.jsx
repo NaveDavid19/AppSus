@@ -50,10 +50,15 @@ export function NoteIndex() {
   return (
     <section className="note-index">
       <div className="search-title">
+        <button className="search-btn">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
         <Link to={'search'}>
           <input type="text" placeholder="Search note" />
         </Link>
-        <button>X</button>
+        <Link to="/note">
+          <button className="close-btn">X</button>
+        </Link>
       </div>
       <NoteAdd addNote={addNote} />
       <NoteList

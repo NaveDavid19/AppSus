@@ -8,7 +8,7 @@ var gFilterBy = { title: '' }
 
 const tempNotes = [
   {
-    id: 'n101',
+    id: utilService.makeId(),
     createdAt: 1702080000000,
     type: 'noteTxt',
     isPinned: true,
@@ -21,7 +21,7 @@ const tempNotes = [
     },
   },
   {
-    id: 'n102',
+    id: utilService.makeId(),
     createdAt: 1701910000000,
     type: 'noteImg',
     isPinned: false,
@@ -34,7 +34,7 @@ const tempNotes = [
     },
   },
   {
-    id: 'n103',
+    id: utilService.makeId(),
     createdAt: 1701810000000,
     type: 'noteTodos',
     isPinned: false,
@@ -51,7 +51,7 @@ const tempNotes = [
     },
   },
   {
-    id: 'n104',
+    id: utilService.makeId(),
     createdAt: 1701810000000,
     type: 'noteVideo',
     isPinned: false,
@@ -82,6 +82,7 @@ export const noteService = {
 
 function query() {
   return storageService.query(NOTES_KEY).then((notes) => {
+    console.log(gFilterBy);
     if (gFilterBy.title) {
       const regex = new RegExp(gFilterBy.title, 'i')
       notes = notes.filter((note) => regex.test(note.info.title))

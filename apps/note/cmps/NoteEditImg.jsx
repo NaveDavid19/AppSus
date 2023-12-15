@@ -25,12 +25,12 @@ export function NoteEditImg({ selectedNote, setSelectedNote, saveNote }) {
     ev.preventDefault()
 
     if (currNote.info.imgUrl === newNoteInfo.imgUrl) {
-      saveNote({ currNote })
+      saveNote({ ...currNote })
       return
     }
     // Basic regex check for a valid URL if not uploaded through file input
     if (!fileUploaded) {
-      const urlRegex = /^(ftp|http|https):\/\/[^ "]+$/
+      const urlRegex = /^(ftp|http|https|data:image\/(png|jpeg|jpg|gif|bmp);base64,[^ "]+)$/;
       if (!urlRegex.test(newNoteInfo.imgUrl)) {
         alert('Invalid Image URL! Please enter a valid URL.')
         return
