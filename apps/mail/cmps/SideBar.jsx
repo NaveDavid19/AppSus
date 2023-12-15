@@ -8,7 +8,7 @@ const { Link } = ReactRouterDOM
 export function SideBar({ setOpenCompose, openCompose, setSelectedTab, unreadCount, onSendMail }) {
     return <nav className="side-bar">
         <div className="side-bar-list">
-            <button className="compose-btn" title="Compose" onClick={() => setOpenCompose(!openCompose)}><i className="fa-solid fa-pen"></i></button>
+            <button className="side-bar-btn compose-btn" title="Compose" onClick={() => setOpenCompose(!openCompose)}><i className="fa-solid fa-pen"></i><span className="side-btn">Compose</span></button>
             {openCompose && <Compose {...{ onSendMail, setOpenCompose, openCompose }} />}
             <Link title="Inbox" className="side-bar-btn inbox" to={`/mail/${Tabs.INBOX}`} onClick={() => setSelectedTab(Tabs.INBOX)}><i className="fa-solid fa-inbox"> </i><span className="side-btn"> Inbox</span> ({unreadCount})</Link>
             <Link title="Starred" className="side-bar-btn starred" to={`/mail/${Tabs.STAR}`} onClick={() => setSelectedTab(Tabs.STAR)}><i className="fa-regular fa-star"></i><span className="side-btn"> Starred</span></Link>

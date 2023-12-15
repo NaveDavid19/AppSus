@@ -34,3 +34,5 @@
 
 @import './apps/mail/cmps/MailList.css';
 @import './apps/mail/cmps/Compose.css';
+@import './apps/mail/cmps/SideBar.css';
+@import './apps/mail/cmps/MailFilter.css';
