@@ -7,7 +7,8 @@
      transform: -50% -50%;
      width: 50px;
      height: 50px;
-     animation: l1 1s infinite;
+     animation: l1 1s ease;
+     animation-fill-mode: forwards;
  }
 
  @keyframes l1 {

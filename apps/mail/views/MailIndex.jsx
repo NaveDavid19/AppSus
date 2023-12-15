@@ -8,27 +8,30 @@ export function MailIndex() {
     const [mails, setMails] = useState([])
     const [unreadCount, setUnreadCount] = useState(0);
     const [openCompose, setOpenCompose] = useState(false)
-    const [selectedTab, setSelectedTab] = useState(Tabs.INBOX)
-    const [loadingMails, setLoadingMails] = useState(mails.length === 0)
+    const [loadingMails, setLoadingMails] = useState(false)
     const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
     const params = useParams()
 
     useEffect(() => {
         loadMails()
+    }, [])
+
+    useEffect(() => {
+        if (!loadingMails) {
+            loadMails()
+        }
     }, [filterBy])
 
     useEffect(() => {
-        const { tab } = params
-        setFilterBy(filterBy => {
-            return ({ ...filterBy, tab: tab, txt: '' })
-        })
-    }, [params])
+        console.log("Selected TAB is " + params.tab)
+        setFilterBy(filterBy => ({ ...filterBy, tab: params.tab, txt: '' }))
+    }, [params.tab])
 
     function loadMails() {
         setLoadingMails(true)
         mailService.query(filterBy)
             .then(mails => {
-                if (selectedTab === Tabs.INBOX && mailService.areObjectsEqual(filterBy, mailService.getDefaultFilter())) {
+                if (params.tab === Tabs.INBOX && mailService.areObjectsEqual(mailService.getDefaultFilter(), filterBy)) {
                     setUnreadCount(mails.filter(mail => !mail.isRead).length);
                 }
                 setMails(mails)
@@ -45,14 +48,10 @@ export function MailIndex() {
 
 
     function onSendMail(mailToSend) {
-        if (selectedTab === Tabs.SENT) {
+        if (params.tab === Tabs.SENT) {
             setMails([...mails, mailToSend])
             setOpenCompose(false)
         }
-    }
-
-    function onSetFilter(filterBy) {
-        setFilterBy(filterBy)
     }
 
     function onRemoveMail(mailToRemove) {
@@ -78,8 +77,8 @@ export function MailIndex() {
     if (loadingMails) return <img className="loader" src="assets\img\logos\SusMail.png" />
     return (
         <section className="mail-index">
-            <SideBar {...{ setOpenCompose, openCompose, setSelectedTab, unreadCount, onSendMail }} />
-            {!params.mailId && <MailList {...{ mails, onUpdateMail, onRemoveMail, filterBy, setFilterBy, onSetFilter }} />}
+            <SideBar {...{ setOpenCompose, openCompose, unreadCount, onSendMail }} />
+            {!params.mailId && <MailList {...{ mails, onUpdateMail, onRemoveMail, filterBy, setFilterBy }} />}
             {params.mailId && <Outlet />}
         </section>
     )

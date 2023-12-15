@@ -45,7 +45,7 @@ export function MailPreview({ mail, onUpdateMail, onRemoveMail }) {
                 <p>{utilService.getDate(mail.sentAt)}</p>
                 <section className={mail.isRead ? "mail-btn" : "mail-btn unread-section"}>
                     <button className="delete" title="Delete" onClick={() => handleRemoveMail(mail)}><i className="fa-solid fa-trash"></i></button>
-                    <button title={`Mark as ${mail.isRead ? 'unread' : 'read'}`} onClick={() => handleReadMail(mail, !mail.isRead)}><i className={mail.isRead ? "fa-regular fa-envelope" : "fa-regular fa-envelope-open"} ></i></button>
+                    <button title={`Mark as ${mail.isRead ? 'unread' : 'read'}`} onClick={() => handleReadMail(mail, !mail.isRead)}><i className={mail.isRead ? "fa-regular fa-envelope-open" : "fa-regular fa-envelope"} ></i></button>
                 </section>
             </div>
         </li >

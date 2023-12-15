@@ -4,9 +4,9 @@ import { MailFilterSelect } from "./MailFilterSelect.jsx"
 const { useState, useEffect, useRef } = React
 
 
-export function MailFilter({ filterBy, onSetFilter }) {
+export function MailFilter({ filterBy, setFilterBy }) {
     const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
-    const debounceOnSearch = useRef(utilService.debounce(onSetFilter, 500))
+    const debounceOnSearch = useRef(utilService.debounce(setFilterBy, 500))
 
 
     useEffect(() => {
@@ -15,7 +15,7 @@ export function MailFilter({ filterBy, onSetFilter }) {
 
     function handleSubmit(ev) {
         ev.preventDefault()
-        onSetFilter(filterByToEdit)
+        setFilterBy(filterByToEdit)
     }
     function handleChange({ target }) {
         const field = target.name
@@ -27,7 +27,7 @@ export function MailFilter({ filterBy, onSetFilter }) {
     const { txt } = filterByToEdit
     return (
         <section className="search">
-            <MailFilterSelect {...{ filterBy, onSetFilter, }} />
+            <MailFilterSelect {...{ filterBy, setFilterBy, }} />
             <form onSubmit={handleSubmit}>
                 <label htmlFor="txt"></label>
                 <div className="search-container">
