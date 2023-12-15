@@ -21,8 +21,9 @@ export function NoteVideo({
           }}
           className="note-preview"
           style={note.style}>
-          <h2>{note.info.title}</h2>
+          <h2 className='note-title'>{note.info.title}</h2>
           <iframe
+            className='note-video'
             width="200"
             height="150"
             src={`https://www.youtube.com/embed/${getYouTubeVideoId(

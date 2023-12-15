@@ -53,7 +53,7 @@ export function NoteAddTodos({ addNote, type }) {
     ev.preventDefault()
     let emptyNote = noteService.getEmptyNote()
     emptyNote.info = { ...emptyNote.info, title, todos }
-    emptyNote.style = { backgroundColor: '#ff0000' }
+    emptyNote.style = { backgroundColor }
     addNote({ ...emptyNote, type })
     setTodos([
       {

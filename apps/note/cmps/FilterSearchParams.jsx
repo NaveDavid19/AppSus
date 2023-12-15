@@ -1,4 +1,5 @@
 const { Link } = ReactRouterDOM
+
 export function FilterSearchParams({
   searchInputRef,
   activeType,
@@ -7,11 +8,28 @@ export function FilterSearchParams({
   handleColorClick,
   onSearchParams,
 }) {
+
+  const handleEnterKey = (ev) => {
+    if (ev.key === 'Enter') {
+      ev.preventDefault()
+      onSearchParams()
+    }
+  }
   return (
     <section className="filter-search-params">
       <div className="search-title">
-        <input ref={searchInputRef} type="text" placeholder="Search note" />
-        <button>X</button>
+        <button onClick={onSearchParams} className="search-btn">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+        <input
+          ref={searchInputRef}
+          type="text"
+          placeholder="Search note"
+          onKeyDown={handleEnterKey}
+        />
+        <Link to="/note">
+          <button className="close-btn">X</button>
+        </Link>
       </div>
       <div className="search-type-wrapper">
         <h2>Types</h2>
@@ -26,13 +44,13 @@ export function FilterSearchParams({
             className={activeType === 'noteImg' ? 'active' : ''}
             onClick={() => handleTypeClick('noteImg')}>
             <i className="fa-solid fa-camera"></i>
-              <span>Images</span>
+            <span>Images</span>
           </button>
           <button
             className={activeType === 'noteVideo' ? 'active' : ''}
             onClick={() => handleTypeClick('noteVideo')}>
             <i className="fa-solid fa-video"></i>
-              <span>Videos</span>
+            <span>Videos</span>
           </button>
         </div>
       </div>
@@ -107,14 +125,6 @@ export function FilterSearchParams({
           </button>
         </div>
       </div>
-      <nav className="search-nav">
-        <button onClick={onSearchParams} className="search-btn">
-          Search
-        </button>
-        <Link to="/note">
-          <button>Back</button>
-        </Link>
-      </nav>
     </section>
   )
 }

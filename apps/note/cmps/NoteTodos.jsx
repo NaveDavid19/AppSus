@@ -25,7 +25,7 @@ export function NoteTodos({
           }}
           className="note-preview"
           style={note.style}>
-          <h2>{note.info.title}</h2>
+          <h2 className='note-title'>{note.info.title}</h2>
           {note.info.todos &&
             note.info.todos.map((todo) => {
               return (
@@ -34,7 +34,7 @@ export function NoteTodos({
                     onClick={() => {
                       onTodo(note, todo)
                     }}
-                    className={isDoneClass(todo)}>
+                    className={`note-todo ${isDoneClass(todo)}`}>
                     {todo.txt}
                   </span>
                 </li>

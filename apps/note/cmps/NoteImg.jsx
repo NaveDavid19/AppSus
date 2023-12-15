@@ -16,8 +16,8 @@ export function NoteImg({
           }}
           className="note-preview"
           style={note.style}>
-          <h2>{note.info.title}</h2>
-          <img src={note.info.imgUrl} alt={note.info.title} />
+          <h2 className='note-title'>{note.info.title}</h2>
+          <img className='note-img' src={note.info.imgUrl} alt={note.info.title} />
 
           <PreviewButtons
             note={note}

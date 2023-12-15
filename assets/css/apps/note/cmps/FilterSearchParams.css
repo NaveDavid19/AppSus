@@ -11,7 +11,7 @@
 
 .search-title input {
   margin-block-start: 1em;
-  padding: 1em;
+  padding: 1em 3.2em;
   border-radius: 7px;
   width: 400px;
   background-color: #f1f3f4;
@@ -21,9 +21,19 @@
   position: absolute;
   top: 0;
   right: 0;
-  translate: -50% 154%;
   background-color: transparent !important;
   border: none;
+}
+
+.search-title .close-btn{
+  translate: -50% 164%;
+  width: fit-content;
+}
+.search-title .search-btn{
+  width: fit-content;
+  top: 0;
+  left: 0;
+  translate: 50% 164%;
 }
 
 .search-color-wrapper,

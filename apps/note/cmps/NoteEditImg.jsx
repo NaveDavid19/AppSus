@@ -25,7 +25,7 @@ export function NoteEditImg({ selectedNote, setSelectedNote, saveNote }) {
     ev.preventDefault()
 
     if (currNote.info.imgUrl === newNoteInfo.imgUrl) {
-      saveNote({ currNote })
+      saveNote({ ...currNote })
       return
     }
     // Basic regex check for a valid URL if not uploaded through file input
