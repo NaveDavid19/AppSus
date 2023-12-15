@@ -1,7 +1,7 @@
 .note-search {
   display: flex;
   flex-direction: column;
-  background: #efeff1(0,0,0,.2);
+  background: #f2f6fc;
   min-height: calc(100dvh - 21.6px - 40px - 1.6px);
 }
 

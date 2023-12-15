@@ -29,7 +29,7 @@ export function Home() {
           ref={mailRef}
           onClick={() => onAnimate('mail')}
           onMouseOver={() => utilService.animateCSS(mailRef.current, 'bounce')}
-          src="assets/img/logos/susMail.png"
+          src="assets/img/logos/SusMail.png"
           alt="Email App"
         />
 
@@ -37,7 +37,7 @@ export function Home() {
           ref={noteRef}
           onClick={() => onAnimate('note')}
           onMouseOver={() => utilService.animateCSS(noteRef.current, 'bounce')}
-          src="assets/img/logos/susNote.png"
+          src="assets/img/logos/SusNote.png"
           alt="Notes App"
         />
       </div>
