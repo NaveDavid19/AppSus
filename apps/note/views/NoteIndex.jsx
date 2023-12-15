@@ -41,24 +41,29 @@ export function NoteIndex() {
 
   function todoToggle(note, todo) {
     noteUtilsService.todoToggle(note, todo, setNotes)
-    
   }
 
   function changeBackgroundColor(colorHex, note) {
     noteUtilsService.changeBackgroundColor(colorHex, note, setNotes)
   }
 
-  function pinNote(note){
+  function pinNote(note) {
     noteUtilsService.pinNote(note, setNotes)
   }
 
-
-  function pinNote(note){
+  function pinNote(note) {
     noteUtilsService.pinNote(note, setNotes)
   }
 
-
-  if (!notes) return <img className="loader" src="assets\img\logos\SusNote.png" />
+  if (!notes)
+    return (
+      // Default values shown
+      <l-line-spinner
+        size="40"
+        stroke="3"
+        speed="1"
+        color="black"></l-line-spinner>
+    )
   return (
     <section className="note-index">
       <div className="search-title">
@@ -98,7 +103,7 @@ export function NoteIndex() {
           selectedNote={selectedNote}
           setSelectedNote={setSelectedNote}
           saveNote={saveNote}
-          deleteNote={deleteNote} 
+          deleteNote={deleteNote}
           pinNote={pinNote}
         />
       )}
