@@ -52,7 +52,12 @@ export function NoteIndex() {
   }
 
 
-  if (!notes) return <div>Loading... </div>
+  function pinNote(note){
+    noteUtilsService.pinNote(note, setNotes)
+  }
+
+
+  if (!notes) return <img className="loader" src="assets\img\logos\SusNote.png" />
   return (
     <section className="note-index">
       <div className="search-title">
