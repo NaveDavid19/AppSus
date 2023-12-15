@@ -2,8 +2,15 @@ const { useState, useEffect } = React
 
 import { ColorButtonsAdd } from './ColorButtons.jsx'
 import { utilService } from '../../../services/util.service.js'
+import { PreviewButtons } from './PreviewButtons.jsx'
 
-export function NoteEditTodos({ selectedNote, setSelectedNote, saveNote }) {
+export function NoteEditTodos({
+  selectedNote,
+  setSelectedNote,
+  saveNote,
+  deleteNote,
+  pinNote,
+}) {
   const [currNote, setCurrNote] = useState(selectedNote)
   const [newNoteInfo, setNewNoteInfo] = useState({
     title: currNote.info.title,
@@ -113,7 +120,12 @@ export function NoteEditTodos({ selectedNote, setSelectedNote, saveNote }) {
             <button type="submit">
               <i class="fa-solid fa-plus"></i>
             </button>
-            <ColorButtonsAdd changeBackgroundColor={changeBackgroundColor} />
+            <PreviewButtons
+              note={currNote}
+              deleteNote={deleteNote}
+              changeBackgroundColor={changeBackgroundColor}
+              pinNote={pinNote}
+            />
           </section>
         </div>
       </form>

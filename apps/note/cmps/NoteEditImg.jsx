@@ -1,8 +1,15 @@
 const { useState, useEffect } = React
 
 import { ColorButtonsAdd } from './ColorButtons.jsx'
+import { PreviewButtons } from './PreviewButtons.jsx'
 
-export function NoteEditImg({ selectedNote, setSelectedNote, saveNote }) {
+export function NoteEditImg({
+  selectedNote,
+  setSelectedNote,
+  saveNote,
+  deleteNote,
+  pinNote,
+}) {
   const [currNote, setCurrNote] = useState(selectedNote)
   const [newNoteInfo, setNewNoteInfo] = useState({
     title: currNote.info.title,
@@ -30,13 +37,14 @@ export function NoteEditImg({ selectedNote, setSelectedNote, saveNote }) {
     }
     // Basic regex check for a valid URL if not uploaded through file input
     if (!fileUploaded) {
-      const urlRegex = /^(ftp|http|https|data:image\/(png|jpeg|jpg|gif|bmp);base64,[^ "]+)$/;
+      const urlRegex =
+        /^(ftp|http|https|data:image\/(png|jpeg|jpg|gif|bmp);base64,[^ "]+)$/
       if (!urlRegex.test(newNoteInfo.imgUrl)) {
         Swal.fire({
-          title: "Failed to upload",
+          title: 'Failed to upload',
           text: 'Invalid Image URL! Please enter a valid URL.',
-          icon: "error"
-        });
+          icon: 'error',
+        })
         return
       }
     }
@@ -152,7 +160,12 @@ export function NoteEditImg({ selectedNote, setSelectedNote, saveNote }) {
             <button type="submit">
               <i class="fa-solid fa-plus"></i>
             </button>
-            <ColorButtonsAdd changeBackgroundColor={changeBackgroundColor} />
+            <PreviewButtons
+              note={currNote}
+              deleteNote={deleteNote}
+              changeBackgroundColor={changeBackgroundColor}
+              pinNote={pinNote}
+            />
           </section>
         </div>
       </form>

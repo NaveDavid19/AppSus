@@ -1,8 +1,15 @@
 const { useState, useEffect } = React
 
 import { ColorButtonsAdd } from './ColorButtons.jsx'
+import { PreviewButtons } from './PreviewButtons.jsx'
 
-export function NoteEditVideo({ selectedNote, setSelectedNote, saveNote }) {
+export function NoteEditVideo({
+  selectedNote,
+  setSelectedNote,
+  saveNote,
+  deleteNote,
+  pinNote,
+}) {
   const [currNote, setCurrNote] = useState(selectedNote)
   const [newNoteInfo, setNewNoteInfo] = useState({
     title: currNote.info.title,
@@ -29,10 +36,10 @@ export function NoteEditVideo({ selectedNote, setSelectedNote, saveNote }) {
 
     if (!youtubeUrlRegex.test(newNoteInfo.youtubeUrl)) {
       Swal.fire({
-        title: "Failed to upload",
+        title: 'Failed to upload',
         text: 'Invalid YouTube Video URL! Please enter a valid URL.',
-        icon: "error"
-      });
+        icon: 'error',
+      })
       return
     }
 
@@ -108,7 +115,12 @@ export function NoteEditVideo({ selectedNote, setSelectedNote, saveNote }) {
             <button type="submit">
               <i class="fa-solid fa-plus"></i>
             </button>
-            <ColorButtonsAdd changeBackgroundColor={changeBackgroundColor} />
+            <PreviewButtons
+              note={currNote}
+              deleteNote={deleteNote}
+              changeBackgroundColor={changeBackgroundColor}
+              pinNote={pinNote}
+            />
           </section>
         </div>
       </form>

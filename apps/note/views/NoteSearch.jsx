@@ -105,6 +105,8 @@ export function NoteSearch() {
           selectedNote={selectedNote}
           setSelectedNote={setSelectedNote}
           saveNote={saveNote}
+          deleteNote={deleteNote} 
+          pinNote={pinNote}
         />
       )}
     </section>
