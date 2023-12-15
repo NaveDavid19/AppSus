@@ -1,6 +1,6 @@
 import { NotePreview } from './NotePreview.jsx'
 
-export function NoteList({
+export function NotePinnedList({
   notes,
   deleteNote,
   editNote,
@@ -17,7 +17,7 @@ export function NoteList({
       <ul className="note-list">
         {notes.map((note) => {
           return (
-            !note.isPinned && (
+            note.isPinned && (
               <li key={note.id}>
                 <NotePreview
                   note={note}

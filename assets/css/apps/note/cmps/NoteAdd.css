@@ -1,7 +1,7 @@
 .note-add {
   position: relative;
   margin-block-end: 1rem;
-  height: 200px;
+  min-height: 250px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,12 +14,14 @@
 .note-add form {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   border-radius: 15px;
 
   width: 350px;
+  min-height: 250px;
   padding: 0.7rem;
-  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, .3);
+  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.3);
 }
 
 .note-add form:hover {
@@ -29,10 +31,14 @@
 .note-add .add-type-btns {
   position: absolute;
   translate: -170% -50%;
-  right: calc(50% - 410px);
+  right: calc(50% - 165px);
   top: 35px;
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 0.3em;
+  width: 30px;
+  height: 30px;
 }
 
 .note-add .add-type-btns button {
@@ -45,11 +51,11 @@
 }
 
 .note-add .type-btn.active {
-  background-color: green;
+  background-color: #00000044;
 }
 
 .note-add .type-btn:hover {
-  background-color: blue;
+  background-color: #00000077;
 }
 .note-add .title-input:focus,
 .note-add .txt-input:focus-visible {
@@ -60,22 +66,50 @@
 .note-add .title-input {
   padding: 1rem;
   width: 90%;
-  justify-self: start;
+
   background-color: transparent;
-  margin-inline-end: auto;
   border: none;
+  justify-self: start;
+  margin-inline-end: auto;
+
+  font-size: 1.6em;
+  font-weight: 600;
+  word-spacing: 0.2em;
 }
 
 .note-add .txt-input {
+  padding: 1rem;
+  width: 90%;
+
+  background-color: transparent;
   border: none;
   resize: inherit;
-  width: 98.5%;
-  background-color: transparent;
   border-radius: 7px;
+
+  font-size: 1.3em;
+  word-spacing: 0.2em;
+}
+
+.note-add .imgUrl-input,
+.note-add .videoUrl-input {
+  padding: 1em 3em;
+  border-radius: 1000px;
+  border: none;
+  box-shadow: inset 0px 0px 2px 1px rgba(0, 0, 0, .5);
+  background-color: #ffffff77;
+  
+  transition: background-color .3s ease;
+}
+.note-add .imgUrl-input:focus,
+.note-add .videoUrl-input:focus {
+  outline: none;
+  background-color: #ffffffcc;
+  box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, .7);
 }
 
 .note-add .todo-wrapper {
   position: relative;
+  height: 100%;
   width: 92%;
 }
 
@@ -105,14 +139,51 @@
   background-color: transparent;
 }
 
+.note-add .todo-wrapper .todo-remove-btn {
+  width: 25px;
+  height: 25px;
+}
 .note-add .todo-wrapper .todo-remove-btn:hover {
-  background-color: blue;
+  background-color: #00000044;
+}
+
+.note-add .add-todo-btn {
+  margin-block-start: auto;
+  margin-block-end: .5em;
+  background-color: transparent;
+  border: none;
+
+  text-transform: uppercase;
+  font-weight: 600;
+
+  padding: .3em 3.2em;
+  border-radius: 1000px;
+  box-shadow: 0 0 3px 2px rgba(0, 0, 0, .5);
 }
 
 .note-add .add-buttons {
   width: 100%;
   display: grid;
+  gap: 1.6em;
   grid-template-columns: 1fr 1fr;
   justify-content: start;
   justify-items: start;
+}
+
+.note-add .add-buttons button {
+  width: 35px;
+  height: 35px;
+  font-size: 1.3em;
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  transition: background-color .3s ease;
+}
+
+.note-add .add-buttons button:hover {
+  background-color: #00000044;
+}
+
+.note-add .color-palette button{
+  box-shadow: inset 0px 0px 2px 1px rgba(0, 0, 0, .3);
 }
