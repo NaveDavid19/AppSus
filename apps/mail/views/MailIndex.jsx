@@ -43,6 +43,7 @@ export function MailIndex() {
         setUnreadCount(updatedMails.filter(mail => !mail.isRead).length);
     }
 
+
     function onSendMail(mailToSend) {
         if (selectedTab === Tabs.SENT) {
             setMails([...mails, mailToSend])
@@ -74,7 +75,7 @@ export function MailIndex() {
         }
     }
 
-    if (loadingMails) return <div>Loading...</div>
+    if (loadingMails) return <img className="loader" src="assets\img\logos\SusMail.png" />
     return (
         <section className="mail-index">
             <SideBar {...{ setOpenCompose, openCompose, setSelectedTab, unreadCount, onSendMail }} />

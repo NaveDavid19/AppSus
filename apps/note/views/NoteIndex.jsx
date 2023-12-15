@@ -46,7 +46,8 @@ export function NoteIndex() {
     noteUtilsService.changeBackgroundColor(colorHex, note, setNotes)
   }
 
-  if (!notes) return <div>Loading... </div>
+  // if (!notes) return <div>Loading... </div>
+  if (!notes) return <img className="loader" src="assets\img\logos\SusNote.png" />
   return (
     <section className="note-index">
       <div className="search-title">
