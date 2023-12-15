@@ -10,7 +10,12 @@ export function NoteImg({
   switch (from) {
     case 'noteList':
       return (
-        <article className="note-preview" style={note.style}>
+        <article
+          onClick={() => {
+            editNote(note)
+          }}
+          className="note-preview"
+          style={note.style}>
           <h2>{note.info.title}</h2>
           <img src={note.info.imgUrl} alt={note.info.title} />
 

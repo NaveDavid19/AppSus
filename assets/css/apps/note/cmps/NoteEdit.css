@@ -49,6 +49,11 @@
   border-radius: 7px;
 }
 
+.note-edit img {
+  height: 300px;
+  width: auto;
+}
+
 .note-edit .todo-wrapper {
   position: relative;
   width: 92%;
