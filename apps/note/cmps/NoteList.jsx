@@ -6,6 +6,7 @@ export function NoteList({
   editNote,
   todoToggle,
   changeBackgroundColor,
+  pinNote,
 }) {
   if (!Array.isArray(notes)) {
     // Handle the case where notes is not an array
@@ -26,6 +27,7 @@ export function NoteList({
                   todoToggle={todoToggle}
                   changeBackgroundColor={changeBackgroundColor}
                   from="noteList"
+                  pinNote={pinNote}
                 />
               </li>
             )

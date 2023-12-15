@@ -25,11 +25,11 @@
   border: none;
 }
 
-.search-title .close-btn{
+.search-title .close-btn {
   translate: -50% 164%;
   width: fit-content;
 }
-.search-title .search-btn{
+.search-title .search-btn {
   width: fit-content;
   top: 0;
   left: 0;
@@ -42,14 +42,13 @@
   width: 800px;
 }
 
-.search-color-wrapper{
-  padding: .3em;
+.search-color-wrapper {
+  padding: 0.3em;
 }
 .search-color-wrapper h2,
-.search-type-wrapper h2{
-  padding: .7em;
+.search-type-wrapper h2 {
+  padding: 0.7em;
 }
-
 
 .search-color,
 .search-type {
@@ -59,16 +58,26 @@
   gap: 0.5em;
 }
 
+.search-color button,
+.search-type button {
+  transition: text-shadow 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
 .search-color button {
   width: 60px;
   height: 60px;
   border-radius: 50%;
   border: none;
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.5);
+  font-family: robertfo-medium;
+  text-transform: capitalize;
+  box-shadow: inset 5px 3px 5px 3px rgba(0, 0, 0, 0.2);
+  text-shadow: -1px -1px 2px rgba(255, 255, 255, 0.6);
 }
 .search-type button {
   border: none;
   background-color: #1a73e8;
+  box-shadow: inset 5px 3px 5px 3px rgba(0, 0, 0, 0.2);
+  text-shadow: -1px -1px 2px rgba(0, 0, 0, 0.6);
   color: #fafafa;
   width: 160px;
   height: 160px;
@@ -77,14 +86,68 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: .7em;
+  padding: 0.7em;
 }
 
 .search-type button i {
   translate: 10% 200%;
 }
 
-.search-color button.active,
+
 .search-type button.active {
-  box-shadow: 0 0 7px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 
+    inset 5px 3px 5px 3px rgba(0, 0, 0, 0.2),
+    0 0 3px 2px rgba(0, 0, 0, 0.5),
+    0 0 7px 5px rgba(0, 0, 0, 0.4);
+  text-shadow: 
+    0px 0px 1px rgba(0, 0, 0, .5),
+    0px 0px 1px rgba(255, 6, 251, 0.642), 
+    0px 0px 3px rgba(255, 6, 251, 0.642),
+    0px 0px 5px rgba(255, 6, 251, 0.642), 
+    0px 0px 8px rgba(0, 0, 0, 5),
+    0px 0px 12px rgba(255, 6, 251, 0.5);
+}
+
+.search-color button.active{
+  box-shadow: 
+    inset 5px 3px 5px 3px rgba(0, 0, 0, 0.2),
+    0 0 3px 2px rgba(0, 0, 0, 0.5),
+    0 0 7px 5px rgba(0, 0, 0, 0.4);
+  text-shadow: 
+    0px 0px 1px rgba(0, 0, 0, .5),
+    0px 0px 1px rgba(175, 175, 175, 0.642), 
+    0px 0px 3px rgba(220, 245, 0, 0.979),
+    0px 0px 5px rgba(175, 175, 175, 0.642), 
+    0px 0px 8px rgba(0, 0, 0, 5),
+    0px 0px 12px rgba(175, 175, 175, 0.642);
+}
+
+
+.search-type button:hover {
+  box-shadow: 
+    inset 5px 3px 7px 5px rgba(0, 0, 0, 0.2),
+    0 0 5px 3px rgba(0, 0, 0, 0.7), 
+    0 0 9px 7px rgba(0, 0, 0, 0.4);
+  text-shadow: 
+    0px 0px 1px rgba(0, 0, 0, 1),
+    0px 0px 1px rgba(255, 6, 251, 0.842), 
+    0px 0px 3px rgba(255, 6, 251, 0.842),
+    0px 0px 5px rgba(255, 6, 251, 0.842), 
+    0px 0px 8px rgba(0, 0, 0, 1),
+    0px 0px 12px rgba(255, 6, 251, 0.6);
+}
+
+.search-color button:hover {
+  box-shadow: 
+  inset 5px 3px 7px 5px rgba(0, 0, 0, 0.2),
+  0 0 5px 3px rgba(0, 0, 0, 0.7), 
+  0 0 9px 7px rgba(0, 0, 0, 0.4);
+text-shadow: 
+  0px 0px 1px rgba(0, 0, 0, 1),
+  0px 0px 1px rgba(220, 245, 0, 0.979) 
+  0px 0px 3px rgba(220, 245, 0, 0.979)
+  0px 0px 5px rgba(220, 245, 0, 0.979) 
+  0px 0px 8px rgba(0, 0, 0, 1),
+  0px 0px 12px rgba(175, 175, 175, 0.642);
+  
 }

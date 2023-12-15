@@ -6,6 +6,7 @@ export function NotePinnedList({
   editNote,
   todoToggle,
   changeBackgroundColor,
+  pinNote
 }) {
   if (!Array.isArray(notes)) {
     // Handle the case where notes is not an array
@@ -26,6 +27,7 @@ export function NotePinnedList({
                   todoToggle={todoToggle}
                   changeBackgroundColor={changeBackgroundColor}
                   from="noteList"
+                  pinNote={pinNote}
                 />
               </li>
             )

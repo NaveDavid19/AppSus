@@ -47,7 +47,16 @@ export function NoteIndex() {
     noteUtilsService.changeBackgroundColor(colorHex, note, setNotes)
   }
 
-  // if (!notes) return <div>Loading... </div>
+  function pinNote(note){
+    noteUtilsService.pinNote(note, setNotes)
+  }
+
+
+  function pinNote(note){
+    noteUtilsService.pinNote(note, setNotes)
+  }
+
+
   if (!notes) return <img className="loader" src="assets\img\logos\SusNote.png" />
   return (
     <section className="note-index">
@@ -71,6 +80,7 @@ export function NoteIndex() {
         deleteNote={deleteNote}
         editNote={editNote}
         todoToggle={todoToggle}
+        pinNote={pinNote}
       />
       <h2>Notes</h2>
       <NoteList
@@ -79,6 +89,7 @@ export function NoteIndex() {
         deleteNote={deleteNote}
         editNote={editNote}
         todoToggle={todoToggle}
+        pinNote={pinNote}
       />
 
       {selectedNote && (

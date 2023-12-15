@@ -18,7 +18,11 @@ export function NoteAddImg({ addNote, type }) {
     if (!fileUploaded) {
       const urlRegex = /^(ftp|http|https):\/\/[^ "]+$/
       if (!urlRegex.test(newNoteInfo.imgUrl)) {
-        alert('Invalid Image URL! Please enter a valid URL.')
+        Swal.fire({
+          title: "Failed to upload",
+          text: 'Invalid Image URL! Please enter a valid URL.',
+          icon: "error"
+        });
         return
       }
     }
