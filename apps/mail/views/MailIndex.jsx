@@ -28,7 +28,7 @@ export function MailIndex() {
         setLoadingMails(true)
         mailService.query(filterBy)
             .then(mails => {
-                if (selectedTab === Tabs.INBOX && filterBy.txt === '') {
+                if (selectedTab === Tabs.INBOX && mailService.areObjectsEqual(filterBy, mailService.getDefaultFilter())) {
                     setUnreadCount(mails.filter(mail => !mail.isRead).length);
                 }
                 setMails(mails)
@@ -41,7 +41,6 @@ export function MailIndex() {
         const updatedMails = mails.map(mail => (mail.id === updatedMail.id ? updatedMail : mail))
         setMails(updatedMails);
         setUnreadCount(updatedMails.filter(mail => !mail.isRead).length);
-
     }
 
     function onSendMail(mailToSend) {
@@ -55,9 +54,24 @@ export function MailIndex() {
         setFilterBy(filterBy)
     }
 
-
     function onRemoveMail(mailToRemove) {
-        setMails(mails.filter(mail => mail.id !== mailToRemove.id))
+        if (mailToRemove.removedAt) {
+            mailService.remove(mailToRemove.id)
+                .then(() => {
+                    setMails(mails.filter(mail => mail.id !== mailToRemove.id));
+                })
+                .catch(err => console.error('Error removing mail:', err));
+        } else {
+            const removeMail = {
+                ...mailToRemove,
+                removedAt: Date.now()
+            };
+            mailService.save(removeMail)
+                .then(() => {
+                    setMails(mails.filter(mail => mail.id !== mailToRemove.id));
+                })
+                .catch(err => console.error('Error removing mail:', err));
+        }
     }
 
     if (loadingMails) return <div>Loading...</div>

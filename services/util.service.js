@@ -10,7 +10,8 @@ export const utilService = {
     loadFromStorage,
     getDate,
     animateCSS,
-    getUserName
+    getUserName,
+    debounce
 }
 
 function makeId(length = 6) {
@@ -104,4 +105,17 @@ function animateCSS(el, animation, isRemoveClass = true) {
         }
         el.addEventListener('animationend', handleAnimationEnd, { once: true })
     })
+}
+
+
+function debounce(funct, wait) {
+    let timeout
+    return function executedFunction(...args) {
+        const late = () => {
+            clearTimeout(timeout)
+            funct(...args)
+        }
+        clearTimeout(timeout)
+        timeout = setTimeout(late, wait)
+    }
 }

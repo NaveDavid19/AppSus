@@ -27,6 +27,7 @@ export const mailService = {
     getFilterBy,
     setFilterBy,
     getDefaultFilter,
+    areObjectsEqual
 
 }
 
@@ -40,13 +41,16 @@ function query(filterBy = getDefaultFilter()) {
             if (filterBy.tab) {
                 switch (filterBy.tab) {
                     case Tabs.INBOX:
-                        mails = mails.filter(mail => mail.to === loggedinUser.email)
+                        mails = mails.filter(mail => mail.to === loggedinUser.email && !mail.removedAt)
                         break
                     case Tabs.SENT:
-                        mails = mails.filter(mail => mail.from === loggedinUser.email)
+                        mails = mails.filter(mail => mail.from === loggedinUser.email && !mail.removedAt)
                         break
                     case Tabs.STAR:
-                        mails = mails.filter(mail => mail.isStar)
+                        mails = mails.filter(mail => mail.isStar && !mail.removedAt)
+                        break
+                    case Tabs.TRASH:
+                        mails = mails.filter(mail => mail.removedAt)
                         break
                     default:
                         mails = mails
@@ -116,6 +120,23 @@ function getPrevMailId(mailId) {
             if (prevMailIdx === -1) prevMailIdx = mails.length - 1
             return mails[prevMailIdx].id
         })
+}
+
+function areObjectsEqual(obj1, obj2) {
+    const keys1 = Object.keys(obj1);
+    const keys2 = Object.keys(obj2);
+
+    if (keys1.length !== keys2.length) {
+        return false;
+    }
+
+    for (const key of keys1) {
+        if (obj1[key] !== obj2[key]) {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 //Private functions
