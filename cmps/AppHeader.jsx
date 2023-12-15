@@ -18,6 +18,7 @@ export function AppHeader() {
         case '/mail/inbox':
         case '/mail/star':
         case '/mail/sent':
+        case '/mail/trash':
           utilService.animateCSS(imgRef.current, 'backInLeft').then(() => {
             utilService.animateCSS(imgRef.current, 'rubberBand')
           })
@@ -64,6 +65,7 @@ function getImageName(pathname) {
     case '/mail/inbox':
     case '/mail/star':
     case '/mail/sent':
+    case '/mail/trash':
       return 'SusMail'
     case '/note':
     case '/note/search':
@@ -79,6 +81,7 @@ function getReturnLink(pathname) {
     case '/mail/inbox':
     case '/mail/star':
     case '/mail/sent':
+    case '/mail/trash':
       return '/mail'
     case '/note':
     case '/note/search':
