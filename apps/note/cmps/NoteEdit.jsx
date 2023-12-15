@@ -3,7 +3,7 @@ import { NoteEditTodos } from './NoteEditTodos.jsx'
 import { NoteEditTxt } from './NoteEditTxt.jsx'
 import { NoteEditVideo } from './NoteEditVideo.jsx'
 
-export function NoteEdit({ selectedNote, setSelectedNote, saveNote }) {
+export function NoteEdit({ selectedNote, setSelectedNote, saveNote ,deleteNote, pinNote}) {
   switch (selectedNote.type) {
     case 'noteTxt':
       return (
@@ -11,6 +11,8 @@ export function NoteEdit({ selectedNote, setSelectedNote, saveNote }) {
           selectedNote={selectedNote}
           setSelectedNote={setSelectedNote}
           saveNote={saveNote}
+          deleteNote={deleteNote} 
+          pinNote={pinNote}
         />
       )
 
@@ -20,6 +22,8 @@ export function NoteEdit({ selectedNote, setSelectedNote, saveNote }) {
           selectedNote={selectedNote}
           setSelectedNote={setSelectedNote}
           saveNote={saveNote}
+          deleteNote={deleteNote} 
+          pinNote={pinNote}
         />
       )
 
@@ -29,6 +33,8 @@ export function NoteEdit({ selectedNote, setSelectedNote, saveNote }) {
           selectedNote={selectedNote}
           setSelectedNote={setSelectedNote}
           saveNote={saveNote}
+          deleteNote={deleteNote} 
+          pinNote={pinNote}
         />
       )
 
@@ -38,6 +44,8 @@ export function NoteEdit({ selectedNote, setSelectedNote, saveNote }) {
           selectedNote={selectedNote}
           setSelectedNote={setSelectedNote}
           saveNote={saveNote}
+          deleteNote={deleteNote} 
+          pinNote={pinNote}
         />
       )
   }

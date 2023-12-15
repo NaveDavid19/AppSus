@@ -9,11 +9,13 @@ import { NoteIndex } from "./apps/note/views/NoteIndex.jsx"
 import { Tabs } from "./apps/mail/services/mail.service.js"
 import { MailDetails } from "./apps/mail/cmps/MailDetails.jsx"
 import { NoteSearch } from "./apps/note/views/NoteSearch.jsx"
+import { UserMsg } from "./cmps/UserMsg.jsx"
 
 export function App() {
     return <Router>
         <section className="app">
             <AppHeader />
+            <UserMsg />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />

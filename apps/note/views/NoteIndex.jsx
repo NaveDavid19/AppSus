@@ -41,6 +41,7 @@ export function NoteIndex() {
 
   function todoToggle(note, todo) {
     noteUtilsService.todoToggle(note, todo, setNotes)
+    
   }
 
   function changeBackgroundColor(colorHex, note) {
@@ -97,6 +98,8 @@ export function NoteIndex() {
           selectedNote={selectedNote}
           setSelectedNote={setSelectedNote}
           saveNote={saveNote}
+          deleteNote={deleteNote} 
+          pinNote={pinNote}
         />
       )}
     </section>
