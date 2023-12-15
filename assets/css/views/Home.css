@@ -27,7 +27,13 @@ img.loader {
   gap: 4em;
 }
 
+.home-container .app-links{
+  display: flex;
+  gap: 10em;
+}
+
 .home-container img {
+  cursor: pointer;
   width: 50px;
   height: 50px;
   box-shadow:
