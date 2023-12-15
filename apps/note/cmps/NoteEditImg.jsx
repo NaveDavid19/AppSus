@@ -32,7 +32,11 @@ export function NoteEditImg({ selectedNote, setSelectedNote, saveNote }) {
     if (!fileUploaded) {
       const urlRegex = /^(ftp|http|https|data:image\/(png|jpeg|jpg|gif|bmp);base64,[^ "]+)$/;
       if (!urlRegex.test(newNoteInfo.imgUrl)) {
-        alert('Invalid Image URL! Please enter a valid URL.')
+        Swal.fire({
+          title: "Failed to upload",
+          text: 'Invalid Image URL! Please enter a valid URL.',
+          icon: "error"
+        });
         return
       }
     }

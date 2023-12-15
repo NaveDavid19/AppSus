@@ -18,7 +18,11 @@ export function NoteAddVideo({ addNote, type }) {
       /^(https?:\/\/)?(www\.)?(youtube\.com\/(.*\/)?(watch\?v=)?|youtu\.be\/)([^\?&"'>]+)/
 
     if (!youtubeUrlRegex.test(newNoteInfo.youtubeUrl)) {
-      alert('Invalid YouTube Video URL! Please enter a valid URL.')
+      Swal.fire({
+        title: "Failed to upload",
+        text: 'Invalid YouTube Video URL! Please enter a valid URL.',
+        icon: "error"
+      });
       return
     }
 
