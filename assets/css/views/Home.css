@@ -33,14 +33,17 @@ img.loader {
 }
 
 .home-container img {
-  cursor: pointer;
-  width: 50px;
-  height: 50px;
+  /* position: absolute; */
+  top: .3rem;
+  left: 1.5rem;
+  background-color: #00000022;
   box-shadow:
-    inset 5px 1px 10px 5px rgba(0, 0, 0, 0.7),
-    0 0 5px 2px rgba(0, 0, 0, 0.2);
+      inset 5px 1px 10px 5px rgba(0, 0, 0, .7),
+      0 0 5px 2px rgba(0, 0, 0, .2);
   border-radius: 50%;
-  padding: 0.2rem;
+  width: 40px;
+  height: 40px;
+  padding: .2rem;
 }
 
 
