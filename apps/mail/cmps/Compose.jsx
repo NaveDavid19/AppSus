@@ -18,8 +18,14 @@ export function Compose({ onSendMail, setOpenCompose, openCompose }) {
         ev.preventDefault()
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         if (!emailRegex.test(newMail.to)) {
-            alert('Invalid Email Adress')
-            return
+            if (!emailRegex.test(newMail.to)) {
+                Swal.fire({
+                    title: "Failed to send",
+                    text: 'Invalid Email Adress! Please enter a valid Email.',
+                    icon: "error"
+                });
+                return
+            }
         }
         mailService.save(newMail).then(onSendMail)
         setOpenCompose(!openCompose)
