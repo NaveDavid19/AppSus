@@ -46,6 +46,11 @@ img.loader {
   padding: .2rem;
 }
 
+.img-container {
+  width: 40px;
+  height: 40px;
+}
+
 
 @keyframes l1 {
   from{
