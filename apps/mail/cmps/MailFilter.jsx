@@ -1,18 +1,20 @@
-const { useState, useEffect } = React
+import { utilService } from "../../../services/util.service.js"
+import { MailFilterSelect } from "./MailFilterSelect.jsx"
+
+const { useState, useEffect, useRef } = React
 
 
 export function MailFilter({ filterBy, onSetFilter }) {
     const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
-    const [isSubmit, setSubmit] = useState(false)
+    const debounceOnSearch = useRef(utilService.debounce(onSetFilter, 500))
 
 
     useEffect(() => {
-        onSetFilter(filterByToEdit)
-    }, [isSubmit])
+        debounceOnSearch.current(filterByToEdit)
+    }, [filterByToEdit])
 
-    function onSetFilterBy(ev) {
+    function handleSubmit(ev) {
         ev.preventDefault()
-        setSubmit(true)
         onSetFilter(filterByToEdit)
     }
     function handleChange({ target }) {
@@ -25,7 +27,8 @@ export function MailFilter({ filterBy, onSetFilter }) {
     const { txt } = filterByToEdit
     return (
         <section className="search">
-            <form onSubmit={onSetFilterBy}>
+            <MailFilterSelect {...{ filterBy, onSetFilter, }} />
+            <form onSubmit={handleSubmit}>
                 <label htmlFor="txt"></label>
                 <div className="search-container">
                     <button className="fa-solid fa-magnifying-glass"></button>

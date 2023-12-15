@@ -27,19 +27,20 @@ export function Compose({ onSendMail, setOpenCompose, openCompose }) {
     }
 
 
-    return <section className="compose">
-        <header>New Message</header>
-        <form onSubmit={handleSendMail}>
-            <label htmlFor="to">To : </label>
-            <input required onChange={handleChange} type="text" id="to" name="to" />
-
-            <label htmlFor="subject">Subject : </label>
-            <input required onChange={handleChange} type="text" id="subject" name="subject" />
-
-            <label htmlFor="body"></label>
-            <input required onChange={handleChange} className="compose-content" type="text" id="body" name="body" />
-
-            <button >Send</button>
-        </form>
+    return <section className="compose-container">
+        <div className="compose">
+            <header>
+                <p>New Message</p>
+                <button onClick={() => setOpenCompose(!openCompose)}>X</button>
+            </header>
+            <form onSubmit={handleSendMail}>
+                <input placeholder="To" required onChange={handleChange} type="text" id="to" name="to" />
+                <input placeholder="Subject" required onChange={handleChange} type="text" id="subject" name="subject" />
+                <input required onChange={handleChange} className="compose-content" type="text" id="body" name="body" />
+                <div className="compose-btns">
+                    <button >Send</button>
+                </div>
+            </form>
+        </div>
     </section>
 }

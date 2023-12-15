@@ -7,25 +7,25 @@ export function MailPreview({ mail, onUpdateMail, onRemoveMail }) {
     const displayedUserName = (mail.from === loggedinUser.email) ? utilService.getUserName(mail.to) : mail.from.userName
 
     function handleReadMail(mail, isRead) {
-        const readMail = {
+        const updatedMail = {
             ...mail,
             isRead: isRead
         }
-        mailService.save(readMail).then(onUpdateMail)
+        mailService.save(updatedMail).then(onUpdateMail)
     }
 
 
     function handleStarMail(mail, isStar) {
-        const readMail = {
+        const updatedMail = {
             ...mail,
             isStar: isStar
         }
-        mailService.save(readMail).then(onUpdateMail)
+        mailService.save(updatedMail).then(onUpdateMail)
     }
 
 
-    function handleRemoveMail(mailToRemove) {
-        mailService.remove(mailToRemove.id).then(() => onRemoveMail(mailToRemove))
+    function handleRemoveMail(mail) {
+        onRemoveMail(mail)
     }
 
     return (
