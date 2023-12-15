@@ -21,7 +21,7 @@ export function PreviewButtons({
         onClick={() => {
           pinNote(note)
         }}>
-        <i class="fa-solid fa-thumbtack"></i>
+        <i class={`pin fa-solid fa-thumbtack ${note.isPinned ? 'pinned' : 'unpinned'}`}></i>
       </button>
 
       <ColorButtonsAdd changeBackgroundColor={onChangeBackgroundColor} />
