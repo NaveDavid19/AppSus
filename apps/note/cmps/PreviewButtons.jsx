@@ -13,7 +13,7 @@ export function PreviewButtons({
         onClick={() => {
           deleteNote(note)
         }}>
-        x
+        <i class="fa-solid fa-x"></i>
       </button>
 
       <ColorButtonsAdd changeBackgroundColor={onChangeBackgroundColor} />

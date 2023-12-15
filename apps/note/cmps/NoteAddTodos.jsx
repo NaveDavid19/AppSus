@@ -101,10 +101,10 @@ export function NoteAddTodos({ addNote, type }) {
             </button>
           </div>
         ))}
+        <button type="button" className='add-todo-btn' onClick={addTodo}>
+        <i class="fa-solid fa-list"></i>
+        </button>
         <div className="add-buttons-section">
-          <button type="button" onClick={addTodo}>
-            Add Todo
-          </button>
           <section className="add-buttons">
             <button type="submit">
               <i class="fa-solid fa-plus"></i>
