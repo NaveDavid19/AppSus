@@ -1,0 +1,29 @@
+.about-container {
+  padding-block-start: 3em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4em;
+}
+
+.about-container .developer-section{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10em;
+
+}
+
+.developer-section .developer{
+
+  padding: 1.6em 3em;
+  border-radius: 7px;
+  box-shadow: 
+  1px 1px 1px 1px rgba(0, 0, 0, .5),
+  inset 2px 2px 2px 1px rgba(0, 0, 0, .2)  ;
+}
+
+.developer-section .developer .social-links{
+  display: flex;
+  font-size: 2em;
+  gap: 1em;
+}

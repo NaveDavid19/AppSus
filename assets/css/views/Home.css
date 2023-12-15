@@ -5,8 +5,8 @@ img.loader {
   top: 50%;
   left: 50%;
   transform: -50% -50%;
-  width: 70px;
-  height: 70px;
+  width: 70px !important;
+  height: 70px !important;
   animation: l1 .7s ease-in;
   animation-fill-mode: forwards;
   background-color: #00000022;
@@ -17,6 +17,26 @@ img.loader {
   border-radius: 50%;
   padding: 0.2rem;
 }
+
+
+.home-container {
+  padding-block-start: 3em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4em;
+}
+
+.home-container img {
+  width: 50px;
+  height: 50px;
+  box-shadow:
+    inset 5px 1px 10px 5px rgba(0, 0, 0, 0.7),
+    0 0 5px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  padding: 0.2rem;
+}
+
 
 @keyframes l1 {
   from{
