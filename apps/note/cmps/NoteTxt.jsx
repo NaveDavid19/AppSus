@@ -40,21 +40,51 @@ export function NoteTxt({
     ))
   }
 
-  return (
-    <article
-      onClick={() => {
-        editNote(note)
-      }}
-      className="note-preview"
-      style={note.style}>
-      <h2>{note.info.title}</h2>
-      <h4>{renderTextWithLineBreaks(note.info.txt)}</h4>
+  switch (from) {
+    case 'noteList':
+      return (
+        <article onClick={() => {
+          editNote(note)
+        }} className="note-preview" style={note.style}>
+          <h2>{note.info.title}</h2>
+          <h4>{renderTextWithLineBreaks(note.info.txt)}</h4>
+          
+          <PreviewButtons
+            note={note}
+            deleteNote={deleteNote}
+            editNote={editNote}
+            changeBackgroundColor={changeBackgroundColor}
+          />
+        </article>
+      )
 
-      <PreviewButtons
-        note={note}
-        deleteNote={deleteNote}
-        changeBackgroundColor={changeBackgroundColor}
-      />
-    </article>
-  )
+    case 'noteEdit':
+      return (
+        <article className="note-preview-edit">
+          <form onSubmit={onSubmitHandle}>
+            <input
+              onChange={onChangeHandle}
+              type="text"
+              value={newNoteInfo.title}
+              placeholder="Title"
+              name="title"
+              id="title"
+            />
+
+            <textarea
+              onChange={onChangeHandle}
+              rows="4"
+              cols="50"
+              value={newNoteInfo.txt}
+              placeholder="Take a note..."
+              name="txt"
+              id="txt"
+            />
+            <button>Save</button>
+          </form>
+        </article>
+      )
+    default:
+      return null
+  }
 }
