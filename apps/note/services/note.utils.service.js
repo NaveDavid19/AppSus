@@ -9,12 +9,13 @@ export const noteUtilsService = {
   todoToggle,
   changeBackgroundColor,
   setFilterBy,
+  pinNote,
 }
 
 // *  --------------------------//CRUD HANDLE //---------------------------  * //
 
 function loadNotes(setNotes) {
-  noteService.setFilterBy({title:'',type:'',color:''})
+  noteService.setFilterBy({ title: '', type: '', color: '' })
   noteService
     .query()
     .then((notes) => {
@@ -52,7 +53,7 @@ function saveNote(note, setNotes, setSelectedNote) {
     setNotes((prevNotes) => {
       const idx = prevNotes.findIndex((prevNote) => prevNote.id === noteId)
       prevNotes.splice(idx, 1, updatedNote)
-      setSelectedNote(null)
+      if (setSelectedNote) setSelectedNote(null)
       return prevNotes
     })
   })
@@ -62,12 +63,10 @@ function setFilterBy(title, type, color) {
   console.log({ title, type, color })
   const filterBy = { title, type, color }
   noteService.setFilterBy(filterBy)
-  return noteService
-    .query()
-    .then((notes) => {
-      noteService.setFilterBy({})
-      return notes
-    })
+  return noteService.query().then((notes) => {
+    noteService.setFilterBy({})
+    return notes
+  })
 }
 
 //* -------------------------------------------------------------------------- //
@@ -88,6 +87,16 @@ function todoToggle(note, todo, setNotes) {
 
     noteService.save(newNotes[noteIndex])
     return newNotes
+  })
+}
+
+function pinNote(note, setNotes) {
+  const noteId = note.id
+  setNotes((prevNotes) => {
+    const idx = prevNotes.findIndex((prevNote) => prevNote.id === noteId)
+    prevNotes[idx].isPinned = !prevNotes[idx].isPinned
+    noteService.save(note)
+    return [...prevNotes]
   })
 }
 

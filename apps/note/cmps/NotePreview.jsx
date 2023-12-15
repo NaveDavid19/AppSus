@@ -11,6 +11,7 @@ export function NotePreview({
   changeBackgroundColor,
   todoToggle,
   from,
+  pinNote,
 }) {
   switch (note.type) {
     case 'noteTxt':
@@ -22,6 +23,7 @@ export function NotePreview({
           editNote={editNote}
           saveNote={saveNote}
           from={from}
+          pinNote={pinNote}
         />
       )
 
@@ -34,6 +36,7 @@ export function NotePreview({
           editNote={editNote}
           saveNote={saveNote}
           from={from}
+          pinNote={pinNote}
         />
       )
 
@@ -46,6 +49,7 @@ export function NotePreview({
           editNote={editNote}
           saveNote={saveNote}
           from={from}
+          pinNote={pinNote}
         />
       )
 
@@ -59,6 +63,7 @@ export function NotePreview({
           saveNote={saveNote}
           todoToggle={todoToggle}
           from={from}
+          pinNote={pinNote}
         />
       )
   }

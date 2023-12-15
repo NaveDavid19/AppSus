@@ -61,6 +61,11 @@ export function NoteSearch() {
   function saveNote(note) {
     noteUtilsService.saveNote(note, setFilteredNotes, setSelectedNote)
   }
+
+  function pinNote(note) {
+    noteUtilsService.pinNote(note, setFilteredNotes)
+  }
+
   return (
     <section className="note-search">
       <FilterSearchParams
@@ -80,6 +85,7 @@ export function NoteSearch() {
             deleteNote={deleteNote}
             editNote={editNote}
             todoToggle={todoToggle}
+            pinNote={pinNote}
           />
           <h2>Notes</h2>
           <NoteList
@@ -88,6 +94,7 @@ export function NoteSearch() {
             deleteNote={deleteNote}
             editNote={editNote}
             todoToggle={todoToggle}
+            pinNote={pinNote}
           />
         </React.Fragment>
       ) : (

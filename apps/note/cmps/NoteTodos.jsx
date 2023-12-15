@@ -7,6 +7,7 @@ export function NoteTodos({
   editNote,
   from,
   todoToggle,
+  pinNote,
 }) {
   function isDoneClass(todo) {
     return todo.isDone ? 'done' : 'todo'
@@ -46,6 +47,7 @@ export function NoteTodos({
             deleteNote={deleteNote}
             editNote={editNote}
             changeBackgroundColor={changeBackgroundColor}
+            pinNote={pinNote}
           />
         </article>
       )

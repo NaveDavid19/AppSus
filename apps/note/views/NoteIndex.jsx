@@ -47,6 +47,11 @@ export function NoteIndex() {
     noteUtilsService.changeBackgroundColor(colorHex, note, setNotes)
   }
 
+  function pinNote(note){
+    noteUtilsService.pinNote(note, setNotes)
+  }
+
+
   if (!notes) return <div>Loading... </div>
   return (
     <section className="note-index">
@@ -70,6 +75,7 @@ export function NoteIndex() {
         deleteNote={deleteNote}
         editNote={editNote}
         todoToggle={todoToggle}
+        pinNote={pinNote}
       />
       <h2>Notes</h2>
       <NoteList
@@ -78,6 +84,7 @@ export function NoteIndex() {
         deleteNote={deleteNote}
         editNote={editNote}
         todoToggle={todoToggle}
+        pinNote={pinNote}
       />
 
       {selectedNote && (

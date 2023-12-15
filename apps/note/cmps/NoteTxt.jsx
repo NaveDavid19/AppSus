@@ -7,8 +7,8 @@ export function NoteTxt({
   deleteNote,
   editNote,
   saveNote,
-  from,
   changeBackgroundColor,
+  pinNote,
 }) {
   const [newNoteInfo, setNewNoteInfo] = useState({
     title: note.info.title,
@@ -55,6 +55,7 @@ export function NoteTxt({
         deleteNote={deleteNote}
         editNote={editNote}
         changeBackgroundColor={changeBackgroundColor}
+        pinNote={pinNote}
       />
     </article>
   )

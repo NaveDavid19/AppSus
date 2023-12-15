@@ -6,6 +6,7 @@ export function NoteImg({
   deleteNote,
   editNote,
   from,
+  pinNote,
 }) {
   switch (from) {
     case 'noteList':
@@ -24,6 +25,7 @@ export function NoteImg({
             deleteNote={deleteNote}
             editNote={editNote}
             changeBackgroundColor={changeBackgroundColor}
+            pinNote={pinNote}
           />
         </article>
       )
