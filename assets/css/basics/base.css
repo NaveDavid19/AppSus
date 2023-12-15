@@ -1,6 +1,26 @@
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #081fee91; 
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #66666644; 
+}
+
+
+
+* {
+  scrollbar-color: #333 #666;
+  scrollbar-width: thin;
+}
+
 body {
-    margin: 0;
-    background-color: #efeff1;
+  margin: 0;
+  background-color: #efeff1;
 }
 
 h1,
@@ -9,16 +29,16 @@ h3,
 h4,
 h5,
 h6 {
-    margin: 0;
+  margin: 0;
 }
 
 a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
 img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }

@@ -81,10 +81,8 @@ export const noteService = {
 // Book DB functions
 
 function query() {
-  //TODO : Change Filter options
   return storageService.query(NOTES_KEY).then((notes) => {
     if (gFilterBy.title) {
-      console.log(notes)
       const regex = new RegExp(gFilterBy.title, 'i')
       notes = notes.filter((note) => regex.test(note.info.title))
       console.log(notes, regex)
@@ -116,7 +114,6 @@ function getFilterBy() {
 }
 
 function setFilterBy(filterBy = {}) {
-  //TODO Change filter setter
   if (filterBy.title !== undefined) gFilterBy.title = filterBy.title
   if (filterBy.type !== undefined) gFilterBy.type = filterBy.type
   if (filterBy.color !== undefined) gFilterBy.color = filterBy.color

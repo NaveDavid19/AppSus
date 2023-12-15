@@ -1,7 +1,6 @@
-const { useState } = React
+const { useState, useEffect } = React
 
 import { ColorButtonsAdd } from './ColorButtons.jsx'
-import { noteService } from '../services/note.service.js'
 
 export function NoteEditTxt({ selectedNote, setSelectedNote, saveNote }) {
   const [currNote, setCurrNote] = useState(selectedNote)
@@ -12,13 +11,22 @@ export function NoteEditTxt({ selectedNote, setSelectedNote, saveNote }) {
   const [backgroundColor, setBackgroundColor] = useState(
     currNote.style.backgroundColor
   )
-  console.log(currNote)
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.body.style.overflow = 'auto'
+    }
+  }, [])
+
   function onSubmitHandle(ev) {
     ev.preventDefault()
+    ev.stopPropagation()
     let emptyNote = currNote
     emptyNote.info = { ...emptyNote.info, ...newNoteInfo }
     emptyNote.style = { backgroundColor }
-    saveNote( emptyNote )
+    saveNote(emptyNote)
   }
 
   function onChangeHandle(ev) {
@@ -34,9 +42,10 @@ export function NoteEditTxt({ selectedNote, setSelectedNote, saveNote }) {
   }
 
   return (
-    <section className="note-edit-prev-wrapper">
+    <section className="note-edit-prev-wrapper" onClick={onSubmitHandle}>
       <form
         className="note-edit"
+        onClick={(ev) => ev.stopPropagation()}
         style={{ backgroundColor }}
         onSubmit={onSubmitHandle}>
         <input
