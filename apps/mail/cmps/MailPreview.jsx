@@ -4,7 +4,7 @@ const { Link } = ReactRouterDOM
 
 export function MailPreview({ mail, onUpdateMail, onRemoveMail }) {
     const readClassName = mail.isRead ? "" : "unread";
-    const displayedUserName = (mail.from === loggedinUser.email) ? mail.to : mail.from.userName;
+    const displayedUserName = (mail.from === loggedinUser.email) ? utilService.getUserName(mail.to) : mail.from.userName
 
     function handleReadMail(mail, isRead) {
         const readMail = {

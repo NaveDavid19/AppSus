@@ -10,7 +10,7 @@ export function MailIndex() {
     const [openCompose, setOpenCompose] = useState(false)
     const [selectedTab, setSelectedTab] = useState(Tabs.INBOX)
     const [loadingMails, setLoadingMails] = useState(mails.length === 0)
-    const [filterBy, setFilterBy] = useState({ tab: 'inbox', txt: '' })
+    const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
     const params = useParams()
 
     useEffect(() => {
@@ -19,14 +19,16 @@ export function MailIndex() {
 
     useEffect(() => {
         const { tab } = params
-        setFilterBy(filterBy => ({ ...filterBy, tab: tab }))
+        setFilterBy(filterBy => {
+            return ({ ...filterBy, tab: tab, txt: '' })
+        })
     }, [params])
 
     function loadMails() {
         setLoadingMails(true)
         mailService.query(filterBy)
             .then(mails => {
-                if (selectedTab === Tabs.INBOX) {
+                if (selectedTab === Tabs.INBOX && filterBy.txt === '') {
                     setUnreadCount(mails.filter(mail => !mail.isRead).length);
                 }
                 setMails(mails)
@@ -61,7 +63,7 @@ export function MailIndex() {
     if (loadingMails) return <div>Loading...</div>
     return (
         <section className="mail-index">
-            <SideBar{...{ setOpenCompose, openCompose, setSelectedTab, unreadCount, onSendMail }} />
+            <SideBar {...{ setOpenCompose, openCompose, setSelectedTab, unreadCount, onSendMail }} />
             {!params.mailId && <MailList {...{ mails, onUpdateMail, onRemoveMail, filterBy, setFilterBy, onSetFilter }} />}
             {params.mailId && <Outlet />}
         </section>

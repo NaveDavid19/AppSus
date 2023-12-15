@@ -24,13 +24,13 @@ export const mailService = {
     getEmptyMail,
     getNextMailId,
     getPrevMailId,
-    // getFilterBy,
-    // setFilterBy,
-    // getDefaultFilter,
+    getFilterBy,
+    setFilterBy,
+    getDefaultFilter,
 
 }
 
-function query(filterBy = {}) {
+function query(filterBy = getDefaultFilter()) {
     return storageService.query(MAIL_KEY)
         .then(mails => {
             if (filterBy.txt) {
@@ -56,42 +56,6 @@ function query(filterBy = {}) {
             return mails
         })
 }
-// function query(selectedTab, filterBy = getDefaultFilter()) {
-//     return storageService.query(MAIL_KEY)
-//         .then(mails => {
-//             let filteredMails
-//             switch (selectedTab) {
-//                 case Tabs.INBOX:
-//                     filteredMails = mails.filter(mail => mail.to === loggedinUser.email)
-//                     filteredMails = filter(mails, filterBy, 'from')
-//                     return filteredMails
-//                 case Tabs.SENT:
-//                     filteredMails = mails.filter(mail => mail.from === loggedinUser.email)
-//                     filteredMails = filter(mails, filterBy, 'to')
-//                     return filteredMails
-//                 default:
-//                     return mails
-//             }
-//         })
-// }
-
-
-// function filter(mails, filterBy, prop) {
-//     if (filterBy[prop]) {
-//         const regex = new RegExp(filterBy[prop], 'i')
-//         mails = mails.filter(mail => regex.test(mail.title))
-//     }
-//     if (filterBy.subject) {
-//         const regex = new RegExp(filterBy.subject, 'i')
-//         mails = mails.filter(mail => regex.test(mail.subject))
-//     }
-//     if (filterBy.body) {
-//         const regex = new RegExp(filterBy.body, 'i')
-//         mails = mails.filter(mail => regex.test(mail.body))
-//     }
-
-//     return mails
-// }
 
 function get(mailId) {
     return storageService.get(MAIL_KEY, mailId)
@@ -125,19 +89,17 @@ function getEmptyMail(subject = '', body = '', to = '') {
 
 
 
-// function getFilterBy() {
-//     return { ...filterBy }
-// }
+function getFilterBy() {
+    return { ...filterBy }
+}
 
-// function setFilterBy(filterBy = {}) {
-//     if (filterBy.txt !== undefined) filterBy.txt = filterBy.txt
-//     if (filterBy.price !== undefined) filterBy.price = filterBy.price
-//     if (filterBy.publishedDate !== undefined) filterBy.publishedDate = filterBy.publishedDate
-//     return filterBy
-// }
-// function getDefaultFilter() {
-//     return { txt: '', price: '', publishedDate: '' }
-// }
+function setFilterBy(filterBy = {}) {
+    if (filterBy.txt !== undefined) filterBy.txt = filterBy.txt
+    return filterBy
+}
+function getDefaultFilter() {
+    return { txt: '' }
+}
 
 function getNextMailId(mailId) {
     return storageService.query(MAIL_KEY)
@@ -220,7 +182,7 @@ function _createMails() {
             {
                 id: utilService.makeId(),
                 subject: 'Hey!',
-                body: 'Test Test Test Test Test',
+                body: 'Hey Nave, just wanted to test and see how things are going. Let me know if you have any updates!',
                 isRead: true,
                 sentAt: 1699730000000,
                 removedAt: null,
@@ -233,12 +195,12 @@ function _createMails() {
             },
             {
                 id: utilService.makeId(),
-                subject: 'Testing!',
-                body: 'rgegergergegeg',
+                subject: 'Hey Nave!',
+                body: `Hi Nave, I hope this email finds you well. I wanted to reach out and discuss some ideas we have for the upcoming project`,
                 isRead: false,
                 sentAt: 1676757600000,
                 removedAt: null,
-                isStar: false,
+                isStar: true,
                 from: {
                     userName: 'Dima',
                     mail: 'dima@dima.com'
@@ -280,7 +242,7 @@ function _createMails() {
                 isRead: false,
                 sentAt: 1699733000000,
                 removedAt: null,
-                isStar: false,
+                isStar: true,
                 from: {
                     userName: 'Google Cloud Team',
                     mail: 'team@googlecloud.com'
@@ -308,7 +270,7 @@ function _createMails() {
                 isRead: true,
                 sentAt: 1699735000000,
                 removedAt: null,
-                isStar: false,
+                isStar: true,
                 from: {
                     userName: 'Google Access Team',
                     mail: 'accessteam@google.com'
@@ -345,6 +307,17 @@ function _createMails() {
             },
             {
                 id: utilService.makeId(),
+                subject: 'Your Google Cloud Account: Security Notice',
+                body: ` We've detected a potential security issue with your Google Cloud account. Take immediate action.`,
+                isRead: false,
+                sentAt: 1699737000000,
+                removedAt: null,
+                isStar: true,
+                from: 'user@appsus.com',
+                to: 'lior@gmail.com'
+            },
+            {
+                id: utilService.makeId(),
                 subject: 'Unauthorized Google Cloud Signup Attempt Detected',
                 body: 'We blocked an unauthorized attempt to sign up for Google Cloud using your account. Review the details.',
                 isRead: false,
@@ -373,6 +346,17 @@ function _createMails() {
             },
             {
                 id: utilService.makeId(),
+                subject: 'Alert: Google Cloud Account Activity Verification',
+                body: 'Verify recent activities on your Google Cloud account for security purposes. Take action if necessary.',
+                isRead: false,
+                sentAt: 1699739000000,
+                removedAt: null,
+                isStar: false,
+                from: 'user@appsus.com',
+                to: 'dima@gmail.com'
+            },
+            {
+                id: utilService.makeId(),
                 subject: 'Google Cloud Access Warning: Immediate Attention Required',
                 body: 'Urgent: Unusual access patterns detected on your Google Cloud account. Verify and secure your account.',
                 isRead: true,
@@ -384,6 +368,17 @@ function _createMails() {
                     mail: 'securitycenter@googlecloud.com'
                 },
                 to: 'user@appsus.com'
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Google Cloud Access Warning: Immediate Attention Required',
+                body: 'Urgent: Unusual access patterns detected on your Google Cloud account. Verify and secure your account.',
+                isRead: true,
+                sentAt: 1699740000000,
+                removedAt: null,
+                isStar: false,
+                from: 'user@appsus.com',
+                to: 'nave@gmail.com'
             }
         ]
     }
