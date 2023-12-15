@@ -10,7 +10,9 @@ export function MailFilter({ filterBy, setFilterBy }) {
 
 
     useEffect(() => {
-        debounceOnSearch.current(filterByToEdit)
+        if (filterBy.tab) {
+            debounceOnSearch.current(filterByToEdit)
+        }
     }, [filterByToEdit])
 
     function handleSubmit(ev) {
@@ -21,7 +23,7 @@ export function MailFilter({ filterBy, setFilterBy }) {
         const field = target.name
         let value = target.value
 
-        setFilterByToEdit(prevFilter => ({ ...prevFilter, [field]: value }))
+        setFilterByToEdit(prevFilter => ({ ...prevFilter, tab: filterBy.tab, [field]: value }))
     }
 
     const { txt } = filterByToEdit

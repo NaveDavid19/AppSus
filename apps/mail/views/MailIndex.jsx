@@ -1,6 +1,7 @@
 import { SideBar } from '../cmps/SideBar.jsx'
 import { MailList } from "../cmps/MailList.jsx"
 import { mailService, Tabs } from "../services/mail.service.js"
+import { MailFilter } from '../cmps/MailFilter.jsx'
 const { useParams, Outlet } = ReactRouterDOM
 const { useState, useEffect } = React
 
@@ -12,20 +13,16 @@ export function MailIndex() {
     const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
     const params = useParams()
 
-    useEffect(() => {
-        loadMails()
-    }, [])
 
     useEffect(() => {
-        if (!loadingMails) {
+        setFilterBy(prevFilterBy => ({ ...prevFilterBy, tab: params.tab, txt: '' }))
+    }, [params.tab])
+
+    useEffect(() => {
+        if (filterBy.tab) {
             loadMails()
         }
     }, [filterBy])
-
-    useEffect(() => {
-        console.log("Selected TAB is " + params.tab)
-        setFilterBy(filterBy => ({ ...filterBy, tab: params.tab, txt: '' }))
-    }, [params.tab])
 
     function loadMails() {
         setLoadingMails(true)
@@ -74,11 +71,16 @@ export function MailIndex() {
         }
     }
 
-    if (loadingMails) return <img className="loader" src="assets\img\logos\SusMail.png" />
     return (
         <section className="mail-index">
             <SideBar {...{ setOpenCompose, openCompose, unreadCount, onSendMail }} />
-            {!params.mailId && <MailList {...{ mails, onUpdateMail, onRemoveMail, filterBy, setFilterBy }} />}
+            <div>
+                <MailFilter {...{ setFilterBy, filterBy }} />
+                {!params.mailId &&
+                    loadingMails ?
+                    <img className="loader" src="assets\img\logos\SusMail.png" /> :
+                    <MailList {...{ mails, onUpdateMail, onRemoveMail }} />}
+            </div>
             {params.mailId && <Outlet />}
         </section>
     )
