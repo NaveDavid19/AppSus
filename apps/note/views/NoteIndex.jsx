@@ -4,6 +4,7 @@ const { Link } = ReactRouterDOM
 import { NoteAdd } from '../cmps/NoteAdd.jsx'
 import { NoteEdit } from '../cmps/NoteEdit.jsx'
 import { NoteList } from '../cmps/NoteList.jsx'
+import { NotePinnedList } from '../cmps/NotePinnedList.jsx'
 import { noteUtilsService } from '../services/note.utils.service.js'
 
 export function NoteIndex() {
@@ -61,6 +62,16 @@ export function NoteIndex() {
         </Link>
       </div>
       <NoteAdd addNote={addNote} />
+
+      <h2>Pinned Notes</h2>
+      <NotePinnedList
+        notes={notes}
+        changeBackgroundColor={changeBackgroundColor}
+        deleteNote={deleteNote}
+        editNote={editNote}
+        todoToggle={todoToggle}
+      />
+      <h2>Notes</h2>
       <NoteList
         notes={notes}
         changeBackgroundColor={changeBackgroundColor}

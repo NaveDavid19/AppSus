@@ -37,7 +37,7 @@ const tempNotes = [
     id: utilService.makeId(),
     createdAt: 1701810000000,
     type: 'noteTodos',
-    isPinned: false,
+    isPinned: true,
     style: {
       backgroundColor: '#fff8b8',
     },

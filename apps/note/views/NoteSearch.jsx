@@ -1,6 +1,7 @@
 import { FilterSearchParams } from '../cmps/FilterSearchParams.jsx'
 import { NoteEdit } from '../cmps/NoteEdit.jsx'
 import { NoteList } from '../cmps/NoteList.jsx'
+import { NotePinnedList } from '../cmps/NotePinnedList.jsx'
 import { noteUtilsService } from '../services/note.utils.service.js'
 const { useRef, useEffect, useState } = React
 
@@ -71,13 +72,24 @@ export function NoteSearch() {
         handleColorClick={handleColorClick}
       />
       {filteredNotes.length !== 0 ? (
-        <NoteList
-          notes={filteredNotes}
-          changeBackgroundColor={changeBackgroundColor}
-          deleteNote={deleteNote}
-          editNote={editNote}
-          todoToggle={todoToggle}
-        />
+        <React.Fragment>
+          <h2>Pinned Notes</h2>
+          <NotePinnedList
+            notes={filteredNotes}
+            changeBackgroundColor={changeBackgroundColor}
+            deleteNote={deleteNote}
+            editNote={editNote}
+            todoToggle={todoToggle}
+          />
+          <h2>Notes</h2>
+          <NoteList
+            notes={filteredNotes}
+            changeBackgroundColor={changeBackgroundColor}
+            deleteNote={deleteNote}
+            editNote={editNote}
+            todoToggle={todoToggle}
+          />
+        </React.Fragment>
       ) : (
         <h2>No notes found</h2>
       )}
