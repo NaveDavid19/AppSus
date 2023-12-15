@@ -1,12 +1,31 @@
-import { NotePreview } from "./NotePreview.jsx";
+import { NotePreview } from './NotePreview.jsx'
 
-export function NoteList({ notes , deleteNote, editNote, todoToggle,changeBackgroundColor}) {
+export function NoteList({
+  notes,
+  deleteNote,
+  editNote,
+  todoToggle,
+  changeBackgroundColor,
+}) {
+  if (!Array.isArray(notes)) {
+    // Handle the case where notes is not an array
+    return <div>Error: Notes is not an array</div>
+  }
 
   return (
     <section className="note-list-section">
       <ul className="note-list">
         {notes.map((note) => (
-          <li key={note.id}><NotePreview note={note} deleteNote={deleteNote} editNote={editNote} todoToggle={todoToggle} changeBackgroundColor={changeBackgroundColor} from="noteList"/></li>
+          <li key={note.id}>
+            <NotePreview
+              note={note}
+              deleteNote={deleteNote}
+              editNote={editNote}
+              todoToggle={todoToggle}
+              changeBackgroundColor={changeBackgroundColor}
+              from="noteList"
+            />
+          </li>
         ))}
       </ul>
     </section>

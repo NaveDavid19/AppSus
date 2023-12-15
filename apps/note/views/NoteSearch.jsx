@@ -1,4 +1,5 @@
 import { FilterSearchParams } from '../cmps/FilterSearchParams.jsx'
+import { NoteEdit } from '../cmps/NoteEdit.jsx'
 import { NoteList } from '../cmps/NoteList.jsx'
 import { noteUtilsService } from '../services/note.utils.service.js'
 const { useRef, useEffect, useState } = React
@@ -8,6 +9,7 @@ export function NoteSearch() {
   const [activeType, setActiveType] = useState(null)
   const [activeColor, setActiveColor] = useState(null)
   const [filteredNotes, setFilteredNotes] = useState([])
+  const [selectedNote, setSelectedNote] = useState(null)
 
   useEffect(() => {
     // Triggering focus on the element when the component mounts
@@ -26,7 +28,16 @@ export function NoteSearch() {
     noteUtilsService
       .setFilterBy(searchInputRef.current.value, activeType, activeColor)
       .then((notes) => {
-        setFilteredNotes(notes)
+        if (!Array.isArray(notes)) {
+          // Handle the case where notes is not an array
+          setFilteredNotes([])
+        } else {
+          setFilteredNotes(notes)
+        }
+      })
+      .catch((error) => {
+        console.error('Error fetching notes:', error)
+        setFilteredNotes([])
       })
   }
 
@@ -39,11 +50,15 @@ export function NoteSearch() {
   }
 
   function editNote(note) {
-    noteUtilsService.editNote(note, setFilteredNotes)
+    noteUtilsService.editNote(note, setSelectedNote)
   }
 
   function todoToggle(note, todo) {
     noteUtilsService.todoToggle(note, todo, setFilteredNotes)
+  }
+
+  function saveNote(note) {
+    noteUtilsService.saveNote(note, setFilteredNotes, setSelectedNote)
   }
   return (
     <section className="note-search">
@@ -65,6 +80,13 @@ export function NoteSearch() {
         />
       ) : (
         <h2>No notes found</h2>
+      )}
+      {selectedNote && (
+        <NoteEdit
+          selectedNote={selectedNote}
+          setSelectedNote={setSelectedNote}
+          saveNote={saveNote}
+        />
       )}
     </section>
   )
