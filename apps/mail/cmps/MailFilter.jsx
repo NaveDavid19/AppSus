@@ -22,14 +22,14 @@ export function MailFilter({ filterBy, onSetFilter }) {
         setFilterByToEdit(prevFilter => ({ ...prevFilter, [field]: value }))
     }
 
-
+    const { txt } = filterByToEdit
     return (
         <section className="search">
             <form onSubmit={onSetFilterBy}>
                 <label htmlFor="txt"></label>
                 <div className="search-container">
                     <button className="fa-solid fa-magnifying-glass"></button>
-                    <input className="search" placeholder="Search mail" onChange={handleChange} type="text" id="txt" name="txt" />
+                    <input value={txt} className="search" placeholder="Search mail" onChange={handleChange} type="text" id="txt" name="txt" />
                 </div>
             </form>
         </section>

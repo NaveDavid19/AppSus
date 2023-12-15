@@ -9,7 +9,8 @@ export const utilService = {
     saveToStorage,
     loadFromStorage,
     getDate,
-    animateCSS
+    animateCSS,
+    getUserName
 }
 
 function makeId(length = 6) {
@@ -85,6 +86,10 @@ function getDate(timestamp) {
     const formattedDate = `${month} ${day}`;
 
     return formattedDate;
+}
+
+function getUserName(txt) {
+    return `TO: ${txt.split('@')[0].charAt(0).toUpperCase()}${txt.split('@')[0].slice(1)}`
 }
 
 function animateCSS(el, animation, isRemoveClass = true) {
