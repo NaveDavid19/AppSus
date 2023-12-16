@@ -1,6 +1,3 @@
-
-
-
 export function MailFilterSelect({ setFilterBy }) {
 
     function handleSelect(ev) {
@@ -10,7 +7,7 @@ export function MailFilterSelect({ setFilterBy }) {
 
     return (
         <section>
-            <select onChange={handleSelect} name="filters" id="filter-select"  >
+            <select onChange={handleSelect} name="filters" id="filter-select" className="custom-select"  >
                 <option value="" hidden>Filter By:</option>
                 <option value="">None</option>
                 <option value="read">Read</option>
