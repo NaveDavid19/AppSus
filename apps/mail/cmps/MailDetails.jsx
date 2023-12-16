@@ -1,3 +1,4 @@
+import { utilService } from "../../../services/util.service.js"
 import { mailService } from "../services/mail.service.js"
 
 const { useState, useEffect } = React
@@ -10,15 +11,14 @@ export function MailDetails() {
     const [mail, setMail] = useState(null)
     const params = useParams()
     const navigate = useNavigate()
-    const [isOpen, setIsOpen] = useState(false)
-    const arrow = isOpen ? '▲' : '▼';
+
 
 
     function nextMail() {
-        mailService.getNextMailId(params.mailId).then(id => navigate(`/mail/${id} `))
+        mailService.getNextMailId(params.mailId).then(id => navigate(`/mail/details/${id} `))
     }
     function prevMail() {
-        mailService.getPrevMailId(params.mailId).then(id => navigate(`/mail/${id} `))
+        mailService.getPrevMailId(params.mailId).then(id => navigate(`/mail/details/${id} `))
     }
 
     useEffect(() => {
@@ -35,6 +35,7 @@ export function MailDetails() {
             })
     }
 
+
     function onBack() {
         navigate('/mail/inbox')
     }
@@ -42,9 +43,17 @@ export function MailDetails() {
     return (
         <section className="mail-details">
             <h2 className="mail-subject">{mail.subject}</h2>
-            <h2 className="mail-title">{mail.from.userName} <span>{mail.from.mail}</span> </h2>
+            <div className="details-img-name">
+                <div className="right-side">
+                    <img src="assets\img\logos\unnamed.webp" alt="" />
+                    <h2 className="mail-title">{mail.from.userName} <span>{mail.from.mail}</span> </h2>
+                </div>
+                <div className="left-side">
+                    <time className="mail-time">{utilService.getDate(mail.sentAt)}</time>
+
+                </div>
+            </div>
             <p className="mail-body">{mail.body}</p>
-            <time className="mail-time">{mail.sentAt}</time>
             <div className="change-mail">
                 <button onClick={nextMail}>Next Mail</button>
                 <button onClick={prevMail}>Prev Mail</button>

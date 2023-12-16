@@ -5,3 +5,29 @@
 .mail-title span::after {
     content: '>';
 }
+
+.mail-details img {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+}
+
+.details-img-name {
+    display: flex;
+    justify-content: space-between;
+}
+
+.details-img-name span {
+    font-size: 14px;
+}
+
+.right-side {
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+}
+
+.left-side {
+    padding-right: 10px;
+    font-size: 12px;
+}

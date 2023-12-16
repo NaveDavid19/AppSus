@@ -2,7 +2,7 @@ import { SideBar } from '../cmps/SideBar.jsx'
 import { MailList } from "../cmps/MailList.jsx"
 import { mailService, Tabs } from "../services/mail.service.js"
 import { MailFilter } from '../cmps/MailFilter.jsx'
-const { useNavigate, useParams, Outlet } = ReactRouterDOM
+const { useParams, Outlet, useLocation } = ReactRouterDOM
 const { useState, useEffect } = React
 
 export function MailIndex() {
@@ -12,6 +12,7 @@ export function MailIndex() {
     const [loadingMails, setLoadingMails] = useState(false)
     const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
     const params = useParams();
+    const location = useLocation()
 
     useEffect(() => {
         const tab = params.tab ? params.tab : Tabs.INBOX;
@@ -23,6 +24,18 @@ export function MailIndex() {
             loadMails()
         }
     }, [filterBy])
+
+    useEffect(() => {
+        setOpenCompose(paramsCheck())
+    }, [])
+
+    function paramsCheck() {
+        const searchParams = new URLSearchParams(location.search)
+        const subjectParam = searchParams.get('subject') || ''
+        const bodyParam = searchParams.get('body') || ''
+        if (subjectParam || bodyParam) return true
+        return false
+    }
 
     function loadMails() {
         setLoadingMails(true)

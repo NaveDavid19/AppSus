@@ -1,11 +1,13 @@
 import { Tabs } from "../services/mail.service.js"
 import { Compose } from "./Compose.jsx";
 
-
 const { Link } = ReactRouterDOM
 
 
+
 export function SideBar({ setOpenCompose, openCompose, unreadCount, onSendMail }) {
+
+
     return <nav className="side-bar">
         <div className="side-bar-list">
             <button className="side-bar-btn compose-btn" title="Compose" onClick={() => setOpenCompose(!openCompose)}><i className="fa-solid fa-pen"></i><span className="side-btn">Compose</span></button>
