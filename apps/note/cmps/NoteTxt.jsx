@@ -1,5 +1,6 @@
 const { useState } = React
 
+import { LongText } from '../../../cmps/LongText.jsx'
 import { PreviewButtons } from './PreviewButtons.jsx'
 
 export function NoteTxt({
@@ -30,16 +31,6 @@ export function NoteTxt({
     setNewNoteInfo({ ...newNoteInfo, [field]: value })
   }
 
-  function renderTextWithLineBreaks(text) {
-    // Replace newline characters (\n) with <br> HTML element
-    return text.split('\n').map((line, index) => (
-      <React.Fragment key={index}>
-        {line}
-        <br />
-      </React.Fragment>
-    ))
-  }
-
   return (
     <article
       onClick={() => {
@@ -48,7 +39,9 @@ export function NoteTxt({
       className="note-preview"
       style={note.style}>
       <h2 className='note-title'>{note.info.title}</h2>
-      <h4 className='note-txt'>{renderTextWithLineBreaks(note.info.txt)}</h4>
+      <div className="note-txt-conteiner" onClick={(ev)=>ev.stopPropagation()}>
+        <LongText txt={note.info.txt} length={200}/>
+      </div>
 
       <PreviewButtons
         note={note}

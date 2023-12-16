@@ -6,7 +6,6 @@ export function ColorButtonsAdd({ changeBackgroundColor }) {
 
   const handleButtonClick = (e, color) => {
     changeBackgroundColor(color)
-    // Additional logic if needed
   }
 
   const handlePaletteToggle = () => {

@@ -26,7 +26,7 @@ export function NoteIndex() {
   }
 
   function deleteNote(note) {
-    noteUtilsService.deleteNote(note, setNotes)
+    noteUtilsService.deleteNote(note, setNotes, setSelectedNote)
   }
 
   function editNote(note) {

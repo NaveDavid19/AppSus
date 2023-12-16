@@ -100,12 +100,6 @@ export function FilterSearchParams({
             strom
           </button>
           <button
-            style={{ backgroundColor: '#291d2e' }}
-            className={activeColor === '#291d2e' ? 'active' : ''}
-            onClick={() => handleColorClick('#291d2e')}>
-            dusk
-          </button>
-          <button
             style={{ backgroundColor: '#f6e2dd' }}
             className={activeColor === '#f6e2dd' ? 'active' : ''}
             onClick={() => handleColorClick('#f6e2dd')}>

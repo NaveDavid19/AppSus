@@ -47,7 +47,7 @@ export function NoteSearch() {
   }
 
   function deleteNote(note) {
-    noteUtilsService.deleteNote(note, setFilteredNotes)
+    noteUtilsService.deleteNote(note, setFilteredNotes, setSelectedNote)
   }
 
   function editNote(note) {
@@ -105,7 +105,7 @@ export function NoteSearch() {
           selectedNote={selectedNote}
           setSelectedNote={setSelectedNote}
           saveNote={saveNote}
-          deleteNote={deleteNote} 
+          deleteNote={deleteNote}
           pinNote={pinNote}
         />
       )}

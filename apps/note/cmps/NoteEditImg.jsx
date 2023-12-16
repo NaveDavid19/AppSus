@@ -1,11 +1,9 @@
 const { useState, useEffect } = React
 
-import { ColorButtonsAdd } from './ColorButtons.jsx'
 import { PreviewButtons } from './PreviewButtons.jsx'
 
 export function NoteEditImg({
   selectedNote,
-  setSelectedNote,
   saveNote,
   deleteNote,
   pinNote,

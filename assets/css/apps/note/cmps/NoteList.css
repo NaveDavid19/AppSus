@@ -1,7 +1,7 @@
 .note-list-section {
   margin-inline-start: -10px;
   margin-inline-end: 80px;
-  padding: 0;
+  padding-block-end: 10em;
 
   column-gap: 2.5em;
   column-width: 200px;

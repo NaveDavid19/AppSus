@@ -24,7 +24,6 @@ const colorMap = {
   sage: '#b4ddd3',
   fog: '#d4e4ed',
   strom: '#aeccdc',
-  dusk: '#291d2e',
   blossom: '#f6e2dd',
   clay: '#e9e3d4',
   halk: '#efeff1',
@@ -56,7 +55,7 @@ function addNote(note, setNotes) {
     })
 }
 
-function deleteNote(note, setNotes) {
+function deleteNote(note, setNotes, setSelectedNote) {
   const noteId = note.id
   noteService
     .remove(noteId)
@@ -158,12 +157,12 @@ function changeBackgroundColor(colorHex, note, setNotes) {
 
 function _getColorKey(colorHex) {
   // Convert the colorHex to lowercase for case-insensitive comparison
-  const lowerColorHex = colorHex.toLowerCase();
+  const lowerColorHex = colorHex.toLowerCase()
 
   // Find the key in colorMap based on the provided colorHex
   const colorKey = Object.keys(colorMap).find(
     (key) => colorMap[key].toLowerCase() === lowerColorHex
-  );
+  )
 
-  return colorKey || 'unknown'; // Return 'unknown' if no matching color is found
+  return colorKey || 'unknown' // Return 'unknown' if no matching color is found
 }
