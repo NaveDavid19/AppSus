@@ -58,7 +58,7 @@ export function MailDetails() {
                 <button onClick={nextMail}>Next Mail</button>
                 <button onClick={prevMail}>Prev Mail</button>
             </div>
-            <button onClick={onBack}>Back</button>
+            <button className="back-btn" onClick={onBack}>Back</button>
         </section>
     )
 
