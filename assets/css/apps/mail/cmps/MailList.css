@@ -30,6 +30,7 @@
  .mail-text {
      display: flex;
      align-items: center;
+     text-wrap: nowrap;
  }
 
  .mail-text p:last-child{
@@ -39,8 +40,6 @@
  .unread {
      font-weight: bold;
  }
-
-
 
  .star {
      visibility: hidden;
