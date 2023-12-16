@@ -1,5 +1,5 @@
-const { useState } = React
-
+const { useState, useEffect } = React
+const { useLocation } = ReactRouterDOM
 import { ColorButtonsAdd } from './ColorButtons.jsx'
 import { noteService } from '../services/note.service.js'
 
@@ -9,6 +9,26 @@ export function NoteAddTxt({ addNote, type }) {
     txt: '',
   })
   const [backgroundColor, setBackgroundColor] = useState('#e9e3d4')
+  const location = useLocation()
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search)
+    const titleParam = searchParams.get('title') || ''
+    const txtParam = searchParams.get('txt') || ''
+
+    setNewNoteInfo({
+      title: titleParam,
+      txt: txtParam,
+    })
+  }, []) 
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search)
+    searchParams.set('title', newNoteInfo.title)
+    searchParams.set('txt', newNoteInfo.txt)
+
+    window.history.replaceState(null, null, `#${location.pathname}?${searchParams.toString()}`)
+  }, [newNoteInfo])
 
   function onSubmitHandle(ev) {
     ev.preventDefault()
@@ -64,7 +84,9 @@ export function NoteAddTxt({ addNote, type }) {
 
         <div className="add-buttons-section">
           <section className="add-buttons">
-            <button type='submit'><i class="fa-solid fa-plus"></i></button>
+            <button type="submit">
+              <i class="fa-solid fa-plus"></i>
+            </button>
             <ColorButtonsAdd changeBackgroundColor={changeBackgroundColor} />
           </section>
         </div>

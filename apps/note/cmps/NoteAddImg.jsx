@@ -1,5 +1,5 @@
-const { useState } = React
-
+const { useState, useEffect } = React
+const { useLocation } = ReactRouterDOM
 import { noteService } from '../services/note.service.js'
 import { ColorButtonsAdd } from './ColorButtons.jsx'
 
@@ -10,6 +10,26 @@ export function NoteAddImg({ addNote, type }) {
   })
   const [backgroundColor, setBackgroundColor] = useState('#e9e3d4')
   const [fileUploaded, setFileUploaded] = useState(false)
+  const location = useLocation()
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search)
+    const titleParam = searchParams.get('title') || ''
+    const imgUrl = searchParams.get('imgUrl') || ''
+
+    setNewNoteInfo({
+      title: titleParam,
+      imgUrl: imgUrl
+    })
+  }, []) 
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search)
+    searchParams.set('title', newNoteInfo.title)
+    searchParams.set('imgUrl', newNoteInfo.imgUrl)
+
+    window.history.replaceState(null, null, `#${location.pathname}?${searchParams.toString()}`)
+  }, [newNoteInfo])
 
   function onSubmitHandle(ev) {
     ev.preventDefault()

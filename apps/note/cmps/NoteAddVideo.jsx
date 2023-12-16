@@ -1,5 +1,5 @@
-const { useState } = React
-
+const { useState, useEffect } = React
+const { useLocation } = ReactRouterDOM
 import { noteService } from '../services/note.service.js'
 import { ColorButtonsAdd } from './ColorButtons.jsx'
 
@@ -9,6 +9,26 @@ export function NoteAddVideo({ addNote, type }) {
     youtubeUrl: '', // New property for YouTube video URL
   })
   const [backgroundColor, setBackgroundColor] = useState('#e9e3d4')
+  const location = useLocation()
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search)
+    const titleParam = searchParams.get('title') || ''
+    const youtubeUrl = searchParams.get('youtubeUrl') || ''
+
+    setNewNoteInfo({
+      title: titleParam,
+      youtubeUrl: youtubeUrl
+    })
+  }, []) 
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search)
+    searchParams.set('title', newNoteInfo.title)
+    searchParams.set('youtubeUrl', newNoteInfo.youtubeUrl)
+
+    window.history.replaceState(null, null, `#${location.pathname}?${searchParams.toString()}`)
+  }, [newNoteInfo])
 
   function onSubmitHandle(ev) {
     ev.preventDefault()
