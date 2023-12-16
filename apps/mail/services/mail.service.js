@@ -34,9 +34,19 @@ export const mailService = {
 function query(filterBy = getDefaultFilter()) {
     return storageService.query(MAIL_KEY)
         .then(mails => {
+            const unreadCount = mails.filter(mail => !mail.isRead).length;
+            if (filterBy.read) {
+                mails = mails.filter(mail => mail.isRead)
+            }
+            if (filterBy.unread) {
+                mails = mails.filter(mail => !mail.isRead)
+            }
+            if (filterBy.date) {
+                mails = mails.sort((a, b) => a.sentAt - b.sentAt)
+            }
             if (filterBy.txt) {
                 const regex = new RegExp(filterBy.txt, 'i')
-                mails = mails.filter((mail) => regex.test(mail.from.userName) || regex.test(mail.subject) || regex.test(mail.body))
+                mails = mails.filter((mail) => regex.test(mail.from.userName) || regex.test(mail.to) || regex.test(mail.subject) || regex.test(mail.body))
             }
             if (filterBy.tab) {
                 switch (filterBy.tab) {
@@ -57,7 +67,7 @@ function query(filterBy = getDefaultFilter()) {
                         break
                 }
             }
-            return mails
+            return { mails, unreadCount }
         })
 }
 
