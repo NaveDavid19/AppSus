@@ -79,4 +79,5 @@ button {
 .compose-btns {
     display: grid;
     background-color: white;
+    grid-auto-flow: column;
 }

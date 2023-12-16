@@ -72,13 +72,14 @@ export function MailIndex() {
         <section className="mail-index">
             <SideBar {...{ setOpenCompose, openCompose, unreadCount, onSendMail }} />
             <div>
+                {loadingMails &&
+                    <img className="loader" src="assets\img\logos\SusMail.png" />}
                 <MailFilter {...{ setFilterBy, filterBy }} />
                 {!params.mailId &&
-                    loadingMails ?
-                    <img className="loader" src="assets\img\logos\SusMail.png" /> :
                     <MailList {...{ mails, onUpdateMail, onRemoveMail, setUnreadCount }} />}
+                {params.mailId && <Outlet />}
+
             </div>
-            {params.mailId && <Outlet />}
         </section>
     )
 }

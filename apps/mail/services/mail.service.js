@@ -208,6 +208,20 @@ function _createMails() {
             },
             {
                 id: utilService.makeId(),
+                subject: 'Google Cloud Access Warning: Immediate Attention Required',
+                body: 'Urgent: Unusual access patterns detected on your Google Cloud account. Verify and secure your account.',
+                isRead: true,
+                sentAt: 1699740000000,
+                removedAt: null,
+                isStar: false,
+                from: {
+                    userName: 'Google Cloud Security Center',
+                    mail: 'securitycenter@googlecloud.com'
+                },
+                to: 'user@appsus.com'
+            },
+            {
+                id: utilService.makeId(),
                 subject: 'Hey!',
                 body: 'Hey Nave, just wanted to test and see how things are going. Let me know if you have any updates!',
                 isRead: true,
@@ -217,20 +231,6 @@ function _createMails() {
                 from: {
                     userName: 'Lior',
                     mail: 'lior@lior.com'
-                },
-                to: 'user@appsus.com'
-            },
-            {
-                id: utilService.makeId(),
-                subject: 'Hey Nave!',
-                body: `Hi Nave, I hope this email finds you well. I wanted to reach out and discuss some ideas we have for the upcoming project`,
-                isRead: false,
-                sentAt: 1676757600000,
-                removedAt: null,
-                isStar: true,
-                from: {
-                    userName: 'Dima',
-                    mail: 'dima@dima.com'
                 },
                 to: 'user@appsus.com'
             },
@@ -384,15 +384,28 @@ function _createMails() {
             },
             {
                 id: utilService.makeId(),
-                subject: 'Google Cloud Access Warning: Immediate Attention Required',
-                body: 'Urgent: Unusual access patterns detected on your Google Cloud account. Verify and secure your account.',
-                isRead: true,
-                sentAt: 1699740000000,
+                subject: 'Important Announcement: System Maintenance Tomorrow',
+                body: 'Dear user, we will be performing scheduled maintenance on our systems tomorrow.',
+                isRead: false,
+                sentAt: 1699340000000,
+                removedAt: null,
+                isStar: true,
+                from: {
+                    userName: 'System Administrator',
+                    mail: 'admin@company.com'
+                },
+                to: 'user@appsus.com'
+            }, {
+                id: utilService.makeId(),
+                subject: 'Exclusive Offer: Limited-Time Discounts Inside!',
+                body: 'Don’t miss out on our exclusive offer! Enjoy special discounts on our latest products. Act fast, this offer is only valid for a limited time.',
+                isRead: false,
+                sentAt: 1699340000000,
                 removedAt: null,
                 isStar: false,
                 from: {
-                    userName: 'Google Cloud Security Center',
-                    mail: 'securitycenter@googlecloud.com'
+                    userName: 'Sales Team',
+                    mail: 'sales@company.com'
                 },
                 to: 'user@appsus.com'
             },
@@ -406,6 +419,20 @@ function _createMails() {
                 isStar: false,
                 from: 'user@appsus.com',
                 to: 'nave@gmail.com'
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Hey Nave!',
+                body: `Hi Nave, I hope this email finds you well. I wanted to reach out and discuss some ideas we have for the upcoming project`,
+                isRead: false,
+                sentAt: 1676757600000,
+                removedAt: null,
+                isStar: true,
+                from: {
+                    userName: 'Dima',
+                    mail: 'dima@dima.com'
+                },
+                to: 'user@appsus.com'
             }
         ]
     }

@@ -1,0 +1,21 @@
+.mail-title span::before {
+    content: '<';
+}
+
+.mail-title span::after {
+    content: '>';
+}
+
+
+.mail-details p {
+    margin: 0;
+    padding: 0;
+}
+
+
+.mail-details .title-container {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

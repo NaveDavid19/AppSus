@@ -14,6 +14,7 @@ export function MailPreview({ mail, onUpdateMail, onRemoveMail, setUnreadCount }
         mailService.save(updatedMail).then(updatedMail => {
             onUpdateMail(updatedMail);
             setUnreadCount(prevCount => isRead ? prevCount - 1 : prevCount + 1
+                // setUnreadCount(prevCount => isRead ? prevCount - 1 : prevCount + 1
             )
         })
     }
@@ -48,8 +49,9 @@ export function MailPreview({ mail, onUpdateMail, onRemoveMail, setUnreadCount }
             <div >
                 <p>{utilService.getDate(mail.sentAt)}</p>
                 <section className={mail.isRead ? "mail-btn" : "mail-btn unread-section"}>
-                    <button className="delete" title="Delete" onClick={() => handleRemoveMail(mail)}><i className="fa-solid fa-trash"></i></button>
-                    <button title={`Mark as ${mail.isRead ? 'unread' : 'read'}`} onClick={() => handleReadMail(mail, !mail.isRead)}><i className={mail.isRead ? "fa-regular fa-envelope-open" : "fa-regular fa-envelope"} ></i></button>
+                    <button className="delete fa-solid fa-trash" title="Delete" onClick={() => handleRemoveMail(mail)}></button>
+                    <button className={mail.isRead ? "fa-regular fa-envelope-open" : "fa-regular fa-envelope"} title={`Mark as ${mail.isRead ? 'unread' : 'read'}`} onClick={() => handleReadMail(mail, !mail.isRead)}></button>
+                    <button onClick={() => onSentNote(mail)} title="Save as a Note" className="fa-regular fa-note-sticky"></button>
                 </section>
             </div>
         </li >

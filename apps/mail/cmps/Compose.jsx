@@ -28,10 +28,9 @@ export function Compose({ onSendMail, setOpenCompose, openCompose }) {
             }
         }
         mailService.save(newMail).then(onSendMail)
-        setOpenCompose(!openCompose)
         showSuccessMsg('Mail successfully Sent!')
+        setOpenCompose(!openCompose)
     }
-
 
     return <section className="compose-container">
         <div className="compose">
@@ -42,7 +41,7 @@ export function Compose({ onSendMail, setOpenCompose, openCompose }) {
             <form onSubmit={handleSendMail}>
                 <input placeholder="To" required onChange={handleChange} type="text" id="to" name="to" />
                 <input placeholder="Subject" required onChange={handleChange} type="text" id="subject" name="subject" />
-                <input required onChange={handleChange} className="compose-content" type="text" id="body" name="body" />
+                <textarea required onChange={handleChange} className="compose-content" id="body" name="body" />
                 <div className="compose-btns">
                     <button >Send</button>
                 </div>

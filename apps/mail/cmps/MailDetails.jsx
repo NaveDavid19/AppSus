@@ -10,7 +10,8 @@ export function MailDetails() {
     const [mail, setMail] = useState(null)
     const params = useParams()
     const navigate = useNavigate()
-
+    const [isOpen, setIsOpen] = useState(false)
+    const arrow = isOpen ? '▲' : '▼';
 
 
     function nextMail() {
@@ -35,15 +36,15 @@ export function MailDetails() {
     }
 
     function onBack() {
-        navigate('/mail')
+        navigate('/mail/inbox')
     }
     if (!mail) return <div>Loading...</div>
     return (
         <section className="mail-details">
-            <h2>{mail.from.userName}</h2>
-            <h2>{mail.subject}</h2>
-            <p>{mail.body}</p>
-            <time>{mail.sentAt}</time>
+            <h2 className="mail-subject">{mail.subject}</h2>
+            <h2 className="mail-title">{mail.from.userName} <span>{mail.from.mail}</span> </h2>
+            <p className="mail-body">{mail.body}</p>
+            <time className="mail-time">{mail.sentAt}</time>
             <div className="change-mail">
                 <button onClick={nextMail}>Next Mail</button>
                 <button onClick={prevMail}>Prev Mail</button>
