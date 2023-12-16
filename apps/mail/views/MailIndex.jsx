@@ -88,9 +88,8 @@ export function MailIndex() {
                 {loadingMails &&
                     <img className="loader" src="assets\img\logos\SusMail.png" />}
                 <MailFilter {...{ setFilterBy, filterBy }} />
-                {!params.mailId &&
-                    <MailList {...{ mails, onUpdateMail, onRemoveMail, setUnreadCount }} />}
-                {params.mailId && <Outlet />}
+                {!params.mailId ?
+                    <MailList {...{ mails, onUpdateMail, onRemoveMail, setUnreadCount }} /> : <Outlet />}
 
             </div>
         </section>
