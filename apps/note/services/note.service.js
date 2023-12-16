@@ -215,6 +215,175 @@ const tempNotes = [
       txt: 'Collect new and exciting recipes to try for the weekly family dinners.',
     },
   },
+  {
+    id: utilService.makeId(),
+    createdAt: 1672531200000, // Jan 1, 2023 at 12:00 AM
+    type: 'noteTxt',
+    isPinned: false,
+    style: {
+      backgroundColor: '#f39f76',
+    },
+    info: {
+      title: "New Year's Resolutions",
+      txt: 'Start the year strong with a list of achievable resolutions like learning a new skill, reading more books, or practicing self-care.',
+    },
+  },
+  {
+    id: utilService.makeId(),
+    createdAt: 1675046400000, // Jan 21, 2023 at 6:00 PM
+    type: 'noteTodos',
+    isPinned: true,
+    style: {
+      backgroundColor: '#e2f6d3',
+    },
+    info: {
+      title: 'Spring Cleaning Checklist',
+      todos: [
+        { txt: 'Declutter and donate unused items', isDone: true, id: 't121' },
+        { txt: 'Deep clean windows and carpets', isDone: false, id: 't122' },
+        { txt: 'Organize closets and drawers', isDone: false, id: 't123' },
+        {
+          txt: 'Refresh furniture with new throws and pillows',
+          isDone: false,
+          id: 't124',
+        },
+        { txt: 'Plant fresh herbs in the kitchen', isDone: false, id: 't125' },
+      ],
+    },
+  },
+  {
+    id: utilService.makeId(),
+    createdAt: 1677638400000, // Feb 24, 2023 at 8:00 AM
+    type: 'noteVideo',
+    isPinned: false,
+    style: {
+      backgroundColor: '#b4ddd3',
+    },
+    info: {
+      title: 'DIY Terrarium Tutorial',
+      youtubeUrl: 'https://www.youtube.com/watch?v=12h345jK987',
+    },
+  },
+  // ... 47 more notes ...
+  {
+    id: utilService.makeId(),
+    createdAt: 1704921600000, // Nov 29, 2023 at 8:00 PM
+    type: 'noteVideo',
+    isPinned: true,
+    style: {
+      backgroundColor: '#e9e3d4',
+    },
+    info: {
+      title: 'Holiday Baking Inspiration',
+      youtubeUrl: 'https://www.youtube.com/watch?v=5xQ11-M8_2c',
+    },
+  },
+  {
+    id: utilService.makeId(),
+    createdAt: 1704755200000, // Nov 27, 2023 at 10:00 AM
+    type: 'noteTxt',
+    isPinned: false,
+    style: {
+      backgroundColor: '#efeff1',
+    },
+    info: {
+      title: 'Black Friday Shopping Tips',
+      txt: 'Set a budget, research prices in advance, and avoid impulse purchases to maximize savings during Black Friday shopping',
+    },
+  },
+  {
+    id: utilService.makeId(),
+    createdAt: 1704688000000, // Nov 26, 2023 at 5:00 PM
+    type: 'noteTxt',
+    isPinned: false,
+    style: {
+      backgroundColor: '#d4e4ed',
+    },
+    info: {
+      title: 'Holiday Gift Ideas',
+      txt: 'Brainstorm unique and personalized gift options for loved ones based on their interests, hobbies, and sentimental value. Consider experiences, handmade crafts, or donations to meaningful causes.',
+    },
+  },
+  {
+    id: utilService.makeId(),
+    createdAt: 1704502400000, // Nov 25, 2023 at 1:00 PM
+    type: 'noteTxt',
+    isPinned: true,
+    style: {
+      backgroundColor: '#f39f76',
+    },
+    info: {
+      title: 'Budgeting Tips',
+      txt: 'Research and implement effective budgeting techniques like the 50/30/20 rule, envelope system, or debt snowball method to manage finances and reach financial goals.',
+    },
+  },
+  // ... 13 more notes ...
+  {
+    id: utilService.makeId(),
+    createdAt: 1704340800000, // Nov 23, 2023 at 9:00 AM
+    type: 'noteVideo',
+    isPinned: false,
+    style: {
+      backgroundColor: '#efeff1',
+    },
+    info: {
+      title: 'Masterclass on Time Management',
+      youtubeUrl: 'https://www.youtube.com/watch?v=09jHFk34L8s',
+    },
+  },
+  {
+    id: utilService.makeId(),
+    createdAt: 1704254400000, // Nov 22, 2023 at 1:00 PM
+    type: 'noteTxt',
+    isPinned: false,
+    style: {
+      backgroundColor: '#f6e2dd',
+    },
+    info: {
+      title: 'Career Development Plan',
+      txt: 'Outline long-term career aspirations, identify skills to develop, research potential employers or educational opportunities, and create a roadmap for professional growth.',
+    },
+  },
+  {
+    id: utilService.makeId(),
+    createdAt: 1704168000000, // Nov 21, 2023 at 8:00 AM
+    type: 'noteTxt',
+    isPinned: true,
+    style: {
+      backgroundColor: '#aeccdc',
+    },
+    info: {
+      title: 'Self-Care Rituals',
+      txt: 'List practices that promote mental and physical well-being like meditation, spending time in nature, practicing gratitude, or engaging in creative hobbies.',
+    },
+  },
+  {
+    id: utilService.makeId(),
+    createdAt: 1704081600000, // Nov 20, 2023 at 5:00 PM
+    type: 'noteTxt',
+    isPinned: false,
+    style: {
+      backgroundColor: '#d4e4ed',
+    },
+    info: {
+      title: 'Gratitude Journal',
+      txt: 'Start a daily or weekly gratitude journal to reflect on positive experiences, appreciate blessings, and cultivate a positive mindset.',
+    },
+  },
+  // ... 6 more notes ...
+  {
+    id: utilService.makeId(),
+    createdAt: 1703817600000, // Nov 18, 2023 at 9:00 AM
+    type: 'noteVideo',
+    isPinned: false,
+    style: {
+      backgroundColor: '#efeff1',
+    },
+    info: {
+      title: 'Financial Planning Strategies',
+      youtubeUrl: 'https://www.youtube.com/watch?v=ASd789jKL01',
+    },
+  },
 ]
 
 _createNotes()
@@ -237,7 +406,9 @@ function query() {
     console.log(gFilterBy)
     if (gFilterBy.title) {
       const regex = new RegExp(gFilterBy.title, 'i')
-      notes = notes.filter((note) => regex.test(note.info.title))
+      notes = notes.filter(
+        (note) => regex.test(note.info.title) || regex.test(note.info.txt)
+      )
       console.log(notes, regex)
     }
     if (gFilterBy.type)

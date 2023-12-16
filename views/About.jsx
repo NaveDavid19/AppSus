@@ -1,3 +1,5 @@
+import { utilService } from '../services/util.service.js'
+
 export function About() {
   return (
     <div className="about-container">
@@ -12,10 +14,13 @@ export function About() {
       </p>
       <div className="developer-section">
         <div className="developer">
-          <img src="/path/to/dev1.jpg" alt="Developer 1" />
+          <img src="assets/img/devs/nave.jpg" alt="Nave" />
           <p>Nave David</p>
           <div className="social-links">
             <a
+              onMouseEnter={(ev) =>
+                utilService.animateCSS(ev.target, 'heartBeat')
+              }
               href="https://github.com/NaveDavid19"
               target="_blank"
               rel="noopener noreferrer">
@@ -24,10 +29,13 @@ export function About() {
           </div>
         </div>
         <div className="developer">
-          <img src="/path/to/dev2.jpg" alt="Developer 2" />
+          <img src="assets/img/devs/dima.jpg" alt="Dima" />
           <p>Dima Revelson</p>
           <div className="social-links">
             <a
+              onMouseEnter={(ev) =>
+                utilService.animateCSS(ev.target, 'heartBeat')
+              }
               href="https://github.com/DimRev"
               target="_blank"
               rel="noopener noreferrer">
