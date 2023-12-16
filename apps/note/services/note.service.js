@@ -37,7 +37,7 @@ const tempNotes = [
     id: utilService.makeId(),
     createdAt: 1701500000000,
     type: 'noteTodos',
-    isPinned: false,
+    isPinned: true,
     style: {
       backgroundColor: '#b4ddd3',
     },
@@ -69,7 +69,7 @@ const tempNotes = [
     id: utilService.makeId(),
     createdAt: 1701300000000,
     type: 'noteTxt',
-    isPinned: false,
+    isPinned: true,
     style: {
       backgroundColor: '#d4e4ed',
     },
@@ -104,7 +104,7 @@ const tempNotes = [
     id: utilService.makeId(),
     createdAt: 1701200000000,
     type: 'noteImg',
-    isPinned: true,
+    isPinned: false,
     style: {
       backgroundColor: '#f6e2dd',
     },
@@ -261,7 +261,7 @@ const tempNotes = [
     },
     info: {
       title: 'DIY Terrarium Tutorial',
-      youtubeUrl: 'https://www.youtube.com/watch?v=12h345jK987',
+      youtubeUrl: 'https://www.youtube.com/watch?v=OwoZtv6u9p4',
     },
   },
   // ... 47 more notes ...
@@ -275,7 +275,7 @@ const tempNotes = [
     },
     info: {
       title: 'Holiday Baking Inspiration',
-      youtubeUrl: 'https://www.youtube.com/watch?v=5xQ11-M8_2c',
+      youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
     },
   },
   {
@@ -328,7 +328,7 @@ const tempNotes = [
     },
     info: {
       title: 'Masterclass on Time Management',
-      youtubeUrl: 'https://www.youtube.com/watch?v=09jHFk34L8s',
+      youtubeUrl: 'https://www.youtube.com/watch?v=OwoZtv6u9p4',
     },
   },
   {
@@ -381,7 +381,7 @@ const tempNotes = [
     },
     info: {
       title: 'Financial Planning Strategies',
-      youtubeUrl: 'https://www.youtube.com/watch?v=ASd789jKL01',
+      youtubeUrl: 'https://www.youtube.com/watch?v=CYuujJvgmns',
     },
   },
 ]
