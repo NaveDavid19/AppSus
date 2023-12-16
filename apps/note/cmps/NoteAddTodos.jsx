@@ -1,4 +1,5 @@
-const { useState } = React
+const { useState, useEffect } = React
+const { useLocation } = ReactRouterDOM
 
 import { utilService } from '../../../services/util.service.js'
 import { noteService } from '../services/note.service.js'
@@ -14,6 +15,21 @@ export function NoteAddTodos({ addNote, type }) {
   ])
   const [title, setTitle] = useState('')
   const [backgroundColor, setBackgroundColor] = useState('#e9e3d4')
+  const location = useLocation()
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search)
+    const titleParam = searchParams.get('title') || ''
+
+    setTitle(titleParam)
+  }, []) 
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search)
+    searchParams.set('title', title)
+
+    window.history.replaceState(null, null, `#${location.pathname}?${searchParams.toString()}`)
+  }, [title])
 
   function onChangeTitleHandle(ev) {
     const value = ev.target.value

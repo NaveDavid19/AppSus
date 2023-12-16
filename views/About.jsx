@@ -16,22 +16,10 @@ export function About() {
           <p>Nave David</p>
           <div className="social-links">
             <a
-              href="https://github.com/johndoe"
+              href="https://github.com/NaveDavid19"
               target="_blank"
               rel="noopener noreferrer">
               <i class="fa-brands fa-github"></i>
-            </a>
-            <a
-              href="https://linkedin.com/in/johndoe"
-              target="_blank"
-              rel="noopener noreferrer">
-              <i class="fa-brands fa-linkedin"></i>
-            </a>
-            <a
-              href="https://twitter.com/johndoe"
-              target="_blank"
-              rel="noopener noreferrer">
-              <i class="fa-brands fa-x-twitter"></i>
             </a>
           </div>
         </div>
@@ -40,22 +28,10 @@ export function About() {
           <p>Dima Revelson</p>
           <div className="social-links">
             <a
-              href="https://github.com/janesmith"
+              href="https://github.com/DimRev"
               target="_blank"
               rel="noopener noreferrer">
               <i class="fa-brands fa-github"></i>
-            </a>
-            <a
-              href="https://linkedin.com/in/janesmith"
-              target="_blank"
-              rel="noopener noreferrer">
-              <i class="fa-brands fa-linkedin"></i>
-            </a>
-            <a
-              href="https://twitter.com/janesmith"
-              target="_blank"
-              rel="noopener noreferrer">
-              <i class="fa-brands fa-x-twitter"></i>
             </a>
           </div>
         </div>
