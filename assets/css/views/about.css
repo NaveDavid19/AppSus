@@ -69,6 +69,7 @@ img.loader {
 }
 
 .home-container img {
+  cursor: pointer;
   position: absolute;
     background-color: #00000022;
     box-shadow:

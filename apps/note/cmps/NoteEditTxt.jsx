@@ -1,6 +1,5 @@
 const { useState, useEffect } = React
 
-import { ColorButtonsAdd } from './ColorButtons.jsx'
 import { PreviewButtons } from './PreviewButtons.jsx'
 
 export function NoteEditTxt({
@@ -76,13 +75,16 @@ export function NoteEditTxt({
           id="txt"
         />
         <div className="add-buttons-section">
-          <section className="add-buttons">
+          <section
+            className="add-buttons"
+            onClick={(ev) => ev.stopPropagation()}>
             <button type="submit">
               <i class="fa-solid fa-plus"></i>
             </button>
             <PreviewButtons
               note={currNote}
               deleteNote={deleteNote}
+              setSelectedNote={setSelectedNote}
               changeBackgroundColor={changeBackgroundColor}
               pinNote={pinNote}
             />

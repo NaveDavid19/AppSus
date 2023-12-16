@@ -5,7 +5,6 @@ export function NoteVideo({
   changeBackgroundColor,
   deleteNote,
   editNote,
-  from,
   pinNote,
 }) {
   function getYouTubeVideoId(url) {

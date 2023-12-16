@@ -1,12 +1,10 @@
 const { useState, useEffect } = React
 
-import { ColorButtonsAdd } from './ColorButtons.jsx'
 import { utilService } from '../../../services/util.service.js'
 import { PreviewButtons } from './PreviewButtons.jsx'
 
 export function NoteEditTodos({
   selectedNote,
-  setSelectedNote,
   saveNote,
   deleteNote,
   pinNote,
