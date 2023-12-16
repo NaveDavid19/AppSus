@@ -60,12 +60,14 @@ export function AppHeader() {
 }
 
 function getImageName(pathname) {
+  if (pathname.includes('mail/details')) pathname = 'mail/details'
   switch (pathname) {
     case '/mail':
     case '/mail/inbox':
     case '/mail/star':
     case '/mail/sent':
     case '/mail/trash':
+    case 'mail/details':
       return 'SusMail'
     case '/note':
     case '/note/search':
