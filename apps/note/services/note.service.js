@@ -71,11 +71,33 @@ const tempNotes = [
     type: 'noteTxt',
     isPinned: false,
     style: {
-      backgroundColor: '#291d2e',
+      backgroundColor: '#d4e4ed',
     },
     info: {
       title: 'Book Recommendations',
-      txt: 'Compile a list of must-read books suggested by friends and colleagues.',
+      txt: `Building a curated list of must-read books based on recommendations from friends and colleagues offers a diverse range of perspectives and genres. Here are some highly acclaimed works that have garnered praise from various sources:
+
+      "The Alchemist" by Paulo Coelho - A philosophical novel exploring the journey of self-discovery and destiny.
+      
+      "To Kill a Mockingbird" by Harper Lee - A classic tackling issues of racial injustice and moral growth in the American South.
+      
+      "The Great Gatsby" by F. Scott Fitzgerald - A timeless tale of love, wealth, and the American Dream.
+      
+      "Sapiens: A Brief History of Humankind" by Yuval Noah Harari - A thought-provoking exploration of human history and evolution.
+      
+      "The Power of Habit" by Charles Duhigg - An insightful look into the science of habit formation and how it influences our lives.
+      
+      "Educated" by Tara Westover - A memoir depicting the author's journey from a survivalist family to earning a PhD despite lacking formal education.
+      
+      "The Night Circus" by Erin Morgenstern - A fantastical novel set in a mysterious circus with a captivating love story.
+      
+      "The Hitchhiker's Guide to the Galaxy" by Douglas Adams - A humorous sci-fi classic that follows the misadventures of an unwitting space traveler.
+      
+      "The Kite Runner" by Khaled Hosseini - A powerful novel exploring friendship, betrayal, and redemption against the backdrop of Afghanistan's tumultuous history.
+      
+      "The Girl on the Train" by Paula Hawkins - A gripping psychological thriller with twists and turns that keep readers on the edge of their seats.
+      
+      This compilation showcases the eclectic tastes and preferences of those whose recommendations contributed to this list. From fiction to non-fiction, classic to contemporary, these books promise to offer enriching and captivating reading experiences. Whether seeking profound insights or thrilling escapades, there's something for every avid reader on this diverse list.`,
     },
   },
   {
@@ -173,7 +195,7 @@ const tempNotes = [
     type: 'noteVideo',
     isPinned: true,
     style: {
-      backgroundColor: '#291d2e',
+      backgroundColor: '#d4e4ed',
     },
     info: {
       title: 'TED Talk: The Power of Positivity',

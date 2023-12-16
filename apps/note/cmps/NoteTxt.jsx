@@ -39,10 +39,9 @@ export function NoteTxt({
       className="note-preview"
       style={note.style}>
       <h2 className='note-title'>{note.info.title}</h2>
-      <div className="note-txt-conteainer" onClick={(ev)=>ev.stopPropagation()}>
-        <LongText  txt={note.info.txt} length={200}/>
+      <div className="note-txt-conteiner" onClick={(ev)=>ev.stopPropagation()}>
+        <LongText txt={note.info.txt} length={200}/>
       </div>
-      {/* <h4 className='note-txt'>{renderTextWithLineBreaks(note.info.txt)}</h4> */}
 
       <PreviewButtons
         note={note}

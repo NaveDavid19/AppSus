@@ -7,7 +7,7 @@
   padding: 1rem 1rem 4rem 1rem;
   box-shadow: 1px 1px 3px 2px rgba(0, 0, 0, 0.2);
   min-width: 200px;
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease, height 3s ease;
 }
 
 .note-preview:hover {
@@ -82,7 +82,7 @@
 }
 
 .note-preview .note-title,
-.note-preview .note-txt,
+.note-preview .note-txt-conteiner h4,
 .note-preview .note-todo {
   text-align: start;
   margin-block-end: 1em;
@@ -96,8 +96,26 @@
   font-weight: 600;
 }
 
-.note-preview .note-txt {
+.note-preview .note-txt-conteiner h4 {
   margin-inline-start: 0;
+}
+
+.note-preview .note-txt-conteiner button {
+  margin-block-start: 1.6em;
+  width: 100px;
+  font-weight: 600;
+  border: 1px solid #000;
+  border-radius: 1000px;
+  background-color: #ffffff77;
+  box-shadow: inset 0px 0px 1px 2px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.3s ease, box-shadow 0.1s ease;
+}
+
+.note-preview .note-txt-conteiner button:hover {
+  background-color: #ffffffdd;
+  font-weight: 700;
+  box-shadow: inset 0px 0px 1px 2px rgba(0, 0, 0, 0.5),
+    0px 0px 5px 3px rgba(0, 0, 0, 0.2);
 }
 
 .note-preview span.done {

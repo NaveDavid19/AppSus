@@ -24,7 +24,6 @@ const colorMap = {
   sage: '#b4ddd3',
   fog: '#d4e4ed',
   strom: '#aeccdc',
-  dusk: '#291d2e',
   blossom: '#f6e2dd',
   clay: '#e9e3d4',
   halk: '#efeff1',
