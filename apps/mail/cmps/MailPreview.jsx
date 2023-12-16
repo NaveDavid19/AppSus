@@ -2,7 +2,7 @@ import { utilService } from "../../../services/util.service.js";
 import { mailService, loggedinUser } from "../services/mail.service.js";
 const { Link } = ReactRouterDOM
 
-export function MailPreview({ mail, onUpdateMail, onRemoveMail }) {
+export function MailPreview({ mail, onUpdateMail, onRemoveMail, setUnreadCount }) {
     const readClassName = mail.isRead ? "" : "unread";
     const displayedUserName = (mail.from === loggedinUser.email) ? utilService.getUserName(mail.to) : mail.from.userName
 
@@ -11,7 +11,11 @@ export function MailPreview({ mail, onUpdateMail, onRemoveMail }) {
             ...mail,
             isRead: isRead
         }
-        mailService.save(updatedMail).then(onUpdateMail)
+        mailService.save(updatedMail).then(updatedMail => {
+            onUpdateMail(updatedMail);
+            setUnreadCount(prevCount => isRead ? prevCount - 1 : prevCount + 1
+            )
+        })
     }
 
 

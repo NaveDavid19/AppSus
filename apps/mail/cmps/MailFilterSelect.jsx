@@ -1,14 +1,18 @@
 
 
 
-export function MailFilterSelect() {
+export function MailFilterSelect({ setFilterBy }) {
 
-
+    function handleSelect(ev) {
+        const selectedFilter = ev.target.value
+        setFilterBy((prevFilter) => ({ tab: prevFilter.tab, txt: prevFilter.txt, [selectedFilter]: true }))
+    }
 
     return (
         <section>
-            <select name="filters" id="filter-select" >
-                <option value="">Filter By:</option>
+            <select onChange={handleSelect} name="filters" id="filter-select"  >
+                <option value="" hidden>Filter By:</option>
+                <option value="">None</option>
                 <option value="read">Read</option>
                 <option value="unread">Unread</option>
                 <option value="date">Date</option>

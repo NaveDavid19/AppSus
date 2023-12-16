@@ -2,7 +2,7 @@ import { SideBar } from '../cmps/SideBar.jsx'
 import { MailList } from "../cmps/MailList.jsx"
 import { mailService, Tabs } from "../services/mail.service.js"
 import { MailFilter } from '../cmps/MailFilter.jsx'
-const { useParams, Outlet } = ReactRouterDOM
+const { useNavigate, useParams, Outlet } = ReactRouterDOM
 const { useState, useEffect } = React
 
 export function MailIndex() {
@@ -11,11 +11,11 @@ export function MailIndex() {
     const [openCompose, setOpenCompose] = useState(false)
     const [loadingMails, setLoadingMails] = useState(false)
     const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
-    const params = useParams()
-
+    const params = useParams();
 
     useEffect(() => {
-        setFilterBy(prevFilterBy => ({ ...prevFilterBy, tab: params.tab, txt: '' }))
+        const tab = params.tab ? params.tab : Tabs.INBOX;
+        setFilterBy(prevFilterBy => ({ ...prevFilterBy, tab, txt: '' }))
     }, [params.tab])
 
     useEffect(() => {
@@ -27,10 +27,8 @@ export function MailIndex() {
     function loadMails() {
         setLoadingMails(true)
         mailService.query(filterBy)
-            .then(mails => {
-                if (params.tab === Tabs.INBOX && mailService.areObjectsEqual(mailService.getDefaultFilter(), filterBy)) {
-                    setUnreadCount(mails.filter(mail => !mail.isRead).length);
-                }
+            .then(({ mails, unreadCount }) => {
+                setUnreadCount(unreadCount);
                 setMails(mails)
                 setLoadingMails(false)
             })
@@ -40,7 +38,6 @@ export function MailIndex() {
     function onUpdateMail(updatedMail) {
         const updatedMails = mails.map(mail => (mail.id === updatedMail.id ? updatedMail : mail))
         setMails(updatedMails);
-        setUnreadCount(updatedMails.filter(mail => !mail.isRead).length);
     }
 
 
@@ -79,7 +76,7 @@ export function MailIndex() {
                 {!params.mailId &&
                     loadingMails ?
                     <img className="loader" src="assets\img\logos\SusMail.png" /> :
-                    <MailList {...{ mails, onUpdateMail, onRemoveMail }} />}
+                    <MailList {...{ mails, onUpdateMail, onRemoveMail, setUnreadCount }} />}
             </div>
             {params.mailId && <Outlet />}
         </section>
