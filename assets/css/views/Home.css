@@ -1,6 +1,6 @@
 /* home */
 
-img.loader {
+/* img.loader {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -27,14 +27,29 @@ img.loader {
   gap: 4em;
 }
 
+.home-container .app-links{
+  display: flex;
+  gap: 10em;
+}
+
 .home-container img {
-  width: 50px;
-  height: 50px;
-  box-shadow:
-    inset 5px 1px 10px 5px rgba(0, 0, 0, 0.7),
-    0 0 5px 2px rgba(0, 0, 0, 0.2);
-  border-radius: 50%;
-  padding: 0.2rem;
+  position: absolute;
+    top: .3rem;
+    left: 1.5rem;
+    background-color: #00000022;
+    box-shadow:
+        inset 5px 1px 10px 5px rgba(0, 0, 0, .7),
+        0 0 5px 2px rgba(0, 0, 0, .2);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    padding: .2rem;
+}
+
+.img-container {
+  position: relative;
+  width: 40px;
+  height: 40px;
 }
 
 
@@ -46,4 +61,4 @@ img.loader {
     opacity: 1;
     transform: scale(5, 5);
   }
-}
+} */

@@ -1,45 +1,41 @@
 header {
-
-    background: #f6f8fc;
-    border-bottom: 2px solid white;
+  background: #f6f8fc;
+  box-shadow: inset 0px 1px 6px rgba(0, 0, 0, 0.8) !important;
 }
 
 .app-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
 }
 
-
-
 .app-header img {
-    position: absolute;
-    top: .3rem;
-    left: 1.5rem;
-    background-color: #00000022;
-    box-shadow:
-        inset 5px 1px 10px 5px rgba(0, 0, 0, .7),
-        0 0 5px 2px rgba(0, 0, 0, .2);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    padding: .2rem;
+  position: absolute;
+  top: 0.3rem;
+  left: 1.5rem;
+  background-color: #00000022;
+  box-shadow: inset 5px 1px 10px 5px rgba(0, 0, 0, 0.7),
+    0 0 5px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  padding: 0.2rem;
 }
 
 .app-header nav a:last-of-type {
-    margin-inline-end: 1.5rem;
+  margin-inline-end: 1.5rem;
 }
 
 .app-header nav a {
-    margin: .5em;
+  margin: 0.5em;
 }
 
 .app-header nav a:active {
-    color: purple;
+  color: purple;
 }
 
 .app-header nav a.active {
-    color: darkblue;
-    font-weight: bold;
-    text-decoration: overline;
+  color: darkblue;
+  font-weight: bold;
+  text-decoration: overline;
 }
