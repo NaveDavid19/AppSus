@@ -1,10 +1,11 @@
 import { utilService } from "../../../services/util.service.js";
 import { mailService, loggedinUser } from "../services/mail.service.js";
-const { Link } = ReactRouterDOM
+const { Link, useNavigate } = ReactRouterDOM
 
 export function MailPreview({ mail, onUpdateMail, onRemoveMail, setUnreadCount }) {
     const readClassName = mail.isRead ? "" : "unread";
     const displayedUserName = (mail.from === loggedinUser.email) ? utilService.getUserName(mail.to) : mail.from.userName
+    const navigate = useNavigate()
 
     function handleReadMail(mail, isRead) {
         const updatedMail = {
@@ -14,7 +15,6 @@ export function MailPreview({ mail, onUpdateMail, onRemoveMail, setUnreadCount }
         mailService.save(updatedMail).then(updatedMail => {
             onUpdateMail(updatedMail);
             setUnreadCount(prevCount => isRead ? prevCount - 1 : prevCount + 1
-                // setUnreadCount(prevCount => isRead ? prevCount - 1 : prevCount + 1
             )
         })
     }
@@ -31,6 +31,10 @@ export function MailPreview({ mail, onUpdateMail, onRemoveMail, setUnreadCount }
 
     function handleRemoveMail(mail) {
         onRemoveMail(mail)
+    }
+
+    function onSentNote(mail) {
+        navigate(`/note?title=${mail.subject}&txt=${mail.from.userName} <${mail.from.mail}> %0A${mail.body}`)
     }
 
     return (
