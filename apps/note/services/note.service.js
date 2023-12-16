@@ -142,7 +142,7 @@ const tempNotes = [
     },
     info: {
       title: 'Cooking Tutorial',
-      youtubeUrl: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
+      youtubeUrl: 'https://www.youtube.com/watch?v=FkQuawiGWUw',
     },
   },
   {
@@ -275,7 +275,7 @@ const tempNotes = [
     },
     info: {
       title: 'Holiday Baking Inspiration',
-      youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+      youtubeUrl: 'https://www.youtube.com/watch?v=VMsS-DpdCuI',
     },
   },
   {
