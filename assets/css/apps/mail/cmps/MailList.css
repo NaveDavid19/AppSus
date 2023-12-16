@@ -32,6 +32,10 @@
      align-items: center;
  }
 
+ .mail-text p:last-child{
+    margin-inline-start: .4em;
+ }
+
  .unread {
      font-weight: bold;
  }

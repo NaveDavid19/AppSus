@@ -1,5 +1,6 @@
 import { utilService } from "../../../services/util.service.js";
 import { mailService, loggedinUser } from "../services/mail.service.js";
+import { LongTextMail } from "./LongTextMail.jsx";
 const { Link, useNavigate } = ReactRouterDOM
 
 export function MailPreview({ mail, onUpdateMail, onRemoveMail, setUnreadCount }) {
@@ -46,8 +47,8 @@ export function MailPreview({ mail, onUpdateMail, onRemoveMail, setUnreadCount }
             </Link >
             <Link onClick={() => handleReadMail(mail, true)} to={`/mail/details/${mail.id}`}>
                 <article className="mail-text">
-                    <p className={readClassName}>{mail.subject} - </p>
-                    <p>{mail.body}</p>
+                    <p className={readClassName}> <LongTextMail txt={mail.subject} length={50}/> </p>
+                    <p> <LongTextMail txt={mail.body} length={50}/> </p>
                 </article>
             </Link>
             <div >
