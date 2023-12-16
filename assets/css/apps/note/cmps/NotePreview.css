@@ -135,7 +135,7 @@
 
 .note-preview .color-palette {
   z-index: 10;
-  translate: -10% -5%;
+  translate: -25% -150%;
 }
 
 .note-preview .color-palette button {

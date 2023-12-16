@@ -2,13 +2,16 @@
   position: fixed;
   background-color: #00000066;
   width: 100vw;
+
   height: 100dvh;
 }
 
 .note-edit{
   translate: 10% 10%;
-  width: 80vw;
+  min-height: 500px;
   height: 60dvh;
+  width: 80vw;
+  min-width: 400px;
 }
 
 /* Above is the edit style */
@@ -91,12 +94,33 @@
 
 .note-edit .add-buttons {
   width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-content: start;
-  justify-items: start;
+  display: flex;
+  gap: 2em;
 } 
 
+.note-edit .add-buttons button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 1em;
+  border-radius: 50%;
+  font-size: 1.5em;
+  background-color: transparent;
+  border: none;
+  transition: background-color .3s ease;
+}
+
+.note-edit .add-buttons button:hover {
+  background-color: #00000028;
+}
+
+.note-edit .preview-btns {
+  display: flex;
+  gap: 2em;
+}
+
 .note-edit .color-palette {
-  translate: -50% 5%;
+  translate: -50% 0%;
 }
