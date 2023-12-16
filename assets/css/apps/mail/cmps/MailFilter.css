@@ -36,3 +36,18 @@
 .search-container {
     position: relative;
 }
+
+
+.custom-select {
+    width: 100px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+}
+
+.custom-select option {
+    background-color: #fff;
+    color: #333;
+}
