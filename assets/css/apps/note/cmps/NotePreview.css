@@ -33,6 +33,7 @@
 
 .note-preview .preview-btns {
   display: flex;
+  width: 100%;
   opacity: 0;
   animation: fadeIn 0.3s ease;
 }
@@ -140,4 +141,10 @@
 
 .note-preview .color-palette button {
   box-shadow: inset 0px 0px 3px 2px rgba(0, 0, 0, 0.2);
+}
+
+.note-preview .preview-btns h4{
+  margin-inline-start: auto;
+  margin-inline-end: 1em;
+  align-self: center;
 }

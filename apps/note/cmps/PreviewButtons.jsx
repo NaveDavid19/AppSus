@@ -1,4 +1,5 @@
 import { ColorButtonsAdd } from './ColorButtons.jsx'
+import { utilService } from '../../../services/util.service.js'
 export function PreviewButtons({
   note,
   deleteNote,
@@ -26,8 +27,8 @@ export function PreviewButtons({
             note.isPinned ? 'pinned' : 'unpinned'
           }`}></i>
       </button>
-
       <ColorButtonsAdd changeBackgroundColor={onChangeBackgroundColor} />
+      <h4>{utilService.getDate(note.createdAt)}</h4>
     </section>
   )
 }
