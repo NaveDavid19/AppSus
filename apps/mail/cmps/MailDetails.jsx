@@ -1,5 +1,7 @@
 import { utilService } from "../../../services/util.service.js"
-import { mailService } from "../services/mail.service.js"
+import { mailService, loggedinUser } from "../services/mail.service.js"
+// import { mailService, loggedinUser } from "../services/mail.service.js";
+
 
 const { useState, useEffect } = React
 const { useParams, useNavigate } = ReactRouterDOM
@@ -46,7 +48,7 @@ export function MailDetails() {
             <div className="details-img-name">
                 <div className="right-side">
                     <img src="assets\img\logos\unnamed.webp" alt="" />
-                    <h2 className="mail-title">{mail.from.userName} <span>{mail.from.mail}</span> </h2>
+                    <h2 className="mail-title">{mail.from.userName} <span>{(mail.from === loggedinUser.email) ? mail.to : mail.from.mail}</span> </h2>
                 </div>
                 <div className="left-side">
                     <time className="mail-time">{utilService.getDate(mail.sentAt)}</time>
