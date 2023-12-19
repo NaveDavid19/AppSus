@@ -19,6 +19,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    padding: 0 0.8em;
 }
 
 .compose header button {
@@ -31,7 +34,10 @@
     margin: 0;
 }
 
+.compose textarea {
+    resize: none;
 
+}
 
 
 button {
