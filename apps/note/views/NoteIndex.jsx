@@ -68,7 +68,7 @@ export function NoteIndex() {
     <section className="note-index">
       <div className="search-title">
         <button className="search-btn">
-          <i class="fa-solid fa-magnifying-glass"></i>
+          <i className="fa-solid fa-magnifying-glass"></i>
         </button>
         <Link to={'search'}>
           <input type="text" placeholder="Search note" />

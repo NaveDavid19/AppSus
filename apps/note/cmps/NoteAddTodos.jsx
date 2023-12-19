@@ -22,7 +22,7 @@ export function NoteAddTodos({ addNote, type }) {
     const titleParam = searchParams.get('title') || ''
 
     setTitle(titleParam)
-  }, []) 
+  }, [])
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search)
@@ -113,17 +113,17 @@ export function NoteAddTodos({ addNote, type }) {
               type="button"
               className="todo-remove-btn"
               onClick={() => removeTodo(todo.id)}>
-              <i class="fa-solid fa-x"></i>
+              <i className="fa-solid fa-x"></i>
             </button>
           </div>
         ))}
         <button type="button" className='add-todo-btn' onClick={addTodo}>
-        <i class="fa-solid fa-list"></i>
+          <i className="fa-solid fa-list"></i>
         </button>
         <div className="add-buttons-section">
           <section className="add-buttons">
             <button type="submit">
-              <i class="fa-solid fa-plus"></i>
+              <i className="fa-solid fa-plus"></i>
             </button>
             <ColorButtonsAdd changeBackgroundColor={changeBackgroundColor} />
           </section>

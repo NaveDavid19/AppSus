@@ -37,7 +37,7 @@ export function PreviewButtons({
         onClick={() => {
           deleteNote(note)
         }}>
-        <i class="fa-solid fa-x"></i>
+        <i className="fa-solid fa-x"></i>
       </button>
 
       <button
@@ -45,9 +45,8 @@ export function PreviewButtons({
           pinNote(note)
         }}>
         <i
-          class={`pin fa-solid fa-thumbtack ${
-            note.isPinned ? 'pinned' : 'unpinned'
-          }`}></i>
+          className={`pin fa-solid fa-thumbtack ${note.isPinned ? 'pinned' : 'unpinned'
+            }`}></i>
       </button>
       <button
         onClick={() => {
@@ -55,7 +54,7 @@ export function PreviewButtons({
             `/mail?subject=${note.info.title}&body=${composeMailBody(note)}`
           )
         }}>
-        <i class="fa-regular fa-envelope"></i>
+        <i className="fa-regular fa-envelope"></i>
       </button>
       <ColorButtonsAdd changeBackgroundColor={onChangeBackgroundColor} />
       <h4>{utilService.getDate(note.createdAt)}</h4>

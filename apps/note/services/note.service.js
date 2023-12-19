@@ -403,7 +403,6 @@ export const noteService = {
 
 function query() {
   return storageService.query(NOTES_KEY).then((notes) => {
-    console.log(gFilterBy)
     if (gFilterBy.title) {
       const regex = new RegExp(gFilterBy.title, 'i')
       notes = notes.filter(
@@ -445,7 +444,6 @@ function setFilterBy(filterBy = {}) {
   if (filterBy.title !== undefined) gFilterBy.title = filterBy.title
   if (filterBy.type !== undefined) gFilterBy.type = filterBy.type
   if (filterBy.color !== undefined) gFilterBy.color = filterBy.color
-  console.log(gFilterBy)
   return gFilterBy
 }
 

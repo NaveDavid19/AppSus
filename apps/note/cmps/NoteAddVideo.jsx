@@ -20,7 +20,7 @@ export function NoteAddVideo({ addNote, type }) {
       title: titleParam,
       youtubeUrl: youtubeUrl
     })
-  }, []) 
+  }, [])
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search)
@@ -93,7 +93,7 @@ export function NoteAddVideo({ addNote, type }) {
         />
         <div className="add-buttons-section">
           <section className="add-buttons">
-            <button type='submit'><i class="fa-solid fa-plus"></i></button>
+            <button type='submit'><i className="fa-solid fa-plus"></i></button>
             <ColorButtonsAdd changeBackgroundColor={changeBackgroundColor} />
           </section>
         </div>

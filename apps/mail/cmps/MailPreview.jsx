@@ -47,8 +47,8 @@ export function MailPreview({ mail, onUpdateMail, onRemoveMail, setUnreadCount }
             </Link >
             <Link onClick={() => handleReadMail(mail, true)} to={`/mail/details/${mail.id}`}>
                 <article className="mail-text">
-                    <p className={readClassName}> <LongTextMail txt={mail.subject} length={50} /> </p>
-                    <p> <LongTextMail txt={mail.body} length={50} /> </p>
+                    <LongTextMail className={readClassName} txt={mail.subject} length={50} />
+                    <LongTextMail txt={mail.body} length={50} />
                 </article>
             </Link>
             <div >

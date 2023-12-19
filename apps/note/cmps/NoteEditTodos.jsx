@@ -105,7 +105,7 @@ export function NoteEditTodos({
               type="button"
               className="todo-remove-btn"
               onClick={() => onTodoRemoveHandle(todo.id)}>
-              <i class="fa-solid fa-x"></i>
+              <i className="fa-solid fa-x"></i>
             </button>
           </div>
         ))}
@@ -116,7 +116,7 @@ export function NoteEditTodos({
           </button>
           <section className="add-buttons">
             <button type="submit">
-              <i class="fa-solid fa-plus"></i>
+              <i className="fa-solid fa-plus"></i>
             </button>
             <PreviewButtons
               note={currNote}

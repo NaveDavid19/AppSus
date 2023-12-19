@@ -46,11 +46,11 @@ export function MailDetails() {
         <section className="mail-details">
             <h2 className="mail-subject">{mail.subject}</h2>
             <div className="details-img-name">
-                <div className="right-side">
+                <div className="left-side">
                     <img src="assets\img\logos\unnamed.webp" alt="" />
                     <h2 className="mail-title">{mail.from.userName} <span>{(mail.from === loggedinUser.email) ? mail.to : mail.from.mail}</span> </h2>
                 </div>
-                <div className="left-side">
+                <div className="right-side">
                     <time className="mail-time">{utilService.getDate(mail.sentAt)}</time>
 
                 </div>

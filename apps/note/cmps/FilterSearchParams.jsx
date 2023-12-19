@@ -19,7 +19,7 @@ export function FilterSearchParams({
     <section className="filter-search-params">
       <div className="search-title">
         <button onClick={onSearchParams} className="search-btn">
-        <i class="fa-solid fa-magnifying-glass"></i>
+          <i className="fa-solid fa-magnifying-glass"></i>
         </button>
         <input
           ref={searchInputRef}

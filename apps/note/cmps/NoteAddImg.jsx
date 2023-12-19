@@ -21,7 +21,7 @@ export function NoteAddImg({ addNote, type }) {
       title: titleParam,
       imgUrl: imgUrl
     })
-  }, []) 
+  }, [])
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search)
@@ -136,7 +136,7 @@ export function NoteAddImg({ addNote, type }) {
         <div className="add-buttons-section">
           <section className="add-buttons">
             <button type="submit">
-              <i class="fa-solid fa-plus"></i>
+              <i className="fa-solid fa-plus"></i>
             </button>
             <ColorButtonsAdd changeBackgroundColor={changeBackgroundColor} />
           </section>

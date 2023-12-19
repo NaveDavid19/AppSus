@@ -24,7 +24,7 @@ export function About() {
               href="https://github.com/NaveDavid19"
               target="_blank"
               rel="noopener noreferrer">
-              <i class="fa-brands fa-github"></i>
+              <i className="fa-brands fa-github"></i>
             </a>
           </div>
         </div>
@@ -39,7 +39,7 @@ export function About() {
               href="https://github.com/DimRev"
               target="_blank"
               rel="noopener noreferrer">
-              <i class="fa-brands fa-github"></i>
+              <i className="fa-brands fa-github"></i>
             </a>
           </div>
         </div>

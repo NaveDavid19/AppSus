@@ -2,6 +2,7 @@ import { SideBar } from '../cmps/SideBar.jsx'
 import { MailList } from "../cmps/MailList.jsx"
 import { mailService, Tabs } from "../services/mail.service.js"
 import { MailFilter } from '../cmps/MailFilter.jsx'
+import { Compose } from '../cmps/Compose.jsx'
 const { useParams, Outlet, useLocation } = ReactRouterDOM
 const { useState, useEffect } = React
 
@@ -83,13 +84,14 @@ export function MailIndex() {
 
     return (
         <section className="mail-index">
-            <SideBar {...{ setOpenCompose, openCompose, unreadCount, onSendMail }} />
+            <SideBar {...{ setOpenCompose, openCompose, unreadCount }} />
             <div>
                 {loadingMails &&
                     <img className="loader" src="assets\img\logos\SusMail.png" />}
                 <MailFilter {...{ setFilterBy, filterBy }} />
                 {!params.mailId ?
                     <MailList {...{ mails, onUpdateMail, onRemoveMail, setUnreadCount }} /> : <Outlet />}
+                {openCompose && <Compose open={openCompose} onClose={() => setOpenCompose(false)} {...{ onSendMail }} />}
 
             </div>
         </section>

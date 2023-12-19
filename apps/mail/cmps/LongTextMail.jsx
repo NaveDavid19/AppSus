@@ -2,17 +2,16 @@ const { useState, useEffect } = React;
 
 export function LongTextMail({ txt }) {
   const [displayText, setDisplayText] = useState(txt);
-  const [maxWidth, setMaxWidth] = useState(60); // Default value, adjust as needed
+  const [maxWidth, setMaxWidth] = useState(60);
 
   useEffect(() => {
     const handleResize = () => {
       const screenWidth = window.innerWidth;
-      // Adjust the calculation based on your requirements
-      const newMaxWidth = Math.floor((screenWidth - 30 - 200 - 120 - 100) / 20); // Adjust the division factor as needed
+      const newMaxWidth = Math.floor((screenWidth - 30 - 200 - 120 - 100) / 20);
       setMaxWidth(newMaxWidth);
     };
 
-    handleResize(); // Set initial maxWidth
+    handleResize();
     window.addEventListener('resize', handleResize);
 
     return () => {

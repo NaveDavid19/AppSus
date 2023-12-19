@@ -79,7 +79,7 @@ export function NoteEditTxt({
             className="add-buttons"
             onClick={(ev) => ev.stopPropagation()}>
             <button type="submit">
-              <i class="fa-solid fa-plus"></i>
+              <i className="fa-solid fa-plus"></i>
             </button>
             <PreviewButtons
               note={currNote}

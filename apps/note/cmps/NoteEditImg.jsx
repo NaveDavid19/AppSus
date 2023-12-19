@@ -156,7 +156,7 @@ export function NoteEditImg({
         <div className="add-buttons-section">
           <section className="add-buttons">
             <button type="submit">
-              <i class="fa-solid fa-plus"></i>
+              <i className="fa-solid fa-plus"></i>
             </button>
             <PreviewButtons
               note={currNote}
