@@ -26,6 +26,15 @@ export function About() {
               rel="noopener noreferrer">
               <i className="fa-brands fa-github"></i>
             </a>
+            <a
+              onMouseEnter={(ev) =>
+                utilService.animateCSS(ev.target, 'heartBeat')
+              }
+              href="https://www.linkedin.com/in/nave-david-01527a2a6/"
+              target="_blank"
+              rel="noopener noreferrer">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
           </div>
         </div>
         <div className="developer">
@@ -40,6 +49,15 @@ export function About() {
               target="_blank"
               rel="noopener noreferrer">
               <i className="fa-brands fa-github"></i>
+            </a>
+            <a
+              onMouseEnter={(ev) =>
+                utilService.animateCSS(ev.target, 'heartBeat')
+              }
+              href="https://www.linkedin.com/in/dimrev/"
+              target="_blank"
+              rel="noopener noreferrer">
+              <i class="fa-brands fa-linkedin-in"></i>
             </a>
           </div>
         </div>
