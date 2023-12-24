@@ -29,8 +29,8 @@ export function MailFilter({ filterBy, setFilterBy }) {
     const { txt } = filterByToEdit
     return (
         <section className="search">
-            <MailFilterSelect {...{ setFilterBy }} />
             <form onSubmit={handleSubmit}>
+                <MailFilterSelect {...{ setFilterBy }} />
                 <label htmlFor="txt"></label>
                 <div className="search-container">
                     <button className="fa-solid fa-magnifying-glass"></button>

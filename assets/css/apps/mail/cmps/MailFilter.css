@@ -16,12 +16,14 @@
 
 
 .search form {
-    display: flex;
+    display: grid;
     justify-content: center;
     align-items: baseline;
     flex-direction: row;
     padding: 7px;
     background-color: #f2f6fc;
+    grid-template-columns: 100px 0 1fr 100px;
+    justify-items: center;
 }
 
 .search button {
