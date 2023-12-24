@@ -1,9 +1,5 @@
 import { Tabs } from "../services/mail.service.js"
-import { Compose } from "./Compose.jsx";
-
 const { Link } = ReactRouterDOM
-
-
 
 export function SideBar({ setOpenCompose, openCompose, unreadCount }) {
 
